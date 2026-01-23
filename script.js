@@ -496,7 +496,6 @@ function registerNow(courseId) {
         window.location.href = 'register.html';
     }
 }
-}
 
 // Event Listeners for Registration Cards
 document.querySelectorAll('.registration-card').forEach(card => {
