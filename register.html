@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ลงทะเบียนเรียนหลักสูตรโลจิสติกส์ - สถาบันพัฒนาฝีมือแรงงาน 17 ระยอง">
+    <title>ลงทะเบียนหลักสูตร - LogiSkill</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="register.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="logo.jpg" alt="LogiSkill" class="logo-image">
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Form -->
+    <main class="main-content">
+        <div class="container">
+            <div class="form-header">
+                <h1>สมัครหลักสูตร</h1>
+                <h3 class="course-names">AI for Logistics & CFO & Air Freight</h3>
+                <h3 class="institution">สถาบันพัฒนาฝีมือแรงงาน 17 ระยอง</h3>
+            </div>
+
+            <form id="registrationForm" class="registration-form">
+                <!-- Section 1: Personal Information -->
+                <section class="form-section">
+                    <div class="section-header">
+                        <span class="section-icon">👤</span>
+                        <h2>ข้อมูลส่วนบุคคล</h2>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="fullName">ชื่อ - นามสกุล <span class="required">*</span></label>
+                            <input type="text" id="fullName" name="fullName" placeholder="กรุณากรอกชื่อ-นามสกุล"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="email">อีเมล <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+                            <small class="form-hint">ระบบจะตรวจสอบการลงทะเบียนซ้ำผ่านอีเมล</small>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">มือถือ <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" placeholder="+66 99-999-XXXX" required>
+                            <small class="form-hint">รูปแบบ: 0812345678 (10 หลัก)</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="lineId">Line ID <span class="required">*</span></label>
+                            <input type="text" id="lineId" name="lineId" placeholder="โปรดระบุ Line ID" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="occupation">อาชีพ <span class="required">*</span></label>
+                            <input type="text" id="occupation" name="occupation" placeholder="โปรดระบุอาชีพ" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="age">อายุ <span class="required">*</span></label>
+                            <input type="number" id="age" name="age" placeholder="โปรดระบุอายุ" min="18" max="65"
+                                required>
+                            <small class="form-hint">อายุ 18-65 ปี</small>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="education">ระดับการศึกษา <span class="required">*</span></label>
+                            <select id="education" name="education" required>
+                                <option value="">-- โปรดเลือกระดับการศึกษา --</option>
+                                <option value="ต่ำกว่าปริญญาตรี">ต่ำกว่าปริญญาตรี</option>
+                                <option value="วิชาชีพ (ปวช.)">วิชาชีพ (ปวช.)</option>
+                                <option value="วิชาชีพชั้นสูง (ปวส.) / อนุปริญญา">วิชาชีพชั้นสูง (ปวส.) / อนุปริญญา
+                                </option>
+                                <option value="ระดับปริญญาตรี">ระดับปริญญาตรี</option>
+                                <option value="ระดับปริญญาโท">ระดับปริญญาโท</option>
+                                <option value="ระดับปริญญาเอก">ระดับปริญญาเอก</option>
+                                <option value="อื่นๆ">วิชาชีพอื่น (โปรดระบุ)</option>
+                            </select>
+                            <input type="text" id="educationOther" name="educationOther"
+                                placeholder="โปรดระบุวิชาชีพอื่น" style="display: none; margin-top: 0.5rem;">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 2: Work Information -->
+                <section class="form-section">
+                    <div class="section-header">
+                        <span class="section-icon">💼</span>
+                        <h2>ข้อมูลที่ทำงาน</h2>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="position">ตำแหน่งงาน</label>
+                            <input type="text" id="position" name="position" placeholder="โปรดระบุตำแหน่งงาน">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="company">บริษัท</label>
+                            <input type="text" id="company" name="company" placeholder="โปรดระบุชื่อบริษัท">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="province">ที่ตั้งบริษัท - จังหวัด</label>
+                            <select id="province" name="province">
+                                <!-- Will be populated by JavaScript -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="district">ที่ตั้งบริษัท - อำเภอ/เขต</label>
+                            <select id="district" name="district" <option value="">-- เลือกอำเภอ/เขต --</option>
+                                </select>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 3: Course Selection -->
+                <section class="form-section">
+                    <div class="section-header">
+                        <span class="section-icon">📚</span>
+                        <h2>เลือกหลักสูตร <span class="required">*</span></h2>
+                    </div>
+                    <p class="section-description">กรุณาเลือกหลักสูตรและรุ่นที่ต้องการเข้าอบรม (สามารถเลือกได้มากกว่า 1
+                        หลักสูตร)</p>
+
+                    <div class="courses-flex">
+                        <!-- Course 1: AI for Logistics -->
+                        <div class="course-option" data-course="ai-logistics">
+                            <div class="course-card">
+                                <div class="course-icon">🤖</div>
+                                <h3 class="course-name">AI FOR LOGISTICS</h3>
+                                <p class="course-desc">การประยุกต์ใช้เทคโนโลยีปัญญาประดิษฐ์สำหรับงานโลจิสติกส์</p>
+                                <div class="course-sessions">
+                                    <label class="session-option">
+                                        <input type="checkbox" name="courseSession" value="AI-รุ่น1"
+                                            data-course="AI FOR LOGISTICS"
+                                            data-session="รุ่นที่ 1: 14-15 และ 21-22 กุมภาพันธ์ 2569">
+                                        <span class="session-label">รุ่นที่ 1</span>
+                                        <span class="session-date">14-15 และ 21-22 ก.พ. 69</span>
+                                    </label>
+                                    <label class="session-option">
+                                        <input type="checkbox" name="courseSession" value="AI-รุ่น2"
+                                            data-course="AI FOR LOGISTICS"
+                                            data-session="รุ่นที่ 2: 16-17 และ 23-24 กุมภาพันธ์ 2569">
+                                        <span class="session-label">รุ่นที่ 2</span>
+                                        <span class="session-date">16-17 และ 23-24 ก.พ. 69</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Course 2: Air Freight -->
+                        <div class="course-option" data-course="air-freight">
+                            <div class="course-card">
+                                <div class="course-icon">✈️</div>
+                                <h3 class="course-name">International Air Freight Management</h3>
+                                <p class="course-desc">การจัดการขนส่งสินค้าทางอากาศระหว่างประเทศ</p>
+                                <div class="course-sessions">
+                                    <label class="session-option">
+                                        <input type="checkbox" name="courseSession" value="Airfreight-รุ่น1"
+                                            data-course="International Air Freight Management"
+                                            data-session="รุ่นที่ 1: 12-13 และ 19-20 มีนาคม 2569">
+                                        <span class="session-label">รุ่นที่ 1</span>
+                                        <span class="session-date">12-13 และ 19-20 มี.ค. 69</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Course 3: Carbon Footprint -->
+                        <div class="course-option" data-course="carbon-footprint">
+                            <div class="course-card">
+                                <div class="course-icon">🌱</div>
+                                <h3 class="course-name">Carbon Footprint for Organization</h3>
+                                <p class="course-desc">การจัดการคาร์บอนฟุตพริ้นท์ขององค์กร</p>
+                                <div class="course-sessions">
+                                    <label class="session-option">
+                                        <input type="checkbox" name="courseSession" value="CFO-รุ่น1"
+                                            data-course="Carbon Footprint for Organization"
+                                            data-session="รุ่นที่ 1: 12-13 และ 19-20 กุมภาพันธ์ 2569">
+                                        <span class="session-label">รุ่นที่ 1</span>
+                                        <span class="session-date">12-13 และ 19-20 ก.พ. 69</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="courseError" class="error-message" style="display: none;">
+                        กรุณาเลือกหลักสูตรและรุ่นที่ต้องการเข้าอบรม
+                    </div>
+                </section>
+
+                <!-- Consent Checkbox -->
+                <section class="form-section" style="border-bottom: none; padding-bottom: 0;">
+                    <div class="consent-group">
+                        <label class="consent-label">
+                            <input type="checkbox" id="consent" name="consent" required>
+                            <span>ข้าพเจ้ายินยอมให้ข้อมูลนี้เป็นข้อมูลสำหรับการลงทะเบียนเพื่อสมัคร <span
+                                    class="required">*</span></span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Submit Button -->
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit" id="submitBtn">
+                        <span class="btn-text">ส่งใบสมัครลงทะเบียน</span>
+                        <span class="btn-loader" style="display: none;">กำลังส่ง...</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content success-modal">
+            <div class="success-icon">✅</div>
+            <h2>ขอบคุณที่ลงทะเบียน</h2>
+            <p class="queue-number">คุณได้เลขลำดับที่ <span id="queueNumber">--</span></p>
+            <p class="success-message">รอเจ้าหน้าที่ติดต่อกลับ</p>
+            <a href="https://lin.ee/epoe1vZ" target="_blank" class="btn-line">
+                <span class="line-icon">💬</span>
+                ติดต่อเรา
+            </a>
+            <button class="btn-close-modal" onclick="closeSuccessModal()">ปิด</button>
+        </div>
+    </div>
+
+    <script src="thailand-data.js"></script>
+    <script src="register.js"></script>
+</body>
+
+</html>

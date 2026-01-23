@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="แพลตฟอร์มรวบรวมหลักสูตรพัฒนาทักษะด้านโลจิสติกส์ ตั้งแต่ระดับปฏิบัติการไปจนถึงระดับบริหาร">
+    <title>LogiSkill - แพลตฟอร์มเรียนรู้โลจิสติกส์ออนไลน์</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="#home" class="logo">
+                    <img src="logo.jpg" alt="LogiSkill" class="logo-image">
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="#home">หน้าแรก</a></li>
+                    <li><a href="#tracks">หลักสูตร</a></li>
+                    <li><a href="#features">ฟีเจอร์</a></li>
+                    <li><a href="#certification">ใบรับรอง</a></li>
+                    <li><a href="#corporate">องค์กร</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="https://lin.ee/epoe1vZ" target="_blank" class="btn-secondary">รับข่าวสาร</a>
+                    <a href="register.html" class="btn-primary">ลงทะเบียน</a>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">🚀 หลักสูตรใหม่! AI สำหรับโลจิสติกส์</div>
+                <h1 class="hero-title">
+                    ยกระดับทักษะโลจิสติกส์<br>
+                    <span class="gradient-text">สู่มืออาชีพระดับโลก</span>
+                </h1>
+                <p class="hero-subtitle">
+                    แพลตฟอร์มรวบรวมหลักสูตรพัฒนาทักษะด้านโลจิสติกส์<br>
+                    ตั้งแต่ระดับปฏิบัติการไปจนถึงระดับบริหาร พร้อมใบรับรองมาตรฐาน
+                </p>
+                <div class="hero-search">
+                    <input type="text" placeholder="ค้นหาหลักสูตรที่คุณสนใจ..." class="search-input">
+                    <button class="search-btn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M9 17A8 8 0 1 0 9 1a8 8 0 0 0 0 16zM19 19l-4.35-4.35" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">29</div>
+                        <div class="stat-label">หลักสูตร</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">สายอาชีพ</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1,000+</div>
+                        <div class="stat-label">ผู้เรียน</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Currently Open for Registration -->
+    <section id="open-registration" class="registration-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="registration-badge">🔥 เปิดลงทะเบียนตอนนี้</div>
+                <h2 class="section-title">หลักสูตรที่เปิดลงทะเบียนในขณะนี้</h2>
+                <p class="section-subtitle">ลงทะเบียนฟรี! รับเพียง 20 ท่านเท่านั้น - สถาบันพัฒนาฝีมือแรงงาน 17 ระยอง</p>
+            </div>
+
+            <div class="registration-grid">
+                <!-- Course 1: AI for Logistics -->
+                <div class="registration-card" data-course="ai-logistics">
+                    <div class="registration-image">
+                        <div class="registration-status">เปิดรับสมัคร</div>
+                        <div class="placeholder-reg-image ai-bg">
+                            <span class="reg-icon">🤖</span>
+                        </div>
+                    </div>
+                    <div class="registration-content">
+                        <h3 class="registration-title">เปิดรับสมัครหลักสูตร AI FOR LOGISTICS</h3>
+                        <p class="registration-subtitle">การประยุกต์ใช้เทคโนโลยีปัญญาประดิษฐ์สำหรับงานโลจิสติกส์</p>
+                        <div class="registration-info">
+                            <div class="info-item">
+                                <span class="info-icon">📅</span>
+                                <span>รุ่น 1: 14-15 และ 21-22 ก.พ. 69</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-icon">📅</span>
+                                <span>รุ่น 2: 16-17 และ 23-24 ก.พ. 69</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-icon">👥</span>
+                                <span>รับเพียง 20 คนเท่านั้น</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-icon">💰</span>
+                                <span>ลงทะเบียนฟรี!</span>
+                            </div>
+                        </div>
+                        <button class="btn-register" data-course="ai-logistics">ดูรายละเอียดและลงทะเบียน</button>
+                    </div>
+                </div>
+
+                <!-- Course 2: International Air Freight -->
+                <div class="registration-card" data-course="air-freight">
+                    <div class="registration-image">
+                        <div class="registration-status">เปิดรับสมัคร</div>
+                        <div class="placeholder-reg-image airfreight-bg">
+                            <span class="reg-icon">✈️</span>
+                        </div>
+                    </div>
+                    <div class="registration-content">
+                        <h3 class="registration-title">อบรม Airfreight ฟรี!</h3>
+                        <p class="registration-subtitle">International Air Freight Management</p>
+                        <div class="registration-info">
+                            <div class="info-item">
+                                <span class="info-icon">📅</span>
+                                <span>12-13 และ 19-20 มีนาคม 2569</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-icon">⏰</span>
+                                <span>เวลา 08.30 - 17.00 น.</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-icon">👥</span>
+                                <span>รับเพียง 20 คนเท่านั้น</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-icon">🎓</span>
+                                <span>รับวุฒิบัตรจาก กรมพัฒนาฝีมือแรงงาน</span>
+                            </div>
+                        </div>
+                        <button class="btn-register" data-course="air-freight">ดูรายละเอียดและลงทะเบียน</button>
+                    </div>
+                </div>
+
+                <!-- Course 3: Carbon Footprint -->
+                <div class="registration-card" data-course="carbon-footprint">
+                    <div class="registration-image">
+                        <div class="registration-status">เปิดรับสมัคร</div>
+                        <div class="placeholder-reg-image carbon-bg">
+                            <span class="reg-icon">🌱</span>
+                        </div>
+                    </div>
+                    <div class="registration-content">
+                        <h3 class="registration-title">อบรม CFO ฟรี!</h3>
+                        <p class="registration-subtitle">Carbon Footprint for Organization</p>
+                        <div class="registration-info">
+                            <div class="info-item">
+                                <span class="info-icon">📅</span>
+                                <span>12-13 และ 19-20 กุมภาพันธ์ 2569</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-icon">⏰</span>
+                                <span>เวลา 08.30 - 17.00 น.</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-icon">👥</span>
+                                <span>รับเพียง 20 คนเท่านั้น</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-icon">🎓</span>
+                                <span>รับวุฒิบัตรจาก กรมพัฒนาฝีมือแรงงาน</span>
+                            </div>
+                        </div>
+                        <button class="btn-register" data-course="carbon-footprint">ดูรายละเอียดและลงทะเบียน</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Popup -->
+    <div id="courseModal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-body">
+                <!-- Content will be dynamically inserted -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Learning Tracks -->
+    <section id="tracks" class="tracks-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">เลือกเรียนตามสายอาชีพ</h2>
+                <p class="section-subtitle">เลือก Learning Track ที่เหมาะกับเส้นทางอาชีพของคุณ</p>
+            </div>
+
+            <div class="tracks-grid">
+                <!-- Track A: Warehouse & Inventory -->
+                <div class="track-card" data-track="warehouse">
+                    <div class="track-icon">🏭</div>
+                    <h3 class="track-title">Warehouse & Inventory Master</h3>
+                    <p class="track-subtitle">การจัดการคลังและสินค้าคงคลัง</p>
+                    <p class="track-description">เหมาะสำหรับ: ผู้ดูแลคลังสินค้า, ฝ่ายสต็อก</p>
+                    <div class="track-courses">9 หลักสูตร</div>
+                    <ul class="course-list">
+                        <li>การจัดการคลังสินค้ายุคใหม่อย่างมีประสิทธิภาพ</li>
+                        <li>เทคนิคการจัดการคลังสินค้า (ระดับสูง)</li>
+                        <li>การจัดซื้อและบริหารสินค้าคงคลัง</li>
+                        <li>การจัดการสินค้าคงคลัง (การบริหารการสั่งซื้อ)</li>
+                        <li>การจัดการวัตถุดิบและสินค้าคงคลัง</li>
+                        <li>การใช้โปรแกรม Microsoft Excel ในการบริหารสินค้าคงคลัง</li>
+                        <li>การจัดทำระบบคลังสินค้า</li>
+                        <li>ผู้ควบคุมสินค้าคงคลัง ระดับ 1</li>
+                        <li>ผู้ปฏิบัติการคลังสินค้า ระดับ 1</li>
+                    </ul>
+                    <button class="btn-track">ดูหลักสูตรทั้งหมด</button>
+                </div>
+
+                <!-- Track B: Transportation & Distribution -->
+                <div class="track-card" data-track="transportation">
+                    <div class="track-icon">🚚</div>
+                    <h3 class="track-title">Transportation & Distribution Pro</h3>
+                    <p class="track-subtitle">การขนส่งและกระจายสินค้า</p>
+                    <p class="track-description">เหมาะสำหรับ: ฝ่ายขนส่ง, ฝ่ายเดินรถ</p>
+                    <div class="track-courses">7 หลักสูตร</div>
+                    <ul class="course-list">
+                        <li>การบริหารจัดการงานขนส่งสินค้า</li>
+                        <li>นักบริหารงานขนส่งสินค้า ระดับ 1</li>
+                        <li>เทคนิคการวางแผนและบริหารงานขนส่งสินค้าทางถนน (ระดับพื้นฐาน)</li>
+                        <li>การจัดการการขนส่งสินค้าระหว่างประเทศทางอากาศ</li>
+                        <li>การปฏิบัติการขนส่งสินค้าทางอากาศ</li>
+                        <li>พนักงานขนส่งสินค้าผ่านแดนและข้ามแดน ระดับ 1</li>
+                        <li>การให้บริการภาคพื้น Check in (สำหรับงานขนส่งทางอากาศ)</li>
+                    </ul>
+                    <button class="btn-track">ดูหลักสูตรทั้งหมด</button>
+                </div>
+
+                <!-- Track C: Supply Chain & Purchasing -->
+                <div class="track-card" data-track="supplychain">
+                    <div class="track-icon">⛓️</div>
+                    <h3 class="track-title">Supply Chain & Purchasing Strategy</h3>
+                    <p class="track-subtitle">กลยุทธ์ซัพพลายเชนและจัดซื้อ</p>
+                    <p class="track-description">เหมาะสำหรับ: ผู้บริหาร, ฝ่ายจัดซื้อ, ผู้นำเข้าส่งออก</p>
+                    <div class="track-courses">6 หลักสูตร</div>
+                    <ul class="course-list">
+                        <li>การบริหารจัดการระบบโลจิสติกส์และห่วงโซ่อุปทาน</li>
+                        <li>การจัดการโลจิสติกส์และซัพพลายเชน</li>
+                        <li>การบริหารจัดการโลจิสติกส์ภาคการเกษตร</li>
+                        <li>พนักงานจัดซื้อจัดหา ระดับ 1</li>
+                        <li>ตัวแทนออกของเพื่อการส่งออกและนำเข้า</li>
+                        <li>พนักงานนำเข้าและส่งออก ระดับ 1</li>
+                    </ul>
+                    <button class="btn-track">ดูหลักสูตรทั้งหมด</button>
+                </div>
+
+                <!-- Track D: Future Logistics Technology -->
+                <div class="track-card featured" data-track="technology">
+                    <div class="featured-badge">🔥 ยอดนิยม</div>
+                    <div class="track-icon">💻</div>
+                    <h3 class="track-title">Future Logistics Technology</h3>
+                    <p class="track-subtitle">เทคโนโลยีและนวัตกรรมโลจิสติกส์</p>
+                    <p class="track-description">จุดขายสำคัญ: ทันสมัยและตอบโจทย์อนาคต</p>
+                    <div class="track-courses">4 หลักสูตร</div>
+                    <ul class="course-list">
+                        <li>การวิเคราะห์ระบบ GPS ในงานขนส่งสินค้า</li>
+                        <li>การประยุกต์ใช้ระบบ RFID ควบคุมการเคลื่อนย้ายสินค้า</li>
+                        <li>การประยุกต์ใช้เทคโนโลยีปัญญาประดิษฐ์ (AI) สำหรับงานโลจิสติกส์</li>
+                        <li>การพัฒนาองค์กรสู่ความเป็นกลางทางคาร์บอนเพื่อความยั่งยืนในอุตสาหกรรมโลจิสติกส์</li>
+                    </ul>
+                    <button class="btn-track">ดูหลักสูตรทั้งหมด</button>
+                </div>
+
+                <!-- Track E: People Management -->
+                <div class="track-card" data-track="management">
+                    <div class="track-icon">👥</div>
+                    <h3 class="track-title">People Management in Logistics</h3>
+                    <p class="track-subtitle">การบริหารคนในงานโลจิสติกส์</p>
+                    <p class="track-description">เหมาะสำหรับ: หัวหน้างาน, HR สายโลจิสติกส์</p>
+                    <div class="track-courses">3 หลักสูตร</div>
+                    <ul class="course-list">
+                        <li>พนักงานบริหารงานโลจิสติกส์ ระดับ 1</li>
+                        <li>การสอนงานด้านโลจิสติกส์ (ระดับพื้นฐาน)</li>
+                        <li>เทคนิคการสอนงานด้านโลจิสติกส์ (ระดับสูง)</li>
+                    </ul>
+                    <button class="btn-track">ดูหลักสูตรทั้งหมด</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Courses -->
+    <section class="popular-courses">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">หลักสูตรยอดนิยม</h2>
+                <p class="section-subtitle">หลักสูตรพื้นฐานสำคัญที่ผู้เรียนเลือกมากที่สุด</p>
+            </div>
+
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-image">
+                        <div class="course-badge">พื้นฐาน</div>
+                        <div class="placeholder-image warehouse-img">🏭</div>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">การจัดการคลังสินค้ายุคใหม่อย่างมีประสิทธิภาพ</h3>
+                        <p class="course-description">เรียนรู้เทคนิคการจัดการคลังสินค้าแบบมืออาชีพ
+                            พร้อมเครื่องมือและระบบที่ทันสมัย</p>
+                        <div class="course-meta">
+                            <span class="course-duration">⏱️ 12 ชั่วโมง</span>
+                            <span class="course-level">📊 ระดับพื้นฐาน</span>
+                        </div>
+                        <button class="btn-course">เริ่มเรียน</button>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-image">
+                        <div class="course-badge">แนะนำ</div>
+                        <div class="placeholder-image supply-img">⛓️</div>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">การบริหารจัดการระบบโลจิสติกส์และห่วงโซ่อุปทาน</h3>
+                        <p class="course-description">เข้าใจภาพรวมของระบบโลจิสติกส์และการบริหารห่วงโซ่อุปทานแบบครบวงจร
+                        </p>
+                        <div class="course-meta">
+                            <span class="course-duration">⏱️ 18 ชั่วโมง</span>
+                            <span class="course-level">📊 ระดับกลาง</span>
+                        </div>
+                        <button class="btn-course">เริ่มเรียน</button>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-image">
+                        <div class="course-badge">ยอดนิยม</div>
+                        <div class="placeholder-image excel-img">📊</div>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">การใช้โปรแกรม Microsoft Excel ในการบริหารสินค้าคงคลัง</h3>
+                        <p class="course-description">เชี่ยวชาญการใช้ Excel
+                            ในการวิเคราะห์และบริหารจัดการสินค้าคงคลังอย่างมีประสิทธิภาพ</p>
+                        <div class="course-meta">
+                            <span class="course-duration">⏱️ 8 ชั่วโมง</span>
+                            <span class="course-level">📊 ระดับพื้นฐาน</span>
+                        </div>
+                        <button class="btn-course">เริ่มเรียน</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Features -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">ฟีเจอร์พิเศษของแพลตฟอร์ม</h2>
+                <p class="section-subtitle">เครื่องมือที่จะช่วยให้การเรียนรู้ของคุณมีประสิทธิภาพสูงสุด</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Skill Gap Analysis</h3>
+                    <p class="feature-description">ทำแบบทดสอบก่อนเรียน ระบบจะวิเคราะห์และแนะนำหลักสูตรที่เหมาะกับคุณ
+                        เพื่อเติมเต็มทักษะที่ขาดหายไป</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔬</div>
+                    <h3 class="feature-title">Virtual Lab / Simulation</h3>
+                    <p class="feature-description">ฝึกปฏิบัติจริงผ่านระบบจำลอง เช่น การใช้งาน GPS, RFID
+                        และระบบคลังสินค้า ไม่ต้องลงทุนซื้ออุปกรณ์</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3 class="feature-title">Certification System</h3>
+                    <p class="feature-description">รับ E-Certificate มาตรฐานเมื่อเรียนจบหลักสูตร
+                        นำไปใช้สมัครงานหรือเลื่อนตำแหน่งได้ทันที</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Dashboard for Corporate</h3>
+                    <p class="feature-description">สำหรับองค์กร ติดตามความก้าวหน้าของพนักงาน
+                        ดูสถิติการเรียนรู้และผลการยกระดับทักษะแบบเรียลไทม์</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certification Section -->
+    <section id="certification" class="certification-section">
+        <div class="container">
+            <div class="certification-content">
+                <div class="certification-text">
+                    <h2 class="section-title">ใบรับรองมาตรฐานที่ได้รับการยอมรับ</h2>
+                    <p class="certification-description">
+                        เมื่อคุณเรียนจบหลักสูตรระดับ 1 คุณจะได้รับ E-Certificate ที่สามารถนำไปใช้ในการสมัครงาน
+                        หรือพัฒนาความก้าวหน้าในสายอาชีพได้ทันที
+                    </p>
+                    <ul class="certification-list">
+                        <li>✅ ผู้บริหารงานโลจิสติกส์ ระดับ 1</li>
+                        <li>✅ ผู้ปฏิบัติการคลังสินค้า ระดับ 1</li>
+                        <li>✅ นักบริหารงานขนส่งสินค้า ระดับ 1</li>
+                        <li>✅ พนักงานจัดซื้อจัดหา ระดับ 1</li>
+                        <li>✅ พนักงานนำเข้าและส่งออก ระดับ 1</li>
+                        <li>✅ ผู้ควบคุมสินค้าคงคลัง ระดับ 1</li>
+                    </ul>
+                    <button class="btn-primary">ดูหลักสูตรที่มีใบรับรอง</button>
+                </div>
+                <div class="certification-visual">
+                    <div class="certificate-mockup">
+                        <div class="certificate-header">
+                            <div class="certificate-logo">🏅</div>
+                            <h3>Certificate of Completion</h3>
+                        </div>
+                        <div class="certificate-body">
+                            <p class="certificate-name">ชื่อผู้เรียน</p>
+                            <p class="certificate-course">หลักสูตร: การบริหารงานโลจิสติกส์</p>
+                            <p class="certificate-date">วันที่: 23 มกราคม 2026</p>
+                        </div>
+                        <div class="certificate-footer">
+                            <div class="certificate-seal">✓</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Corporate Dashboard Preview -->
+    <section id="corporate" class="corporate-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">สำหรับองค์กร</h2>
+                <p class="section-subtitle">ติดตามและพัฒนาทักษะพนักงานของคุณอย่างเป็นระบบ</p>
+            </div>
+
+            <div class="corporate-content">
+                <div class="dashboard-preview">
+                    <div class="dashboard-header">
+                        <h3>Corporate Dashboard</h3>
+                        <div class="dashboard-stats">
+                            <div class="stat-box">
+                                <div class="stat-value">156</div>
+                                <div class="stat-label">พนักงานทั้งหมด</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-value">89%</div>
+                                <div class="stat-label">อัตราผ่าน</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-value">42</div>
+                                <div class="stat-label">ใบรับรอง</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dashboard-chart">
+                        <div class="chart-placeholder">
+                            <div class="chart-bar" style="height: 60%"></div>
+                            <div class="chart-bar" style="height: 85%"></div>
+                            <div class="chart-bar" style="height: 70%"></div>
+                            <div class="chart-bar" style="height: 95%"></div>
+                            <div class="chart-bar" style="height: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="corporate-features">
+                    <h3>ความสามารถของระบบ</h3>
+                    <ul class="corporate-list">
+                        <li>📈 ติดตามความก้าวหน้าของพนักงานแบบเรียลไทม์</li>
+                        <li>📊 รายงานสถิติการเรียนรู้และผลการทดสอบ</li>
+                        <li>🎯 กำหนด Learning Path ตามตำแหน่งงาน</li>
+                        <li>💼 จัดการทีมและแผนกได้หลายระดับ</li>
+                        <li>📧 แจ้งเตือนอัตโนมัติเมื่อพนักงานผ่านหลักสูตร</li>
+                        <li>📑 ส่งออกรายงานเพื่อนำเสนอผู้บริหาร</li>
+                    </ul>
+                    <button class="btn-primary">ติดต่อฝ่ายขาย</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">พร้อมที่จะเริ่มต้นแล้วหรือยัง?</h2>
+                <p class="cta-subtitle">ลงทะเบียนวันนี้ รับฟรี! หลักสูตรพื้นฐานโลจิสติกส์</p>
+                <div class="cta-buttons">
+                    <button class="btn-primary btn-large">เริ่มเรียนฟรี</button>
+                    <button class="btn-secondary btn-large">ดูหลักสูตรทั้งหมด</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <img src="logo.jpg" alt="LogiSkill" class="logo-image">
+                    </div>
+                    <p class="footer-description">
+                        แพลตฟอร์มเรียนรู้โลจิสติกส์ออนไลน์<br>
+                        ครบครันที่สุดในประเทศไทย
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>หลักสูตร</h4>
+                    <ul>
+                        <li><a href="#tracks">Warehouse & Inventory</a></li>
+                        <li><a href="#tracks">Transportation</a></li>
+                        <li><a href="#tracks">Supply Chain</a></li>
+                        <li><a href="#tracks">Technology</a></li>
+                        <li><a href="#tracks">Management</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>เกี่ยวกับเรา</h4>
+                    <ul>
+                        <li><a href="#">เกี่ยวกับ LogiSkill</a></li>
+                        <li><a href="#">ทีมงาน</a></li>
+                        <li><a href="#">ติดต่อเรา</a></li>
+                        <li><a href="#">สำหรับองค์กร</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>ช่วยเหลือ</h4>
+                    <ul>
+                        <li><a href="#">คำถามที่พบบ่อย</a></li>
+                        <li><a href="#">นโยบายความเป็นส่วนตัว</a></li>
+                        <li><a href="#">เงื่อนไขการใช้งาน</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 LogiSkill. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
