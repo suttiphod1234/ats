@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="แบบฟอร์มสำรวจความต้องการสำหรับผู้เรียน - LogiSkill">
+    <title>แบบสำรวจความต้องการเรียน - LogiSkill</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="ai-logistics-form.css">
+    <style>
+        /* Custom styles for survey specifically */
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.2s;
+        }
+
+        .checkbox-option:hover {
+            border-color: var(--accent-teal);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .checkbox-option input[type="checkbox"],
+        .checkbox-option input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--accent-emerald);
+        }
+
+        .text-other {
+            width: 100%;
+            margin-top: 0.5rem;
+            padding: 0.75rem;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm);
+            color: var(--text-white);
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="logo.jpg" alt="LogiSkill" class="logo-image">
+            </a>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="form-header">
+                <h1>แบบสำรวจความต้องการสำหรับผู้เรียน</h1>
+                <h3 class="institution">เพื่อพัฒนาหลักสูตรให้ตรงใจคุณที่สุด</h3>
+            </div>
+
+            <form id="surveyForm" class="registration-form">
+
+                <!-- Question 1 -->
+                <section class="form-section">
+                    <div class="section-header">
+                        <span class="section-icon">📢</span>
+                        <h2>1. คุณได้รับสื่อสำหรับคอร์สนี้จากช่องทางใด?</h2>
+                    </div>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="media" value="Facebook / Social Media">
+                            <span>Facebook / Social Media</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="media" value="การค้นหาผ่าน Google">
+                            <span>การค้นหาผ่าน Google (Search Engine)</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="media" value="เพื่อนแนะนำ">
+                            <span>เพื่อนแนะนำ / บอกต่อ</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="media" value="ได้รับลิงก์โดยตรง">
+                            <span>ได้รับลิงก์โดยตรง</span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Question 2 -->
+                <section class="form-section">
+                    <div class="section-header">
+                        <span class="section-icon">💼</span>
+                        <h2>2. เลือกตามสายอาชีพ ที่ต้องการเรียนเพิ่มเติม</h2>
+                    </div>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="career" value="การจัดการคลังและสินค้าคงคลัง">
+                            <span>การจัดการคลังและสินค้าคงคลัง</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="career" value="การขนส่งและกระจายสินค้า">
+                            <span>การขนส่งและกระจายสินค้า</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="career" value="กลยุทธ์ซัพพลายเชนและจัดซื้อ">
+                            <span>กลยุทธ์ซัพพลายเชนและจัดซื้อ</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="career" value="เทคโนโลยีและนวัตกรรมโลจิสติกส์">
+                            <span>เทคโนโลยีและนวัตกรรมโลจิสติกส์</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="career" value="การบริหารคนในงานโลจิสติกส์">
+                            <span>การบริหารคนในงานโลจิสติกส์</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="career" value="อื่นๆ"
+                                onchange="toggleOther(this, 'careerOther')">
+                            <span>อื่นๆ (โปรดระบุ)</span>
+                        </label>
+                        <input type="text" id="careerOther" class="text-other" placeholder="ระบุสายอาชีพอื่นๆ...">
+                    </div>
+                </section>
+
+                <!-- Question 3 -->
+                <section class="form-section">
+                    <div class="section-header">
+                        <span class="section-icon">🎓</span>
+                        <h2>3. รูปแบบการอบรมที่คุณต้องการ</h2>
+                    </div>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="radio" name="format" value="ออฟไลน์ (Offline)">
+                            <span>ออฟไลน์ (Offline): เรียนแบบเจอตัว (On-site)</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="radio" name="format" value="ออนไลน์ (Online)">
+                            <span>ออนไลน์ (Online): เรียนสดผ่าน Zoom/Meet</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="radio" name="format" value="ออนไลน์ (VDO)">
+                            <span>ออนไลน์ (VDO): เรียนผ่านคลิปวิดีโอ ดูย้อนหลังได้</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="radio" name="format" value="อื่นๆ" onchange="toggleOther(this, 'formatOther')">
+                            <span>อื่นๆ (โปรดระบุ)</span>
+                        </label>
+                        <input type="text" id="formatOther" class="text-other" placeholder="ระบุรูปแบบอื่นๆ...">
+                    </div>
+                </section>
+
+                <!-- Question 4 -->
+                <section class="form-section">
+                    <div class="section-header">
+                        <span class="section-icon">📅</span>
+                        <h2>4. วันเวลาเดือนที่สะดวก</h2>
+                    </div>
+                    <div class="form-group full-width">
+                        <input type="text" name="convenientTime"
+                            placeholder="เช่น วันเสาร์-อาทิตย์, เดือนมีนาคม, ช่วง 18.00 น." required>
+                    </div>
+                </section>
+
+                <!-- Question 5 -->
+                <section class="form-section">
+                    <div class="section-header">
+                        <span class="section-icon">💡</span>
+                        <h2>5. เรื่องที่คุณต้องการให้สอนหรือเน้นมากที่สุดคืออะไร?</h2>
+                    </div>
+                    <div class="form-group full-width">
+                        <textarea name="suggestions" rows="4" placeholder="ข้อเสนอแนะเพิ่มเติม..."
+                            style="padding:1rem; width:100%; display:block; background:rgba(255,255,255,0.05); color:white; border:1px solid rgba(255,255,255,0.1); border-radius:var(--radius-sm);"
+                            required></textarea>
+                    </div>
+                </section>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit" id="submitBtn">
+                        <span class="btn-text">ส่งแบบสอบถาม</span>
+                        <span class="btn-loader" style="display: none;">กำลังส่ง...</span>
+                    </button>
+                    <div id="submitError" style="color:var(--error-red); margin-top:1rem; display:none;"></div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content success-modal">
+            <div class="success-icon">🎉</div>
+            <h2>ขอบคุณสำหรับข้อมูล</h2>
+            <p class="success-message">ความคิดเห็นของคุณสำคัญมาก<br>ทางเราจะนำไปพัฒนาหลักสูตรต่อไป</p>
+            <a href="index.html" class="btn-primary" style="width:100%">กลับสู่หน้าหลัก</a>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="survey.js"></script>
+    <script>
+        function toggleOther(checkbox, inputId) {
+            const input = document.getElementById(inputId);
+            // If it's a radio, we need to hide other inputs if this one isn't "other"
+            if (checkbox.type === 'radio') {
+                const name = checkbox.name;
+                const set = document.querySelectorAll(`input[name="${name}"]`);
+                set.forEach(el => {
+                    // Logic handled in JS listener usually better, but inline for simple toggle
+                });
+                // For radio 'Other' specifically check if checked
+                input.style.display = checkbox.checked ? 'block' : 'none';
+                if (!checkbox.checked) input.value = '';
+            } else {
+                // Checkbox
+                input.style.display = checkbox.checked ? 'block' : 'none';
+                if (!checkbox.checked) input.value = '';
+            }
+        }
+
+        // Better logic for radio buttons "Other" toggle
+        document.querySelectorAll('input[name="format"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                const formatOther = document.getElementById('formatOther');
+                if (radio.value === 'อื่นๆ') {
+                    formatOther.style.display = 'block';
+                    formatOther.required = true;
+                } else {
+                    formatOther.style.display = 'none';
+                    formatOther.required = false;
+                    formatOther.value = ''; // clear if switched away
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

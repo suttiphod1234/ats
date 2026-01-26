@@ -18,56 +18,85 @@ const SHEET_NAME = 'ai logistics';
 
 function doPost(e) {
   try {
-    // Open the Google Sheet
-    const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
-    let sheet = ss.getSheetByName(SHEET_NAME);
-    
-    // Create sheet if it doesn't exist
-    if (!sheet) {
-      sheet = ss.insertSheet(SHEET_NAME);
-      setupHeaders(sheet);
-    }
-    
     // Parse incoming data
     const data = JSON.parse(e.postData.contents);
     
-    // Get next queue number
+    // Determine target sheet
+    const targetSheetName = data.sheetName || SHEET_NAME;
+    
+    // Open the Google Sheet
+    const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+    let sheet = ss.getSheetByName(targetSheetName);
+    
+    // Create sheet if it doesn't exist
+    if (!sheet) {
+      sheet = ss.insertSheet(targetSheetName);
+      if (targetSheetName === 'survey') {
+        setupSurveyHeaders(sheet);
+      } else {
+        setupHeaders(sheet);
+      }
+    }
+    
+    // Get next queue number (row count)
     const lastRow = sheet.getLastRow();
     const queueNumber = lastRow > 1 ? lastRow : 1;
     
-    // Handle multiple sessions
-    const sessions = Array.isArray(data.sessions) ? data.sessions.join(', ') : data.sessions;
-    const sessionDates = Array.isArray(data.sessionDates) ? data.sessionDates.join(', ') : data.sessionDates;
-    
-    // Handle education with "other"
-    const education = data.education + (data.educationOther ? ' (' + data.educationOther + ')' : '');
-    
-    // Append data to sheet
-    sheet.appendRow([
-      data.timestamp || new Date().toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' }),
-      queueNumber,
-      data.fullName || '',
-      data.email || '',
-      data.phone || '',
-      data.lineId || '',
-      data.occupation || '',
-      data.age || '',
-      education,
-      data.position || '',
-      data.company || '',
-      data.province || '',
-      data.district || '',
-      data.course || 'AI FOR LOGISTICS',
-      sessions,
-      sessionDates
-    ]);
-    
-    // Return success
-    return ContentService.createTextOutput(JSON.stringify({
-      success: true,
-      queueNumber: queueNumber,
-      message: 'ลงทะเบียนสำเร็จ'
-    })).setMimeType(ContentService.MimeType.JSON);
+    // Handle Data Insertion
+    if (targetSheetName === 'survey') {
+      // Handle Survey Data
+      const timestamp = new Date().toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' });
+      const media = Array.isArray(data.media) ? data.media.join(', ') : data.media;
+      const career = data.career + (data.careerOther ? ' (' + data.careerOther + ')' : '');
+      const format = data.format + (data.formatOther ? ' (' + data.formatOther + ')' : '');
+      const convenientTime = data.convenientTime || '';
+      const suggestions = data.suggestions || '';
+
+      sheet.appendRow([
+        timestamp,
+        media,
+        career,
+        format,
+        convenientTime,
+        suggestions
+      ]);
+      
+      return ContentService.createTextOutput(JSON.stringify({
+        success: true,
+        message: 'ส่งแบบสอบถามสำเร็จ'
+      })).setMimeType(ContentService.MimeType.JSON);
+
+    } else {
+      // Handle Registration Data (Existing Logic)
+      const sessions = Array.isArray(data.sessions) ? data.sessions.join(', ') : data.sessions;
+      const sessionDates = Array.isArray(data.sessionDates) ? data.sessionDates.join(', ') : data.sessionDates;
+      const education = data.education + (data.educationOther ? ' (' + data.educationOther + ')' : '');
+      
+      sheet.appendRow([
+        data.timestamp || new Date().toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' }),
+        queueNumber,
+        data.fullName || '',
+        data.email || '',
+        data.phone || '',
+        data.lineId || '',
+        data.occupation || '',
+        data.age || '',
+        education,
+        data.position || '',
+        data.company || '',
+        data.province || '',
+        data.district || '',
+        data.course || 'AI FOR LOGISTICS',
+        sessions,
+        sessionDates
+      ]);
+      
+      return ContentService.createTextOutput(JSON.stringify({
+        success: true,
+        queueNumber: queueNumber,
+        message: 'ลงทะเบียนสำเร็จ'
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
     
   } catch (error) {
     Logger.log('Error in doPost: ' + error.toString());
@@ -76,6 +105,22 @@ function doPost(e) {
       message: 'เกิดข้อผิดพลาด: ' + error.toString()
     })).setMimeType(ContentService.MimeType.JSON);
   }
+}
+
+function setupSurveyHeaders(sheet) {
+  const headers = [
+    'Timestamp',
+    'สื่อที่ได้รับ',
+    'สายอาชีพที่สนใจ',
+    'รูปแบบการอบรม',
+    'วันเวลาที่สะดวก',
+    'ข้อเสนอแนะ'
+  ];
+  sheet.appendRow(headers);
+  const headerRange = sheet.getRange(1, 1, 1, headers.length);
+  headerRange.setFontWeight('bold');
+  headerRange.setBackground('#10b981'); // Emerald green for survey
+  headerRange.setFontColor('#ffffff');
 }
 
 /**

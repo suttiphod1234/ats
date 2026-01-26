@@ -20,6 +20,12 @@ const CONFIG = {
             id: '1Eq-cQO4Z2VYMfkGMhHrlfXve2bJces7YyUM7gbNNL0g',
             scriptUrl: 'https://script.google.com/macros/s/AKfycbw9ZVhL_qgNJ8zAfwI6cei9g640aP0xtNtj2dIykA7i65XsJsKEh1mNLIWpdG2GRhbI/exec',
             sheetName: 'ai logistics'
+        },
+        // Learner Survey Form
+        survey: {
+            id: '1Eq-cQO4Z2VYMfkGMhHrlfXve2bJces7YyUM7gbNNL0g',
+            scriptUrl: 'https://script.google.com/macros/s/AKfycbw9ZVhL_qgNJ8zAfwI6cei9g640aP0xtNtj2dIykA7i65XsJsKEh1mNLIWpdG2GRhbI/exec',
+            sheetName: 'survey'
         }
     },
 
