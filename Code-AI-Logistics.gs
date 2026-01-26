@@ -15,6 +15,15 @@ const SPREADSHEET_ID = '1Eq-cQO4Z2VYMfkGMhHrlfXve2bJces7YyUM7gbNNL0g';
 
 function doPost(e) {
   try {
+    // Check if event object and postData exist (avoids error when run manually from editor)
+    if (!e || !e.postData || !e.postData.contents) {
+      Logger.log('Error: doPost called without valid event data.');
+      return ContentService.createTextOutput(JSON.stringify({
+        success: false,
+        message: 'No data received. (หมายเหตุ: หากคุณกด Run จาก Editor จะขึ้นข้อความนี้เป็นปกติ กรุณาทดสอบผ่านหน้าเว็บครับ)'
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
+
     // Parse incoming data
     const data = JSON.parse(e.postData.contents);
     
