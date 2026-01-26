@@ -1,124 +1,310 @@
-/* Custom styles for Online Course Booking Form */
+/* Online Course Booking Form - Premium Refined Styles */
 
+:root {
+    --form-bg: rgba(30, 41, 59, 0.7);
+    --input-focus: #14b8a6;
+    --card-hover-bg: rgba(255, 255, 255, 0.08);
+}
+
+.form-page {
+    padding-top: 120px;
+    padding-bottom: 80px;
+    background: radial-gradient(circle at top right, rgba(124, 58, 237, 0.15), transparent 400px),
+        radial-gradient(circle at bottom left, rgba(20, 184, 166, 0.15), transparent 400px);
+}
+
+.container-sm {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.header-decorator {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: var(--gradient-accent);
+    border-radius: 2px;
+}
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-gray);
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.btn-back:hover {
+    color: var(--accent-teal);
+}
+
+.form-header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+}
+
+.form-header p {
+    color: var(--text-gray);
+    font-size: 1.1rem;
+}
+
+/* Section Styling */
+.form-section {
+    background: var(--form-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-xl);
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-section:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.step-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: white;
+}
+
+.section-title h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.section-description {
+    color: var(--text-gray);
+    margin-top: -1rem;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+}
+
+/* Course Cards Grid */
 .course-selection-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
 }
 
 .course-card-option {
-    cursor: pointer;
     position: relative;
-    user-select: none;
+    cursor: pointer;
 }
 
 .course-card-option input {
     position: absolute;
     opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
 }
 
 .card-inner {
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    border: 2px solid rgba(255, 255, 255, 0.08);
     border-radius: var(--radius-lg);
     padding: 1.5rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    text-align: center;
+    gap: 1rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     height: 100%;
 }
 
 .course-card-option:hover .card-inner {
-    border-color: rgba(255, 255, 255, 0.3);
-    transform: translateY(-4px);
-    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-8px);
+    background: var(--card-hover-bg);
 }
 
 .course-card-option input:checked+.card-inner {
     border-color: var(--accent-teal);
     background: rgba(20, 184, 166, 0.1);
-    box-shadow: 0 0 20px rgba(20, 184, 166, 0.2);
+    box-shadow: 0 10px 30px rgba(20, 184, 166, 0.2);
 }
 
-/* Specific Card Themes */
-.card-inner.warehouse {
-    border-left: 6px solid #3b82f6;
-}
-
-.card-inner.supply-chain {
-    border-left: 6px solid #a855f7;
-}
-
-.card-inner.excel {
-    border-left: 6px solid #10b981;
+.course-card-option input:checked+.card-inner::after {
+    content: '✓';
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: var(--accent-teal);
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 .card-icon {
-    font-size: 2.5rem;
-    background: rgba(255, 255, 255, 0.05);
-    width: 64px;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--radius-md);
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    transition: transform 0.3s ease;
 }
 
-.card-info {
-    flex: 1;
+.course-card-option:hover .card-icon {
+    transform: scale(1.2) rotate(5deg);
 }
 
 .card-info h3 {
-    font-size: 1.15rem;
-    color: var(--text-white);
-    margin: 0.5rem 0 0.25rem;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
 }
 
 .card-info p {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text-gray);
 }
 
 .badge {
-    font-size: 0.75rem;
-    padding: 2px 8px;
+    display: inline-block;
+    padding: 4px 12px;
     border-radius: 50px;
-    background: #3b82f6;
-    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.badge {
+    background: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+    border: 1px solid rgba(59, 130, 246, 0.3);
 }
 
 .badge.accent {
-    background: #a855f7;
+    background: rgba(168, 85, 247, 0.2);
+    color: #c084fc;
+    border: 1px solid rgba(168, 85, 247, 0.3);
 }
 
 .badge.popular {
-    background: #10b981;
+    background: rgba(16, 185, 129, 0.2);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
-.booking-summary {
-    background: rgba(0, 0, 0, 0.3);
-    padding: 1rem;
-    border-radius: var(--radius-md);
-    margin: 1.5rem 0;
-    text-align: left;
+/* Form Controls */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
 }
 
-.booking-summary p {
-    margin-bottom: 0.5rem;
-    color: var(--text-gray);
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-.booking-summary span {
-    color: var(--text-white);
+.input-group.full-width {
+    grid-column: span 2;
+}
+
+.input-group label {
+    font-size: 0.95rem;
     font-weight: 600;
+    color: var(--text-light);
 }
 
+.input-group input,
+.input-group select,
+.input-group textarea {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-md);
+    padding: 0.85rem 1.25rem;
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-teal);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.1);
+}
+
+/* Submit Actions */
+.form-actions {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.btn-submit {
+    width: 100%;
+    max-width: 400px;
+    padding: 1.25rem 2rem;
+    border-radius: var(--radius-lg);
+    background: var(--gradient-primary);
+    color: white;
+    font-size: 1.15rem;
+    font-weight: 800;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-submit:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(124, 58, 237, 0.5);
+}
+
+.form-note {
+    margin-top: 1.5rem;
+    color: var(--text-gray);
+    font-size: 0.85rem;
+}
+
+/* Mobile Responsive */
 @media (max-width: 640px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .input-group.full-width {
+        grid-column: span 1;
+    }
+
+    .form-section {
+        padding: 1.5rem;
+    }
+
+    .form-header h1 {
+        font-size: 1.75rem;
+    }
+
     .course-selection-grid {
         grid-template-columns: 1fr;
     }
