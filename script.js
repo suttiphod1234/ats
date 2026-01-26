@@ -494,6 +494,8 @@ function registerNow(courseId) {
         window.location.href = 'ai-logistics-form.html';
     } else if (courseId === 'air-freight') {
         window.location.href = 'airfreight-form.html';
+    } else if (courseId === 'carbon-footprint') {
+        window.location.href = 'cfo-form.html';
     } else {
         window.location.href = 'register.html';
     }

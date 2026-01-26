@@ -44,6 +44,8 @@ function doPost(e) {
         setupAiLogisticsHeaders(sheet);
       } else if (targetSheetName === 'Airfreight') {
         setupAirfreightHeaders(sheet);
+      } else if (targetSheetName === 'อบรม CFO') {
+        setupCfoHeaders(sheet);
       } else {
         setupGeneralHeaders(sheet);
       }
@@ -143,7 +145,39 @@ function doPost(e) {
       })).setMimeType(ContentService.MimeType.JSON);
     }
     
-    // 4. GENERAL / LEGACY REGISTRATION (Fallback)
+    // 4. CFO REGISTRATION
+    else if (targetSheetName === 'อบรม CFO') {
+      const sessions = Array.isArray(data.sessions) ? data.sessions.join(', ') : data.sessions;
+      const sessionDates = Array.isArray(data.sessionDates) ? data.sessionDates.join(', ') : data.sessionDates;
+      const education = data.education + (data.educationOther ? ' (' + data.educationOther + ')' : '');
+      
+      sheet.appendRow([
+        data.timestamp || new Date().toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' }),
+        queueNumber,
+        data.fullName || '',
+        data.email || '',
+        data.phone || '',
+        data.lineId || '',
+        data.occupation || '',
+        data.age || '',
+        education,
+        data.position || '',
+        data.company || '',
+        data.province || '',
+        data.district || '',
+        data.course || 'Carbon Footprint for Organization',
+        sessions,
+        sessionDates
+      ]);
+      
+      return ContentService.createTextOutput(JSON.stringify({
+        success: true,
+        queueNumber: queueNumber,
+        message: 'ลงทะเบียนสำเร็จ'
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
+    
+    // 5. GENERAL / LEGACY REGISTRATION (Fallback)
     else {
       const courses = Array.isArray(data.courses) ? data.courses.join(', ') : (data.course || '');
       const sessions = Array.isArray(data.sessions) ? data.sessions.join(', ') : (data.session || '');
@@ -196,6 +230,11 @@ function setupAiLogisticsHeaders(sheet) {
 function setupAirfreightHeaders(sheet) {
   const headers = ['Timestamp', 'Queue Number', 'ชื่อ-นามสกุล', 'อีเมล', 'มือถือ', 'Line ID', 'อาชีพ', 'อายุ', 'ระดับการศึกษา', 'ตำแหน่งงาน', 'บริษัท', 'จังหวัด', 'อำเภอ/เขต', 'หลักสูตร', 'รุ่น', 'วันที่อบรม'];
   appendHeaders(sheet, headers, '#0891b2'); // Cyan color for Airfreight
+}
+
+function setupCfoHeaders(sheet) {
+  const headers = ['Timestamp', 'Queue Number', 'ชื่อ-นามสกุล', 'อีเมล', 'มือถือ', 'Line ID', 'อาชีพ', 'อายุ', 'ระดับการศึกษา', 'ตำแหน่งงาน', 'บริษัท', 'จังหวัด', 'อำเภอ/เขต', 'หลักสูตร', 'รุ่น', 'วันที่อบรม'];
+  appendHeaders(sheet, headers, '#10b981'); // Emerald color for CFO
 }
 
 function setupGeneralHeaders(sheet) {

@@ -32,6 +32,12 @@ const CONFIG = {
             id: '1Eq-cQO4Z2VYMfkGMhHrlfXve2bJces7YyUM7gbNNL0g',
             scriptUrl: 'https://script.google.com/macros/s/AKfycbz1VVE-ePo0okntQ-ZvZclfVRxVKvVz2SVfeCxm_kmP155vAk012sLx8qQLbtpBqPwF/exec',
             sheetName: 'Airfreight'
+        },
+        // CFO registration form
+        cfo: {
+            id: '1Eq-cQO4Z2VYMfkGMhHrlfXve2bJces7YyUM7gbNNL0g',
+            scriptUrl: 'https://script.google.com/macros/s/AKfycbz1VVE-ePo0okntQ-ZvZclfVRxVKvVz2SVfeCxm_kmP155vAk012sLx8qQLbtpBqPwF/exec',
+            sheetName: 'อบรม CFO'
         }
     },
 
