@@ -12,31 +12,31 @@ const CONFIG = {
         // General registration form (Air Freight, CFO, etc.)
         general: {
             id: '1Eq-cQO4Z2VYMfkGMhHrlfXve2bJces7YyUM7gbNNL0g',
-            scriptUrl: 'https://script.google.com/macros/s/AKfycbxMKpergvEPu3FWiYoHUsifMeC7XqcHyqGDeXHt597a3pfP9SluHOYnIhjW47u7_y0y/exec',
+            scriptUrl: 'https://script.google.com/macros/s/AKfycbzBSQxPLeEbepAUKgt-A_uyDIM9GuN25c9womiw06wlqRXEGsWUe6ZTZHLqnagAToFW/exec',
             sheetName: 'ซีต1'
         },
         // AI FOR LOGISTICS registration form
         aiLogistics: {
             id: '1Eq-cQO4Z2VYMfkGMhHrlfXve2bJces7YyUM7gbNNL0g',
-            scriptUrl: 'https://script.google.com/macros/s/AKfycbxMKpergvEPu3FWiYoHUsifMeC7XqcHyqGDeXHt597a3pfP9SluHOYnIhjW47u7_y0y/exec',
+            scriptUrl: 'https://script.google.com/macros/s/AKfycbzBSQxPLeEbepAUKgt-A_uyDIM9GuN25c9womiw06wlqRXEGsWUe6ZTZHLqnagAToFW/exec',
             sheetName: 'ai logistics'
         },
         // Learner Survey Form
         survey: {
             id: '1Eq-cQO4Z2VYMfkGMhHrlfXve2bJces7YyUM7gbNNL0g',
-            scriptUrl: 'https://script.google.com/macros/s/AKfycbxMKpergvEPu3FWiYoHUsifMeC7XqcHyqGDeXHt597a3pfP9SluHOYnIhjW47u7_y0y/exec',
+            scriptUrl: 'https://script.google.com/macros/s/AKfycbzBSQxPLeEbepAUKgt-A_uyDIM9GuN25c9womiw06wlqRXEGsWUe6ZTZHLqnagAToFW/exec',
             sheetName: 'survey'
         },
         // Airfreight registration form
         airfreight: {
             id: '1Eq-cQO4Z2VYMfkGMhHrlfXve2bJces7YyUM7gbNNL0g',
-            scriptUrl: 'https://script.google.com/macros/s/AKfycbxMKpergvEPu3FWiYoHUsifMeC7XqcHyqGDeXHt597a3pfP9SluHOYnIhjW47u7_y0y/exec',
+            scriptUrl: 'https://script.google.com/macros/s/AKfycbzBSQxPLeEbepAUKgt-A_uyDIM9GuN25c9womiw06wlqRXEGsWUe6ZTZHLqnagAToFW/exec',
             sheetName: 'Airfreight'
         },
         // CFO registration form
         cfo: {
             id: '1Eq-cQO4Z2VYMfkGMhHrlfXve2bJces7YyUM7gbNNL0g',
-            scriptUrl: 'https://script.google.com/macros/s/AKfycbxMKpergvEPu3FWiYoHUsifMeC7XqcHyqGDeXHt597a3pfP9SluHOYnIhjW47u7_y0y/exec',
+            scriptUrl: 'https://script.google.com/macros/s/AKfycbzBSQxPLeEbepAUKgt-A_uyDIM9GuN25c9womiw06wlqRXEGsWUe6ZTZHLqnagAToFW/exec',
             sheetName: 'อบรม CFO'
         },
         // Carbon Footprint course
