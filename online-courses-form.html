@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="จองเรียนนหลักสูตรออนไลน์ด้านโลจิสติกส์ - LogiSkill">
+    <title>จองเรียนออนไลน์ - LogiSkill</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="online-courses-form.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <img src="logo.jpg" alt="LogiSkill" class="logo-image">
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="index.html">หน้าแรก</a></li>
+                    <li><a href="index.html#tracks">หลักสูตร</a></li>
+                    <li><a href="ebook.html">E-Book</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="https://lin.ee/ws5lf1M" target="_blank" class="btn-secondary">ติดต่อเรา</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="form-page">
+        <div class="container-sm">
+            <header class="form-header">
+                <h1 class="gradient-text">แบบฟอร์มจองเรียนออนไลน์</h1>
+                <p>เลือกหลักสูตรที่สนใจและกรอกข้อมูลเพื่อรับสิทธิพิเศษก่อนใคร</p>
+            </header>
+
+            <form id="onlineBookingForm" class="registration-form">
+                <!-- Course Selection section -->
+                <section class="form-section">
+                    <div class="section-title">
+                        <span class="step-num">1</span>
+                        <h2>เลือกหลักสูตรที่สนใจ <span class="required">*</span></h2>
+                    </div>
+                    <p class="section-description">คุณสามารถเลือกได้มากกว่า 1 หลักสูตร</p>
+
+                    <div class="course-selection-grid">
+                        <!-- Warehouse -->
+                        <label class="course-card-option">
+                            <input type="checkbox" name="courses" value="Warehouse" required>
+                            <div class="card-inner warehouse">
+                                <div class="card-icon">🏭</div>
+                                <div class="card-info">
+                                    <span class="badge">พื้นฐาน</span>
+                                    <h3>การจัดการคลังสินค้า</h3>
+                                    <p>12 ชั่วโมง • ระดับพื้นฐาน</p>
+                                </div>
+                            </div>
+                        </label>
+
+                        <!-- Supply Chain -->
+                        <label class="course-card-option">
+                            <input type="checkbox" name="courses" value="Supply Chain">
+                            <div class="card-inner supply-chain">
+                                <div class="card-icon">⛓️</div>
+                                <div class="card-info">
+                                    <span class="badge accent">แนะนำ</span>
+                                    <h3>การบริหารซัพพลายเชน</h3>
+                                    <p>18 ชั่วโมง • ระดับกลาง</p>
+                                </div>
+                            </div>
+                        </label>
+
+                        <!-- Excel -->
+                        <label class="course-card-option">
+                            <input type="checkbox" name="courses" value="Excel">
+                            <div class="card-inner excel">
+                                <div class="card-icon">📊</div>
+                                <div class="card-info">
+                                    <span class="badge popular">ยอดนิยม</span>
+                                    <h3>Excel สำหรับคลังสินค้า</h3>
+                                    <p>8 ชั่วโมง • ระดับพื้นฐาน</p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    <div id="courseError" class="error-message" style="display: none;">กรุณาเลือกอย่างน้อย 1 หลักสูตร
+                    </div>
+                </section>
+
+                <!-- Personal Info section -->
+                <section class="form-section">
+                    <div class="section-title">
+                        <span class="step-num">2</span>
+                        <h2>ข้อมูลผู้รับการอบรม</h2>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="fullName">ชื่อ-นามสกุล <span class="required">*</span></label>
+                            <input type="text" id="fullName" name="fullName" placeholder="ภาษาไทย" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="phone">เบอร์โทรศัพท์มือถือ <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" placeholder="0XXXXXXXXX" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="email">อีเมล <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                            <div id="emailStatus" class="input-status"></div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="lineId">LINE ID</label>
+                            <input type="text" id="lineId" name="lineId" placeholder="ID สำหรับติดต่อ">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Professional Info -->
+                <section class="form-section">
+                    <div class="section-title">
+                        <span class="step-num">3</span>
+                        <h2>ข้อมูลเพิ่มเติม</h2>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="occupation">อาชีพปัจจุบัน</label>
+                            <select id="occupation" name="occupation">
+                                <option value="">--- เลือกอาชีพ ---</option>
+                                <option value="พนักงานบริษัท">พนักงานบริษัท</option>
+                                <option value="เจ้าของธุรกิจ">เจ้าของธุรกิจ</option>
+                                <option value="นักศึกษา">นักศึกษา</option>
+                                <option value="ฟรีแลนซ์">ฟรีแลนซ์</option>
+                                <option value="อื่นๆ">อื่นๆ</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group full-width">
+                            <label for="interest">เรื่องที่สนใจเป็นพิเศษ หรือ ความต้องการเพิ่มเติม</label>
+                            <textarea id="interest" name="interest" rows="3"
+                                placeholder="ระบุสิ่งที่ต้องการเรียนรู้เป็นพิเศษ"></textarea>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Submit Button -->
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit" id="submitBtn">
+                        <span class="btn-text">ยืนยันการจองเรียนออนไลน์</span>
+                        <span class="btn-loader" style="display: none;">กำลังส่ง...</span>
+                    </button>
+                    <p class="form-note">เมื่อส่งข้อมูลแล้ว เจ้าหน้าที่จะติดต่อกลับเพื่อแจ้งรายละเอียดการเข้าเรียน</p>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal" role="dialog" aria-modal="true">
+        <div class="modal-overlay"></div>
+        <div class="modal-content success-modal">
+            <div class="success-icon">📅</div>
+            <h2>จองเรียนสำเร็จ!</h2>
+            <p class="success-message">
+                เราได้บันทึกข้อมูลการจองของคุณเรียบร้อยแล้ว<br>และได้เพิ่มกิจกรรมในระบบนัดหมายของเรา</p>
+
+            <div class="booking-summary">
+                <p>คุณ <span id="summaryName">--</span></p>
+                <p>วิชาที่จอง: <span id="summaryCourses">--</span></p>
+            </div>
+
+            <div class="modal-actions">
+                <a href="https://lin.ee/ws5lf1M" target="_blank" class="btn-line">
+                    <span class="line-icon">💬</span> ติดต่อเจ้าหน้าที่ผ่าน LINE
+                </a>
+                <button class="btn-primary" onclick="window.location.href='index.html'">กลับหน้าหลัก</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <img src="logo.jpg" alt="LogiSkill" class="logo-image">
+                    </div>
+                    <p class="footer-description">
+                        แพลตฟอร์มเรียนรู้โลจิสติกส์ออนไลน์<br>
+                        ครบครันที่สุดในประเทศไทย
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>เกี่ยวกับเรา</h4>
+                    <ul>
+                        <li><a href="about.html">เกี่ยวกับ LogiSkill</a></li>
+                        <li><a href="team.html">ทีมงาน</a></li>
+                        <li><a href="https://lin.ee/ws5lf1M" target="_blank">ติดต่อเรา</a></li>
+                        <li><a href="index.html#corporate">สำหรับองค์กร</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>ช่วยเหลือ</h4>
+                    <ul>
+                        <li><a href="faq.html">คำถามที่พบบ่อย</a></li>
+                        <li><a href="privacy.html">นโยบายความเป็นส่วนตัว</a></li>
+                        <li><a href="terms.html">เงื่อนไขการใช้งาน</a></li>
+                        <li><a href="cookies.html">นโยบายคุกกี้</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 LogiSkill. All rights reserved. <a href="https://www.js-develop.com/" target="_blank"
+                        style="color: inherit; text-decoration: none; opacity: 0.8;">Dev-Designs</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="config.js"></script>
+    <script src="form-utils.js"></script>
+    <script src="online-courses-form.js"></script>
+</body>
+
+</html>

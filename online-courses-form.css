@@ -1,0 +1,125 @@
+/* Custom styles for Online Course Booking Form */
+
+.course-selection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.course-card-option {
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+}
+
+.course-card-option input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.card-inner {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    height: 100%;
+}
+
+.course-card-option:hover .card-inner {
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.course-card-option input:checked+.card-inner {
+    border-color: var(--accent-teal);
+    background: rgba(20, 184, 166, 0.1);
+    box-shadow: 0 0 20px rgba(20, 184, 166, 0.2);
+}
+
+/* Specific Card Themes */
+.card-inner.warehouse {
+    border-left: 6px solid #3b82f6;
+}
+
+.card-inner.supply-chain {
+    border-left: 6px solid #a855f7;
+}
+
+.card-inner.excel {
+    border-left: 6px solid #10b981;
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+}
+
+.card-info {
+    flex: 1;
+}
+
+.card-info h3 {
+    font-size: 1.15rem;
+    color: var(--text-white);
+    margin: 0.5rem 0 0.25rem;
+}
+
+.card-info p {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+}
+
+.badge {
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 50px;
+    background: #3b82f6;
+    color: white;
+}
+
+.badge.accent {
+    background: #a855f7;
+}
+
+.badge.popular {
+    background: #10b981;
+}
+
+.booking-summary {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    margin: 1.5rem 0;
+    text-align: left;
+}
+
+.booking-summary p {
+    margin-bottom: 0.5rem;
+    color: var(--text-gray);
+}
+
+.booking-summary span {
+    color: var(--text-white);
+    font-weight: 600;
+}
+
+@media (max-width: 640px) {
+    .course-selection-grid {
+        grid-template-columns: 1fr;
+    }
+}
