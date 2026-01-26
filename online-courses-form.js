@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 .join(', ');
 
             const payload = {
-                sheetName: LOGISKILL_CONFIG.sheets["online-courses"].tabName,
+                sheetName: CONFIG.sheets["online-courses"].sheetName,
                 fullName: formData.get('fullName'),
                 phone: formData.get('phone'),
                 email: formData.get('email'),
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 timestamp: new Date().toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
             };
 
-            const response = await fetch(LOGISKILL_CONFIG.appsScriptUrl, {
+            const response = await fetch(CONFIG.sheets["online-courses"].scriptUrl, {
                 method: 'POST',
                 mode: 'no-cors', // standard for Apps Script
                 cache: 'no-cache',

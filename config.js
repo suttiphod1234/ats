@@ -46,8 +46,9 @@ const CONFIG = {
         },
         // Online Courses booking
         "online-courses": {
-            tabName: "Online Booking", // This seems to be a placeholder or a different type of config
-            courseName: "Online Course Booking"
+            id: '1Eq-cQO4Z2VYMfkGMhHrlfXve2bJces7YyUM7gbNNL0g',
+            scriptUrl: 'https://script.google.com/macros/s/AKfycbzBSQxPLeEbepAUKgt-A_uyDIM9GuN25c9womiw06wlqRXEGsWUe6ZTZHLqnagAToFW/exec',
+            sheetName: 'Online Booking'
         }
     },
 
