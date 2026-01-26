@@ -18,13 +18,13 @@ const CONFIG = {
         // AI FOR LOGISTICS registration form
         aiLogistics: {
             id: '1Eq-cQO4Z2VYMfkGMhHrlfXve2bJces7YyUM7gbNNL0g',
-            scriptUrl: 'https://script.google.com/macros/s/AKfycbw9ZVhL_qgNJ8zAfwI6cei9g640aP0xtNtj2dIykA7i65XsJsKEh1mNLIWpdG2GRhbI/exec',
+            scriptUrl: 'https://script.google.com/macros/s/AKfycbzT2Te6os3X7IFlBpKgJz46QtQ9sbilSHQsg6tYH3FeQAcl7a7PhTn_rSQKmlkRipJi/exec',
             sheetName: 'ai logistics'
         },
         // Learner Survey Form
         survey: {
             id: '1Eq-cQO4Z2VYMfkGMhHrlfXve2bJces7YyUM7gbNNL0g',
-            scriptUrl: 'https://script.google.com/macros/s/AKfycbw9ZVhL_qgNJ8zAfwI6cei9g640aP0xtNtj2dIykA7i65XsJsKEh1mNLIWpdG2GRhbI/exec',
+            scriptUrl: 'https://script.google.com/macros/s/AKfycbzT2Te6os3X7IFlBpKgJz46QtQ9sbilSHQsg6tYH3FeQAcl7a7PhTn_rSQKmlkRipJi/exec',
             sheetName: 'survey'
         }
     },
