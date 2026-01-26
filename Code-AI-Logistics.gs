@@ -2,7 +2,8 @@
  * AI FOR LOGISTICS Registration Form Handler
  * Google Apps Script for handling form submissions
  * 
- * Sheet ID: 1ViBY3Nj0NhnPtP_oYLzGePHadkRvJRh0HLud93wR4XY
+ * Sheet ID: 1Eq-cQO4Z2VYMfkGMhHrlfXve2bJces7YyUM7gbNNL0g
+ * Target Sheet Name: ai logistics
  * 
  * Deploy as Web App:
  * 1. Click Deploy → New deployment
@@ -12,10 +13,20 @@
  * 5. Copy deployment URL to ai-logistics-form.js
  */
 
+const SPREADSHEET_ID = '1Eq-cQO4Z2VYMfkGMhHrlfXve2bJces7YyUM7gbNNL0g';
+const SHEET_NAME = 'ai logistics';
+
 function doPost(e) {
   try {
-    // Open the Google Sheet - "ซีต1"
-    const sheet = SpreadsheetApp.openById('1ViBY3Nj0NhnPtP_oYLzGePHadkRvJRh0HLud93wR4XY').getSheetByName('ซีต1');
+    // Open the Google Sheet
+    const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+    let sheet = ss.getSheetByName(SHEET_NAME);
+    
+    // Create sheet if it doesn't exist
+    if (!sheet) {
+      sheet = ss.insertSheet(SHEET_NAME);
+      setupHeaders(sheet);
+    }
     
     // Parse incoming data
     const data = JSON.parse(e.postData.contents);
@@ -73,7 +84,15 @@ function doPost(e) {
 function doGet(e) {
   try {
     const action = e.parameter.action;
-    const sheet = SpreadsheetApp.openById('1ViBY3Nj0NhnPtP_oYLzGePHadkRvJRh0HLud93wR4XY').getSheetByName('ซีต1');
+    const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+    let sheet = ss.getSheetByName(SHEET_NAME);
+    
+    // Create sheet if it doesn't exist (though unlikely for doGet to trigger creation safely without headers)
+    if (!sheet) {
+      return ContentService.createTextOutput(JSON.stringify({
+        error: 'Sheet not found'
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
     
     if (action === 'checkEmail') {
       const email = e.parameter.email;
@@ -112,7 +131,16 @@ function doGet(e) {
  */
 function testSheetAccess() {
   try {
-    const sheet = SpreadsheetApp.openById('1ViBY3Nj0NhnPtP_oYLzGePHadkRvJRh0HLud93wR4XY').getSheetByName('ซีต1');
+    const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+    let sheet = ss.getSheetByName(SHEET_NAME);
+    
+    if (!sheet) {
+      Logger.log('Sheet "' + SHEET_NAME + '" not found. Creating it...');
+      sheet = ss.insertSheet(SHEET_NAME);
+      setupHeaders(sheet);
+      Logger.log('Sheet created.');
+    }
+    
     Logger.log('Sheet name: ' + sheet.getName());
     Logger.log('Last row: ' + sheet.getLastRow());
     Logger.log('Sheet access successful!');
@@ -122,42 +150,54 @@ function testSheetAccess() {
 }
 
 /**
- * Setup sheet headers
+ * Setup sheet headers helper
+ */
+function setupHeaders(sheet) {
+  const headers = [
+    'Timestamp',
+    'Queue Number',
+    'ชื่อ-นามสกุล',
+    'อีเมล',
+    'มือถือ',
+    'Line ID',
+    'อาชีพ',
+    'อายุ',
+    'ระดับการศึกษา',
+    'ตำแหน่งงาน',
+    'บริษัท',
+    'จังหวัด',
+    'อำเภอ/เขต',
+    'หลักสูตร',
+    'รุ่น',
+    'วันที่อบรม'
+  ];
+  
+  sheet.appendRow(headers);
+  
+  const headerRange = sheet.getRange(1, 1, 1, headers.length);
+  headerRange.setFontWeight('bold');
+  headerRange.setBackground('#1e40af');
+  headerRange.setFontColor('#ffffff');
+}
+
+/**
+ * Setup sheet headers manually
  */
 function setupSheetHeaders() {
   try {
-    const sheet = SpreadsheetApp.openById('1ViBY3Nj0NhnPtP_oYLzGePHadkRvJRh0HLud93wR4XY').getSheetByName('ซีต1');
+    const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+    let sheet = ss.getSheetByName(SHEET_NAME);
+    
+    if (!sheet) {
+      sheet = ss.insertSheet(SHEET_NAME);
+    }
     
     if (sheet.getLastRow() > 0) {
       Logger.log('Headers already exist');
       return;
     }
     
-    const headers = [
-      'Timestamp',
-      'Queue Number',
-      'ชื่อ-นามสกุล',
-      'อีเมล',
-      'มือถือ',
-      'Line ID',
-      'อาชีพ',
-      'อายุ',
-      'ระดับการศึกษา',
-      'ตำแหน่งงาน',
-      'บริษัท',
-      'จังหวัด',
-      'อำเภอ/เขต',
-      'หลักสูตร',
-      'รุ่น',
-      'วันที่อบรม'
-    ];
-    
-    sheet.appendRow(headers);
-    
-    const headerRange = sheet.getRange(1, 1, 1, headers.length);
-    headerRange.setFontWeight('bold');
-    headerRange.setBackground('#1e40af');
-    headerRange.setFontColor('#ffffff');
+    setupHeaders(sheet);
     
     Logger.log('Headers setup complete!');
     
