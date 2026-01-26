@@ -11,8 +11,8 @@ const CONFIG = {
     sheets: {
         // General registration form (Air Freight, CFO, etc.)
         general: {
-            id: '1Eq-cQO4Z2VYMfkGMhHrlfXve2bJces7YyUM7gbNNL0g',
-            scriptUrl: 'https://script.google.com/macros/s/AKfycbzDTSrG25JTNZ2ksTveEU2rhHJMAYVpcezn8qbr0FllnW2SLI_SSXya0vAJpymqlJx-/exec',
+            id: '1MT7rj3EveE5aNxplmaYDsRpqsgNuzmdPcBQ4ygdvuT8',
+            scriptUrl: 'https://script.google.com/macros/s/AKfycbxBd0ewWonQ-z1blhzpGOlvoYE-e74htMoFHAJ5tIiWRuS76jrLNITtQvQELYyfqlSx/exec',
             sheetName: 'ซีต1'
         },
         // AI FOR LOGISTICS registration form

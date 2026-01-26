@@ -115,14 +115,10 @@ form.addEventListener('submit', async function (e) {
         }
     }
 
-    // Disable submit button
-    setLoadingState(true);
-
-    try {
-        // Submit to Google Sheets
-        const result = await submitToGoogleSheets(formData);
-
-        if (result.success) {
+    // Submit using FormUtils
+    await FormUtils.submitForm(formData, AI_SHEET_CONFIG.scriptUrl, {
+        beforeSubmit: () => setLoadingState(true),
+        onSuccess: (result) => {
             // Show success modal
             showSuccessModal(result.queueNumber || '--');
 
@@ -132,78 +128,16 @@ form.addEventListener('submit', async function (e) {
                 card.classList.remove('selected');
             });
 
-            FormUtils?.showNotification('ลงทะเบียนสำเร็จ!', 'success');
-        } else {
-            throw new Error(result.message || 'เกิดข้อผิดพลาดในการส่งข้อมูล');
-        }
-
-    } catch (error) {
-        console.error('Error:', error);
-        const errorMessage = error.message || 'เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองใหม่อีกครั้ง หรือติดต่อเจ้าหน้าที่';
-        FormUtils?.showNotification(errorMessage, 'error');
-    } finally {
-        setLoadingState(false);
-    }
+            FormUtils.showNotification('ลงทะเบียนสำเร็จ!', 'success');
+        },
+        onError: (message) => {
+            FormUtils.showNotification(message, 'error');
+        },
+        afterSubmit: () => setLoadingState(false)
+    });
 });
 
-// Submit to Google Sheets with improved error handling
-async function submitToGoogleSheets(formData) {
-    try {
-        console.log('Sending data to Google Sheets:', formData);
 
-        // Create AbortController for timeout
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), CONFIG?.app?.timeout || 30000);
-
-        // Send data to Google Apps Script
-        const response = await fetch(AI_SHEET_CONFIG.scriptUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-            signal: controller.signal,
-            mode: 'cors' // Changed from 'no-cors' to read response
-        });
-
-        clearTimeout(timeoutId);
-
-        // Check if response is ok
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        // Try to parse JSON response
-        let result;
-        try {
-            result = await response.json();
-        } catch (parseError) {
-            // If response is not JSON, assume success (for Google Apps Script)
-            console.warn('Response is not JSON, assuming success');
-            result = {
-                success: true,
-                queueNumber: Math.floor(Date.now() / 1000) % 10000
-            };
-        }
-
-        // Validate result
-        if (result.success) {
-            console.log('Data sent successfully, Queue Number:', result.queueNumber);
-            return result;
-        } else {
-            throw new Error(result.message || 'การส่งข้อมูลไม่สำเร็จ');
-        }
-
-    } catch (error) {
-        console.error('Submit error:', error);
-
-        if (error.name === 'AbortError') {
-            throw new Error('การส่งข้อมูลใช้เวลานานเกินไป กรุณาลองใหม่อีกครั้ง');
-        }
-
-        throw new Error(error.message || 'ไม่สามารถส่งข้อมูลได้ กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ต');
-    }
-}
 
 // Set loading state
 function setLoadingState(loading) {

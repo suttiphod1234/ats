@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="ลงทะเบียนหลักสูตร AI FOR LOGISTICS - สถาบันพัฒนาฝีมือแรงงาน 17 ระยอง">
-    <title>ลงทะเบียน AI FOR LOGISTICS - LogiSkill</title>
+    <title>ลงทะเบียนหลักสูตร AI FOR LOGISTICS - LogiSkill ระยอง</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,16 +53,18 @@
                     <div class="form-row">
                         <div class="form-group full-width">
                             <label for="email">อีเมล <span class="required">*</span></label>
-                            <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
-                            <small class="form-hint">ระบบจะตรวจสอบการลงทะเบียนซ้ำผ่านอีเมล</small>
+                            <input type="email" id="email" name="email" placeholder="example@gmail.com" required
+                                aria-describedby="emailHint">
+                            <small id="emailHint" class="form-hint">ระบบจะตรวจสอบการลงทะเบียนซ้ำผ่านอีเมล</small>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
                             <label for="phone">มือถือ <span class="required">*</span></label>
-                            <input type="tel" id="phone" name="phone" placeholder="+66 99-999-XXXX" required>
-                            <small class="form-hint">รูปแบบ: 0812345678 (10 หลัก)</small>
+                            <input type="tel" id="phone" name="phone" placeholder="+66 99-999-XXXX" required
+                                aria-describedby="phoneHint">
+                            <small id="phoneHint" class="form-hint">รูปแบบ: 0812345678 (10 หลัก)</small>
                         </div>
                         <div class="form-group">
                             <label for="lineId">Line ID <span class="required">*</span></label>
@@ -78,8 +80,8 @@
                         <div class="form-group">
                             <label for="age">อายุ <span class="required">*</span></label>
                             <input type="number" id="age" name="age" placeholder="โปรดระบุอายุ" min="18" max="65"
-                                required>
-                            <small class="form-hint">อายุ 18-65 ปี</small>
+                                required aria-describedby="ageHint">
+                            <small id="ageHint" class="form-hint">อายุ 18-65 ปี</small>
                         </div>
                     </div>
 
@@ -206,11 +208,11 @@
     </main>
 
     <!-- Success Modal -->
-    <div id="successModal" class="modal">
+    <div id="successModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="successTitle">
         <div class="modal-overlay"></div>
         <div class="modal-content success-modal">
             <div class="success-icon">✅</div>
-            <h2>ขอบคุณที่ลงทะเบียน</h2>
+            <h2 id="successTitle">ขอบคุณที่ลงทะเบียน</h2>
             <h3 class="course-title">หลักสูตร AI FOR LOGISTICS</h3>
             <p class="registrant-name">คุณ <span id="successName">--</span></p>
             <p class="queue-number">ลำดับการสมัครที่ <span id="queueNumber">--</span></p>

@@ -2,20 +2,16 @@
  * LogiSkill Registration Form Handler
  * Google Apps Script for handling form submissions to Google Sheets
  * 
- * Sheet ID: 1Eq-cQO4Z2VYMfkGMhHrlfXve2bJces7YyUM7gbNNL0g
- * 
- * Deploy this as a Web App:
- * 1. Click Deploy → New deployment
- * 2. Select type: Web app
- * 3. Execute as: Me
- * 4. Who has access: Anyone
- * 5. Copy the deployment URL to register.js
+ * Target Sheet: 1MT7rj3EveE5aNxplmaYDsRpqsgNuzmdPcBQ4ygdvuT8
  */
+
+const SHEET_ID = '1MT7rj3EveE5aNxplmaYDsRpqsgNuzmdPcBQ4ygdvuT8';
+const SHEET_NAME = 'ซีต1';
 
 function doPost(e) {
   try {
-    // Open the Google Sheet - specifically "ซีต1"
-    const sheet = SpreadsheetApp.openById('1Eq-cQO4Z2VYMfkGMhHrlfXve2bJces7YyUM7gbNNL0g').getSheetByName('ซีต1');
+    // Open the Google Sheet
+    const sheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName(SHEET_NAME);
     
     // Parse the incoming JSON data
     const data = JSON.parse(e.postData.contents);
@@ -73,7 +69,7 @@ function doPost(e) {
 function doGet(e) {
   try {
     const action = e.parameter.action;
-    const sheet = SpreadsheetApp.openById('1Eq-cQO4Z2VYMfkGMhHrlfXve2bJces7YyUM7gbNNL0g').getSheetByName('ซีต1');
+    const sheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName(SHEET_NAME);
     
     if (action === 'checkEmail') {
       const email = e.parameter.email;
@@ -118,7 +114,7 @@ function doGet(e) {
  */
 function testSheetAccess() {
   try {
-    const sheet = SpreadsheetApp.openById('1Eq-cQO4Z2VYMfkGMhHrlfXve2bJces7YyUM7gbNNL0g').getSheetByName('ซีต1');
+    const sheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName(SHEET_NAME);
     Logger.log('Sheet name: ' + sheet.getName());
     Logger.log('Last row: ' + sheet.getLastRow());
     Logger.log('Sheet access successful!');
@@ -132,7 +128,7 @@ function testSheetAccess() {
  */
 function setupSheetHeaders() {
   try {
-    const sheet = SpreadsheetApp.openById('1Eq-cQO4Z2VYMfkGMhHrlfXve2bJces7YyUM7gbNNL0g').getSheetByName('ซีต1');
+    const sheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName(SHEET_NAME);
     
     // Check if headers already exist
     if (sheet.getLastRow() > 0) {
