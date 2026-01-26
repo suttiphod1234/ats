@@ -130,6 +130,13 @@ form.addEventListener('submit', async function (e) {
             });
 
             FormUtils.showNotification('ลงทะเบียนสำเร็จ!', 'success');
+
+            // Redirect to LINE OA after a short delay
+            setTimeout(() => {
+                if (successModal.classList.contains('active')) {
+                    window.location.href = CONFIG.app.lineOa;
+                }
+            }, 3000);
         },
         onError: (message) => {
             FormUtils.showNotification(message, 'error');
@@ -178,9 +185,9 @@ function closeSuccessModal() {
         successModal.classList.remove('active');
         document.body.style.overflow = '';
     }
-    // Redirect to home page
+    // Redirect to LINE OA
     setTimeout(() => {
-        window.location.href = 'index.html';
+        window.location.href = CONFIG.app.lineOa;
     }, 500);
 }
 

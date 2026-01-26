@@ -61,12 +61,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify(payload)
             });
 
-            // Show Success Modal (Apps Script returns opaque response with no-cors)
+            // Show Success Modal
             document.getElementById('summaryName').textContent = payload.fullName;
             document.getElementById('summaryCourses').textContent = payload.courses;
             document.getElementById('successModal').classList.add('active');
 
             form.reset();
+
+            // Redirect to LINE OA after a short delay
+            setTimeout(() => {
+                if (document.getElementById('successModal').classList.contains('active')) {
+                    window.location.href = CONFIG.app.lineOa;
+                }
+            }, 3000);
 
         } catch (error) {
             console.error('Error:', error);

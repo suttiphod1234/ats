@@ -55,7 +55,8 @@ const CONFIG = {
     app: {
         name: 'LogiSkill',
         version: '1.0.0',
-        timeout: 30000 // 30 seconds
+        timeout: 30000, // 30 seconds
+        lineOa: 'https://lin.ee/ws5lf1M'
     },
 
     // Validation Rules
