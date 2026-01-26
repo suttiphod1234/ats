@@ -119,7 +119,7 @@ form.addEventListener('submit', async function (e) {
 
     try {
         // Submit to Google Sheets
-        const result = await submitToGoogleSheets(formData);
+        const result = await FormUtils.submitForm(formData, SHEET_CONFIG.scriptUrl);
 
         if (result.success) {
             // Show success modal with queue number
