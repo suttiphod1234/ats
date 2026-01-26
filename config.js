@@ -12,7 +12,7 @@ const CONFIG = {
         // General registration form (Air Freight, CFO, etc.)
         general: {
             id: '1Eq-cQO4Z2VYMfkGMhHrlfXve2bJces7YyUM7gbNNL0g',
-            scriptUrl: 'https://script.google.com/macros/s/AKfycbyMwlyu1CpiFtPgExaxlcp_rYDLFdJskmsYzeuRlM4ic9_2wMr3-FE48mwnuEfoiw_c/exec',
+            scriptUrl: 'https://script.google.com/macros/s/AKfycbzT2Te6os3X7IFlBpKgJz46QtQ9sbilSHQsg6tYH3FeQAcl7a7PhTn_rSQKmlkRipJi/exec',
             sheetName: 'ซีต1'
         },
         // AI FOR LOGISTICS registration form
