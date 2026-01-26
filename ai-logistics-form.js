@@ -31,8 +31,8 @@ form.addEventListener('submit', async function (e) {
     // Validate session selection
     const selectedSessions = document.querySelectorAll('input[name="session"]:checked');
     if (selectedSessions.length === 0) {
-        FormUtils?.showError(sessionError, 'กรุณาเลือกรุ่นที่ต้องการเข้าอบรม') || 
-        (sessionError.style.display = 'block');
+        FormUtils?.showError(sessionError, 'กรุณาเลือกรุ่นที่ต้องการเข้าอบรม') ||
+            (sessionError.style.display = 'block');
         sessionError.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return;
     }
@@ -95,7 +95,7 @@ form.addEventListener('submit', async function (e) {
         try {
             setLoadingState(true);
             const isDuplicate = await FormUtils.checkEmailDuplicate(formData.email, AI_SHEET_CONFIG.scriptUrl);
-            
+
             if (isDuplicate) {
                 setLoadingState(false);
                 const proceed = confirm('อีเมลนี้เคยลงทะเบียนแล้ว คุณต้องการดำเนินการต่อหรือไม่?');
@@ -125,7 +125,7 @@ form.addEventListener('submit', async function (e) {
             document.querySelectorAll('.session-card').forEach(card => {
                 card.classList.remove('selected');
             });
-            
+
             FormUtils?.showNotification('ลงทะเบียนสำเร็จ!', 'success');
         } else {
             throw new Error(result.message || 'เกิดข้อผิดพลาดในการส่งข้อมูล');
@@ -190,11 +190,11 @@ async function submitToGoogleSheets(formData) {
 
     } catch (error) {
         console.error('Submit error:', error);
-        
+
         if (error.name === 'AbortError') {
             throw new Error('การส่งข้อมูลใช้เวลานานเกินไป กรุณาลองใหม่อีกครั้ง');
         }
-        
+
         throw new Error(error.message || 'ไม่สามารถส่งข้อมูลได้ กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ต');
     }
 }
@@ -217,6 +217,14 @@ function showSuccessModal(queueNumber) {
     if (queueNumberSpan) {
         queueNumberSpan.textContent = queueNumber.toString().padStart(2, '0');
     }
+
+    // Update Name
+    const successName = document.getElementById('successName');
+    const fullNameInput = document.getElementById('fullName');
+    if (successName && fullNameInput) {
+        successName.textContent = fullNameInput.value;
+    }
+
     if (successModal) {
         successModal.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -241,8 +249,8 @@ document.querySelector('.modal-overlay')?.addEventListener('click', closeSuccess
 // Phone Number Formatting
 if (phoneInput) {
     phoneInput.addEventListener('input', function (e) {
-        const formatted = FormUtils?.formatPhoneNumber(e.target.value) || 
-                         e.target.value.replace(/\D/g, '').slice(0, 10);
+        const formatted = FormUtils?.formatPhoneNumber(e.target.value) ||
+            e.target.value.replace(/\D/g, '').slice(0, 10);
         e.target.value = formatted;
     });
 }
@@ -251,7 +259,7 @@ if (phoneInput) {
 if (emailInput) {
     emailInput.addEventListener('blur', async function (e) {
         const email = e.target.value.trim();
-        
+
         // Basic validation
         if (email && !FormUtils?.validateEmail(email)) {
             e.target.setCustomValidity('กรุณากรอกอีเมลให้ถูกต้อง');
@@ -271,11 +279,11 @@ if (emailInput) {
             // Debounce the check
             emailCheckTimeout = setTimeout(async () => {
                 if (isCheckingEmail) return;
-                
+
                 try {
                     isCheckingEmail = true;
                     const isDuplicate = await FormUtils.checkEmailDuplicate(email, AI_SHEET_CONFIG.scriptUrl);
-                    
+
                     if (isDuplicate) {
                         e.target.setCustomValidity('อีเมลนี้เคยลงทะเบียนแล้ว');
                         e.target.reportValidity();
