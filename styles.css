@@ -1423,3 +1423,134 @@ a.btn-secondary:hover {
     opacity: 1;
     transform: translateY(0);
 }
+/* Booking Section */
+.booking-section {
+    padding: var(--spacing-2xl) 0;
+    background: var(--dark-navy);
+}
+
+.booking-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.calendar-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+.calendar-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-2xl);
+    text-align: center;
+    transition: all var(--transition-normal);
+}
+
+.calendar-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-teal);
+    box-shadow: var(--shadow-lg), 0 0 30px rgba(20, 184, 166, 0.2);
+}
+
+.calendar-header {
+    margin-bottom: var(--spacing-lg);
+}
+
+.calendar-icon {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.calendar-header h3 {
+    font-size: 2rem;
+    font-weight: 800;
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.calendar-body p {
+    color: var(--text-gray);
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+.calendar-features {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.calendar-features li {
+    background: rgba(20, 184, 166, 0.1);
+    border: 1px solid rgba(20, 184, 166, 0.3);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+    color: var(--accent-teal);
+}
+
+.booking-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: auto;
+}
+
+.booking-perks {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+}
+
+.perk-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    text-align: center;
+    transition: all var(--transition-normal);
+}
+
+.perk-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-5px);
+}
+
+.perk-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.perk-item h4 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.perk-item p {
+    font-size: 0.875rem;
+    color: var(--text-gray);
+}
+
+@media (max-width: 768px) {
+    .booking-perks {
+        grid-template-columns: 1fr;
+    }
+    
+    .calendar-card {
+        padding: var(--spacing-xl) var(--spacing-md);
+    }
+    
+    .calendar-header h3 {
+        font-size: 1.5rem;
+    }
+}
