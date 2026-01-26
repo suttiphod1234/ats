@@ -66,7 +66,8 @@ form.addEventListener('submit', async function (e) {
         province: document.getElementById('province').value,
         district: document.getElementById('district').value,
         courses: coursesArray,
-        sessions: sessionsArray
+        sessions: sessionsArray,
+        sheetName: SHEET_CONFIG.sheetName || 'ซีต1'
     };
 
     // Format and validate form data

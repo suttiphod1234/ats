@@ -67,7 +67,8 @@ form.addEventListener('submit', async function (e) {
         district: document.getElementById('district').value,
         course: 'AI FOR LOGISTICS',
         sessions: sessionsArray,
-        sessionDates: datesArray
+        sessionDates: datesArray,
+        sheetName: AI_SHEET_CONFIG.sheetName || 'ai logistics'
     };
 
     // Format and validate form data
