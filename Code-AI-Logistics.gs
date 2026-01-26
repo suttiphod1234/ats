@@ -1,28 +1,25 @@
 /**
- * AI FOR LOGISTICS Registration Form Handler
- * Google Apps Script for handling form submissions
+ * LogiSkill Unified Master Script
+ * Handles:
+ * 1. AI Logistics Registration (Sheet: 'ai logistics')
+ * 2. Learner Survey (Sheet: 'survey')
+ * 3. General Registration (Sheet: 'ซีต1')
  * 
- * Sheet ID: 1Eq-cQO4Z2VYMfkGMhHrlfXve2bJces7YyUM7gbNNL0g
- * Target Sheet Name: ai logistics
- * 
- * Deploy as Web App:
- * 1. Click Deploy → New deployment
- * 2. Select type: Web app
- * 3. Execute as: Me
- * 4. Who has access: Anyone
- * 5. Copy deployment URL to ai-logistics-form.js
+ * INSTRUCTIONS:
+ * 1. Use this single script file.
+ * 2. Delete any other .gs files (like Code.gs) to avoid conflicts.
+ * 3. Deploy as Web App -> Access: Everyone -> Update config.js with the ONE resulting URL.
  */
 
 const SPREADSHEET_ID = '1Eq-cQO4Z2VYMfkGMhHrlfXve2bJces7YyUM7gbNNL0g';
-const SHEET_NAME = 'ai logistics';
 
 function doPost(e) {
   try {
     // Parse incoming data
     const data = JSON.parse(e.postData.contents);
     
-    // Determine target sheet
-    const targetSheetName = data.sheetName || SHEET_NAME;
+    // Determine target sheet (Default to 'ซีต1' if not specified)
+    const targetSheetName = data.sheetName || 'ซีต1';
     
     // Open the Google Sheet
     const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
@@ -31,20 +28,24 @@ function doPost(e) {
     // Create sheet if it doesn't exist
     if (!sheet) {
       sheet = ss.insertSheet(targetSheetName);
+      // Setup headers based on sheet type
       if (targetSheetName === 'survey') {
         setupSurveyHeaders(sheet);
+      } else if (targetSheetName === 'ai logistics') {
+        setupAiLogisticsHeaders(sheet);
       } else {
-        setupHeaders(sheet);
+        setupGeneralHeaders(sheet);
       }
     }
     
-    // Get next queue number (row count)
+    // Get next queue number
     const lastRow = sheet.getLastRow();
     const queueNumber = lastRow > 1 ? lastRow : 1;
     
-    // Handle Data Insertion
+    // --- HANDLE DATA INSERTION BASED ON SHEET TYPE ---
+    
+    // 1. SURVEY FORM
     if (targetSheetName === 'survey') {
-      // Handle Survey Data
       const timestamp = new Date().toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' });
       const media = Array.isArray(data.media) ? data.media.join(', ') : data.media;
       const career = data.career + (data.careerOther ? ' (' + data.careerOther + ')' : '');
@@ -65,9 +66,10 @@ function doPost(e) {
         success: true,
         message: 'ส่งแบบสอบถามสำเร็จ'
       })).setMimeType(ContentService.MimeType.JSON);
-
-    } else {
-      // Handle Registration Data (Existing Logic)
+    }
+    
+    // 2. AI LOGISTICS REGISTRATION
+    else if (targetSheetName === 'ai logistics') {
       const sessions = Array.isArray(data.sessions) ? data.sessions.join(', ') : data.sessions;
       const sessionDates = Array.isArray(data.sessionDates) ? data.sessionDates.join(', ') : data.sessionDates;
       const education = data.education + (data.educationOther ? ' (' + data.educationOther + ')' : '');
@@ -98,6 +100,37 @@ function doPost(e) {
       })).setMimeType(ContentService.MimeType.JSON);
     }
     
+    // 3. GENERAL / LEGACY REGISTRATION (Fallback)
+    else {
+      const courses = Array.isArray(data.courses) ? data.courses.join(', ') : (data.course || '');
+      const sessions = Array.isArray(data.sessions) ? data.sessions.join(', ') : (data.session || '');
+      const education = data.education + (data.educationOther ? ' (' + data.educationOther + ')' : '');
+      
+      sheet.appendRow([
+        data.timestamp || new Date().toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' }),
+        queueNumber,
+        data.fullName || '',
+        data.email || '',
+        data.phone || '',
+        data.lineId || '',
+        data.occupation || '',
+        data.age || '',
+        education,
+        data.position || '',
+        data.company || '',
+        data.province || '',
+        data.district || '',
+        courses,
+        sessions
+      ]);
+      
+      return ContentService.createTextOutput(JSON.stringify({
+        success: true,
+        queueNumber: queueNumber,
+        message: 'ลงทะเบียนสำเร็จ'
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
+    
   } catch (error) {
     Logger.log('Error in doPost: ' + error.toString());
     return ContentService.createTextOutput(JSON.stringify({
@@ -108,145 +141,53 @@ function doPost(e) {
 }
 
 function setupSurveyHeaders(sheet) {
-  const headers = [
-    'Timestamp',
-    'สื่อที่ได้รับ',
-    'สายอาชีพที่สนใจ',
-    'รูปแบบการอบรม',
-    'วันเวลาที่สะดวก',
-    'ข้อเสนอแนะ'
-  ];
+  const headers = ['Timestamp', 'สื่อที่ได้รับ', 'สายอาชีพที่สนใจ', 'รูปแบบการอบรม', 'วันเวลาที่สะดวก', 'ข้อเสนอแนะ'];
+  appendHeaders(sheet, headers, '#10b981');
+}
+
+function setupAiLogisticsHeaders(sheet) {
+  const headers = ['Timestamp', 'Queue Number', 'ชื่อ-นามสกุล', 'อีเมล', 'มือถือ', 'Line ID', 'อาชีพ', 'อายุ', 'ระดับการศึกษา', 'ตำแหน่งงาน', 'บริษัท', 'จังหวัด', 'อำเภอ/เขต', 'หลักสูตร', 'รุ่น', 'วันที่อบรม'];
+  appendHeaders(sheet, headers, '#1e40af');
+}
+
+function setupGeneralHeaders(sheet) {
+  const headers = ['Timestamp', 'Queue Number', 'ชื่อ-นามสกุล', 'อีเมล', 'มือถือ', 'Line ID', 'อาชีพ', 'อายุ', 'ระดับการศึกษา', 'ตำแหน่งงาน', 'บริษัท', 'จังหวัด', 'อำเภอ/เขต', 'หลักสูตร', 'รุ่น'];
+  appendHeaders(sheet, headers, '#4a5568');
+}
+
+function appendHeaders(sheet, headers, color) {
   sheet.appendRow(headers);
   const headerRange = sheet.getRange(1, 1, 1, headers.length);
   headerRange.setFontWeight('bold');
-  headerRange.setBackground('#10b981'); // Emerald green for survey
+  headerRange.setBackground(color);
   headerRange.setFontColor('#ffffff');
 }
 
-/**
- * Handle GET requests (for checking duplicate emails)
- */
 function doGet(e) {
   try {
     const action = e.parameter.action;
+    // Default to 'ai logistics' sheet for duplicate checking if not specified, or check all?
+    // For now, let's keep checking 'ai logistics' as it's the main use case
     const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
-    let sheet = ss.getSheetByName(SHEET_NAME);
+    const sheet = ss.getSheetByName('ai logistics'); 
     
-    // Create sheet if it doesn't exist (though unlikely for doGet to trigger creation safely without headers)
-    if (!sheet) {
-      return ContentService.createTextOutput(JSON.stringify({
-        error: 'Sheet not found'
-      })).setMimeType(ContentService.MimeType.JSON);
-    }
-    
-    if (action === 'checkEmail') {
+    if (action === 'checkEmail' && sheet) {
       const email = e.parameter.email;
-      
-      if (!email) {
-        return ContentService.createTextOutput(JSON.stringify({
-          exists: false,
-          error: 'No email provided'
-        })).setMimeType(ContentService.MimeType.JSON);
-      }
+      if (!email) return jsonResponse({ exists: false, error: 'No email' });
       
       const data = sheet.getDataRange().getValues();
-      const emailExists = data.some((row, index) => {
-        return index > 0 && row[3] && row[3].toLowerCase() === email.toLowerCase();
-      });
+      const emailExists = data.some((row, index) => index > 0 && row[3] && row[3].toString().toLowerCase() === email.toLowerCase());
       
-      return ContentService.createTextOutput(JSON.stringify({
-        exists: emailExists
-      })).setMimeType(ContentService.MimeType.JSON);
+      return jsonResponse({ exists: emailExists });
     }
     
-    return ContentService.createTextOutput(JSON.stringify({
-      error: 'Invalid action'
-    })).setMimeType(ContentService.MimeType.JSON);
+    return jsonResponse({ error: 'Invalid action or sheet not found' });
     
   } catch (error) {
-    Logger.log('Error in doGet: ' + error.toString());
-    return ContentService.createTextOutput(JSON.stringify({
-      error: error.toString()
-    })).setMimeType(ContentService.MimeType.JSON);
+    return jsonResponse({ error: error.toString() });
   }
 }
 
-/**
- * Test function
- */
-function testSheetAccess() {
-  try {
-    const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
-    let sheet = ss.getSheetByName(SHEET_NAME);
-    
-    if (!sheet) {
-      Logger.log('Sheet "' + SHEET_NAME + '" not found. Creating it...');
-      sheet = ss.insertSheet(SHEET_NAME);
-      setupHeaders(sheet);
-      Logger.log('Sheet created.');
-    }
-    
-    Logger.log('Sheet name: ' + sheet.getName());
-    Logger.log('Last row: ' + sheet.getLastRow());
-    Logger.log('Sheet access successful!');
-  } catch (error) {
-    Logger.log('Error: ' + error.toString());
-  }
-}
-
-/**
- * Setup sheet headers helper
- */
-function setupHeaders(sheet) {
-  const headers = [
-    'Timestamp',
-    'Queue Number',
-    'ชื่อ-นามสกุล',
-    'อีเมล',
-    'มือถือ',
-    'Line ID',
-    'อาชีพ',
-    'อายุ',
-    'ระดับการศึกษา',
-    'ตำแหน่งงาน',
-    'บริษัท',
-    'จังหวัด',
-    'อำเภอ/เขต',
-    'หลักสูตร',
-    'รุ่น',
-    'วันที่อบรม'
-  ];
-  
-  sheet.appendRow(headers);
-  
-  const headerRange = sheet.getRange(1, 1, 1, headers.length);
-  headerRange.setFontWeight('bold');
-  headerRange.setBackground('#1e40af');
-  headerRange.setFontColor('#ffffff');
-}
-
-/**
- * Setup sheet headers manually
- */
-function setupSheetHeaders() {
-  try {
-    const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
-    let sheet = ss.getSheetByName(SHEET_NAME);
-    
-    if (!sheet) {
-      sheet = ss.insertSheet(SHEET_NAME);
-    }
-    
-    if (sheet.getLastRow() > 0) {
-      Logger.log('Headers already exist');
-      return;
-    }
-    
-    setupHeaders(sheet);
-    
-    Logger.log('Headers setup complete!');
-    
-  } catch (error) {
-    Logger.log('Error: ' + error.toString());
-  }
+function jsonResponse(data) {
+  return ContentService.createTextOutput(JSON.stringify(data)).setMimeType(ContentService.MimeType.JSON);
 }
