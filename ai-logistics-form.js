@@ -4,10 +4,16 @@
  */
 
 // Get configuration
-const AI_SHEET_CONFIG = CONFIG?.sheets?.aiLogistics || {
-    id: '1ViBY3Nj0NhnPtP_oYLzGePHadkRvJRh0HLud93wR4XY',
-    scriptUrl: 'https://script.google.com/macros/s/AKfycbzYqnpSdvdrcY1zBAB0PBe5Y0zWwzvpJEFiBqXHRZP-oG5xNEYTkUN52P3wTbmSpFUd0Q/exec'
-};
+// Get configuration
+if (typeof CONFIG === 'undefined') {
+    console.error('Configuration file (config.js) not loaded!');
+}
+
+const AI_SHEET_CONFIG = CONFIG?.sheets?.aiLogistics;
+
+if (!AI_SHEET_CONFIG) {
+    console.error('AI Logistics Sheet configuration not found!');
+}
 
 // Form Elements
 const form = document.getElementById('aiLogisticsForm');

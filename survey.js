@@ -2,9 +2,16 @@
  * Survey Form Handler
  */
 
-const SURVEY_CONFIG = CONFIG?.sheets?.survey || {
-    scriptUrl: ''
-};
+// Get configuration
+if (typeof CONFIG === 'undefined') {
+    console.error('Configuration file (config.js) not loaded!');
+}
+
+const SURVEY_CONFIG = CONFIG?.sheets?.survey;
+
+if (!SURVEY_CONFIG) {
+    console.error('Survey Sheet configuration not found!');
+}
 
 document.getElementById('surveyForm').addEventListener('submit', async function (e) {
     e.preventDefault();

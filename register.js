@@ -4,10 +4,16 @@
  */
 
 // Get configuration
-const SHEET_CONFIG = CONFIG?.sheets?.general || {
-    id: '1Eq-cQO4Z2VYMfkGMhHrlfXve2bJces7YyUM7gbNNL0g',
-    scriptUrl: 'https://script.google.com/macros/s/AKfycbyMwlyu1CpiFtPgExaxlcp_rYDLFdJskmsYzeuRlM4ic9_2wMr3-FE48mwnuEfoiw_c/exec'
-};
+// Get configuration
+if (typeof CONFIG === 'undefined') {
+    console.error('Configuration file (config.js) not loaded!');
+}
+
+const SHEET_CONFIG = CONFIG?.sheets?.general;
+
+if (!SHEET_CONFIG) {
+    console.error('Sheet configuration not found!');
+}
 
 // Form Elements
 const form = document.getElementById('registrationForm');
@@ -31,8 +37,8 @@ form.addEventListener('submit', async function (e) {
     // Validate course selection
     const selectedCourses = document.querySelectorAll('input[name="courseSession"]:checked');
     if (selectedCourses.length === 0) {
-        FormUtils?.showError(courseError, 'กรุณาเลือกหลักสูตรและรุ่นที่ต้องการเข้าอบรม') || 
-        (courseError.style.display = 'block');
+        FormUtils?.showError(courseError, 'กรุณาเลือกหลักสูตรและรุ่นที่ต้องการเข้าอบรม') ||
+            (courseError.style.display = 'block');
         courseError.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return;
     }
@@ -94,7 +100,7 @@ form.addEventListener('submit', async function (e) {
         try {
             setLoadingState(true);
             const isDuplicate = await FormUtils.checkEmailDuplicate(formData.email, SHEET_CONFIG.scriptUrl);
-            
+
             if (isDuplicate) {
                 setLoadingState(false);
                 const proceed = confirm('อีเมลนี้เคยลงทะเบียนแล้ว คุณต้องการดำเนินการต่อหรือไม่?');
@@ -122,7 +128,7 @@ form.addEventListener('submit', async function (e) {
             // Reset form
             form.reset();
             document.querySelectorAll('.course-option').forEach(option => option.classList.remove('selected'));
-            
+
             FormUtils?.showNotification('ลงทะเบียนสำเร็จ!', 'success');
         } else {
             throw new Error(result.message || 'เกิดข้อผิดพลาดในการส่งข้อมูล');
@@ -187,11 +193,11 @@ async function submitToGoogleSheets(formData) {
 
     } catch (error) {
         console.error('Submit error:', error);
-        
+
         if (error.name === 'AbortError') {
             throw new Error('การส่งข้อมูลใช้เวลานานเกินไป กรุณาลองใหม่อีกครั้ง');
         }
-        
+
         throw new Error(error.message || 'ไม่สามารถส่งข้อมูลได้ กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ต');
     }
 }
@@ -234,8 +240,8 @@ document.querySelector('.modal-overlay')?.addEventListener('click', closeSuccess
 // Phone Number Formatting
 if (phoneInput) {
     phoneInput.addEventListener('input', function (e) {
-        const formatted = FormUtils?.formatPhoneNumber(e.target.value) || 
-                         e.target.value.replace(/\D/g, '').slice(0, 10);
+        const formatted = FormUtils?.formatPhoneNumber(e.target.value) ||
+            e.target.value.replace(/\D/g, '').slice(0, 10);
         e.target.value = formatted;
     });
 }
@@ -244,7 +250,7 @@ if (phoneInput) {
 if (emailInput) {
     emailInput.addEventListener('blur', async function (e) {
         const email = e.target.value.trim();
-        
+
         // Basic validation
         if (email && !FormUtils?.validateEmail(email)) {
             e.target.setCustomValidity('กรุณากรอกอีเมลให้ถูกต้อง');
@@ -264,11 +270,11 @@ if (emailInput) {
             // Debounce the check
             emailCheckTimeout = setTimeout(async () => {
                 if (isCheckingEmail) return;
-                
+
                 try {
                     isCheckingEmail = true;
                     const isDuplicate = await FormUtils.checkEmailDuplicate(email, SHEET_CONFIG.scriptUrl);
-                    
+
                     if (isDuplicate) {
                         e.target.setCustomValidity('อีเมลนี้เคยลงทะเบียนแล้ว');
                         e.target.reportValidity();
