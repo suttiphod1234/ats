@@ -27,13 +27,17 @@ function validateEmail(email) {
 }
 
 // Check Email Duplicate
-async function checkEmailDuplicate(email, scriptUrl) {
+async function checkEmailDuplicate(email, scriptUrl, sheetName = '') {
     if (!email || !scriptUrl) {
         return false;
     }
 
     try {
-        const checkUrl = `${scriptUrl}?action=checkEmail&email=${encodeURIComponent(email)}`;
+        let checkUrl = `${scriptUrl}?action=checkEmail&email=${encodeURIComponent(email)}`;
+        if (sheetName) {
+            checkUrl += `&sheetName=${encodeURIComponent(sheetName)}`;
+        }
+
         const response = await fetch(checkUrl, {
             method: 'GET',
             mode: 'cors'

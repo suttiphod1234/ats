@@ -492,6 +492,8 @@ function registerNow(courseId) {
     // Redirect to appropriate registration page based on course
     if (courseId === 'ai-logistics') {
         window.location.href = 'ai-logistics-form.html';
+    } else if (courseId === 'air-freight') {
+        window.location.href = 'airfreight-form.html';
     } else {
         window.location.href = 'register.html';
     }

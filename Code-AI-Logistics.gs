@@ -42,6 +42,8 @@ function doPost(e) {
         setupSurveyHeaders(sheet);
       } else if (targetSheetName === 'ai logistics') {
         setupAiLogisticsHeaders(sheet);
+      } else if (targetSheetName === 'Airfreight') {
+        setupAirfreightHeaders(sheet);
       } else {
         setupGeneralHeaders(sheet);
       }
@@ -109,7 +111,39 @@ function doPost(e) {
       })).setMimeType(ContentService.MimeType.JSON);
     }
     
-    // 3. GENERAL / LEGACY REGISTRATION (Fallback)
+    // 3. AIRFREIGHT REGISTRATION
+    else if (targetSheetName === 'Airfreight') {
+      const sessions = Array.isArray(data.sessions) ? data.sessions.join(', ') : data.sessions;
+      const sessionDates = Array.isArray(data.sessionDates) ? data.sessionDates.join(', ') : data.sessionDates;
+      const education = data.education + (data.educationOther ? ' (' + data.educationOther + ')' : '');
+      
+      sheet.appendRow([
+        data.timestamp || new Date().toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' }),
+        queueNumber,
+        data.fullName || '',
+        data.email || '',
+        data.phone || '',
+        data.lineId || '',
+        data.occupation || '',
+        data.age || '',
+        education,
+        data.position || '',
+        data.company || '',
+        data.province || '',
+        data.district || '',
+        data.course || 'International Air Freight Management',
+        sessions,
+        sessionDates
+      ]);
+      
+      return ContentService.createTextOutput(JSON.stringify({
+        success: true,
+        queueNumber: queueNumber,
+        message: 'ลงทะเบียนสำเร็จ'
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
+    
+    // 4. GENERAL / LEGACY REGISTRATION (Fallback)
     else {
       const courses = Array.isArray(data.courses) ? data.courses.join(', ') : (data.course || '');
       const sessions = Array.isArray(data.sessions) ? data.sessions.join(', ') : (data.session || '');
@@ -159,6 +193,11 @@ function setupAiLogisticsHeaders(sheet) {
   appendHeaders(sheet, headers, '#1e40af');
 }
 
+function setupAirfreightHeaders(sheet) {
+  const headers = ['Timestamp', 'Queue Number', 'ชื่อ-นามสกุล', 'อีเมล', 'มือถือ', 'Line ID', 'อาชีพ', 'อายุ', 'ระดับการศึกษา', 'ตำแหน่งงาน', 'บริษัท', 'จังหวัด', 'อำเภอ/เขต', 'หลักสูตร', 'รุ่น', 'วันที่อบรม'];
+  appendHeaders(sheet, headers, '#0891b2'); // Cyan color for Airfreight
+}
+
 function setupGeneralHeaders(sheet) {
   const headers = ['Timestamp', 'Queue Number', 'ชื่อ-นามสกุล', 'อีเมล', 'มือถือ', 'Line ID', 'อาชีพ', 'อายุ', 'ระดับการศึกษา', 'ตำแหน่งงาน', 'บริษัท', 'จังหวัด', 'อำเภอ/เขต', 'หลักสูตร', 'รุ่น'];
   appendHeaders(sheet, headers, '#4a5568');
@@ -175,10 +214,10 @@ function appendHeaders(sheet, headers, color) {
 function doGet(e) {
   try {
     const action = e.parameter.action;
-    // Default to 'ai logistics' sheet for duplicate checking if not specified, or check all?
-    // For now, let's keep checking 'ai logistics' as it's the main use case
+    const sheetName = e.parameter.sheetName || 'ai logistics';
+    
     const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
-    const sheet = ss.getSheetByName('ai logistics'); 
+    const sheet = ss.getSheetByName(sheetName); 
     
     if (action === 'checkEmail' && sheet) {
       const email = e.parameter.email;
