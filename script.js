@@ -545,5 +545,91 @@ registrationCards.forEach(card => {
     observer.observe(card);
 });
 
-console.log('Modal system initialized! 🎉');
+// ===== COOKIE CONSENT BANNER =====
+function initCookieConsent() {
+    const consent = localStorage.getItem('cookie-consent');
+    if (!consent) {
+        showCookieBanner();
+    }
+}
+
+function showCookieBanner() {
+    const banner = document.createElement('div');
+    banner.id = 'cookie-banner';
+    banner.style.cssText = `
+        position: fixed;
+        bottom: 24px;
+        left: 24px;
+        right: 24px;
+        background: rgba(15, 23, 42, 0.95);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 1.5rem;
+        border-radius: 1.5rem;
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        max-width: 1200px;
+        margin: 0 auto;
+        animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    `;
+
+    const content = `
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <div style="font-size: 2rem;">🍪</div>
+            <div>
+                <h4 style="color: white; margin-bottom: 0.25rem; font-size: 1.1rem;">เราใช้คุกกี้เพื่อประสบการณ์ที่ดีที่สุด</h4>
+                <p style="color: #94a3b8; font-size: 0.9rem; line-height: 1.5;">เราใช้คุกกี้เพื่อพัฒนาประสิทธิภาพ และเพิ่มประสบการณ์ที่คียิ่งขึ้นให้กับคุณ <a href="cookies.html" style="color: #14b8a6; text-decoration: none; border-bottom: 1px solid #14b8a6;">อ่านนโยบายคุกกี้</a></p>
+            </div>
+        </div>
+        <div style="display: flex; gap: 0.75rem;">
+            <button id="accept-cookies" class="btn-primary" style="padding: 0.75rem 1.5rem; white-space: nowrap;">ยอมรับทั้งหมด</button>
+            <button id="close-cookie-banner" style="background: transparent; border: none; color: #94a3b8; cursor: pointer; padding: 0.5rem;">✕</button>
+        </div>
+    `;
+
+    banner.innerHTML = content;
+    document.body.appendChild(banner);
+
+    // Add CSS for slideUp
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideUp {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @media (max-width: 768px) {
+            #cookie-banner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+                bottom: 16px;
+                left: 16px;
+                right: 16px;
+            }
+            #accept-cookies { width: 100%; }
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Event Listeners
+    document.getElementById('accept-cookies').addEventListener('click', () => {
+        localStorage.setItem('cookie-consent', 'accepted');
+        banner.style.transform = 'translateY(150px)';
+        banner.style.opacity = '0';
+        banner.style.transition = 'all 0.5s ease';
+        setTimeout(() => banner.remove(), 500);
+    });
+
+    document.getElementById('close-cookie-banner').addEventListener('click', () => {
+        banner.remove();
+    });
+}
+
+// Initialize on load
+document.addEventListener('DOMContentLoaded', initCookieConsent);
+
+console.log('Modal and Cookie system initialized! 🎉');
 
