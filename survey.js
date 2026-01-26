@@ -56,7 +56,8 @@ document.getElementById('surveyForm').addEventListener('submit', async function 
             body: JSON.stringify(data),
             mode: 'cors',
             headers: {
-                'Content-Type': 'application/json'
+                // Use text/plain to avoid CORS preflight complexity
+                'Content-Type': 'text/plain;charset=utf-8'
             }
         });
 
