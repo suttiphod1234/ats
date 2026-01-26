@@ -38,6 +38,16 @@ const CONFIG = {
             id: '1Eq-cQO4Z2VYMfkGMhHrlfXve2bJces7YyUM7gbNNL0g',
             scriptUrl: 'https://script.google.com/macros/s/AKfycbxMKpergvEPu3FWiYoHUsifMeC7XqcHyqGDeXHt597a3pfP9SluHOYnIhjW47u7_y0y/exec',
             sheetName: 'อบรม CFO'
+        },
+        // Carbon Footprint course
+        "carbon-footprint": {
+            tabName: "อบรม CFO", // This seems to be a placeholder or a different type of config
+            courseName: "Carbon Footprint for Organization"
+        },
+        // Online Courses booking
+        "online-courses": {
+            tabName: "Online Booking", // This seems to be a placeholder or a different type of config
+            courseName: "Online Course Booking"
         }
     },
 

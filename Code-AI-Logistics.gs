@@ -46,6 +46,8 @@ function doPost(e) {
         setupAirfreightHeaders(sheet);
       } else if (targetSheetName === 'อบรม CFO') {
         setupCfoHeaders(sheet);
+      } else if (targetSheetName === 'Online Booking') {
+        setupOnlineBookingHeaders(sheet);
       } else {
         setupGeneralHeaders(sheet);
       }
@@ -206,6 +208,21 @@ function doPost(e) {
         queueNumber: queueNumber,
         message: 'ลงทะเบียนสำเร็จ'
       })).setMimeType(ContentService.MimeType.JSON);
+      ]);
+
+      // --- GOOGLE CALENDAR INTEGRATION ---
+      try {
+        createCalendarEvent(data);
+      } catch (calError) {
+        Logger.log('Calendar Error: ' + calError.toString());
+        // We don't block the response even if calendar fails
+      }
+      
+      return ContentService.createTextOutput(JSON.stringify({
+        success: true,
+        queueNumber: queueNumber,
+        message: 'ลงทะเบียนสำเร็จ และเพิ่มใน Google Calendar แล้ว'
+      })).setMimeType(ContentService.MimeType.JSON);
     }
     
   } catch (error) {
@@ -277,4 +294,32 @@ function doGet(e) {
 
 function jsonResponse(data) {
   return ContentService.createTextOutput(JSON.stringify(data)).setMimeType(ContentService.MimeType.JSON);
+}
+
+function setupOnlineBookingHeaders(sheet) {
+  const headers = ['Timestamp', 'Queue Number', 'ชื่อ-นามสกุล', 'อีเมล', 'มือถือ', 'Line ID', 'อาชีพ', 'หลักสูตรที่จอง', 'ความสนใจเพิ่มเติม'];
+  appendHeaders(sheet, headers, '#4f46e5'); // Indigo color for Online Booking
+}
+
+function createCalendarEvent(data) {
+  const calendar = CalendarApp.getDefaultCalendar();
+  const title = `[LogiSkill] จองเรียน: ${data.fullName || 'ผู้สมัครใหม่'}`;
+  
+  // Create a description with all relevant info
+  let description = `วิชาที่สนใจ: ${data.courses || 'ไม่ระบุ'}\n`;
+  description += `เบอร์โทร: ${data.phone || '-'}\n`;
+  description += `อีเมล: ${data.email || '-'}\n`;
+  description += `Line ID: ${data.lineId || '-'}\n`;
+  description += `รายละเอียด: ลงทะเบียนผ่านระบบออนไลน์`;
+
+  // For booking, we default to an all-day event today or a placeholder time
+  // If the user selects a specific session date later, we can refine this
+  const startDate = new Date();
+  const endDate = new Date();
+  endDate.setHours(startDate.getHours() + 1);
+
+  calendar.createEvent(title, startDate, endDate, {
+    description: description,
+    location: 'Online / LogiSkill Platform'
+  });
 }
