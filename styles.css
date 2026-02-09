@@ -1173,6 +1173,9 @@ a.btn-secondary:hover {
     color: var(--text-white);
     box-shadow: var(--shadow-md);
     margin-top: var(--spacing-sm);
+    display: block;
+    text-align: center;
+    text-decoration: none;
 }
 
 .btn-register:hover {
@@ -1423,6 +1426,7 @@ a.btn-secondary:hover {
     opacity: 1;
     transform: translateY(0);
 }
+
 /* Booking Section */
 .booking-section {
     padding: var(--spacing-2xl) 0;
@@ -1545,11 +1549,11 @@ a.btn-secondary:hover {
     .booking-perks {
         grid-template-columns: 1fr;
     }
-    
+
     .calendar-card {
         padding: var(--spacing-xl) var(--spacing-md);
     }
-    
+
     .calendar-header h3 {
         font-size: 1.5rem;
     }
