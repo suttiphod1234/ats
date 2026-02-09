@@ -11,7 +11,7 @@
  * 3. Deploy as Web App -> Access: Everyone -> Update config.js with the ONE resulting URL.
  */
 
-const SPREADSHEET_ID = '1Eq-cQO4Z2VYMfkGMhHrlfXve2bJces7YyUM7gbNNL0g';
+const SPREADSHEET_ID = '1i_Ve9Rg3dbyoxbbhwV_qjAStw58F-dpkiC95SVgEv9I';
 
 function doPost(e) {
   try {
@@ -48,6 +48,8 @@ function doPost(e) {
         setupCfoHeaders(sheet);
       } else if (targetSheetName === 'Online Booking') {
         setupOnlineBookingHeaders(sheet);
+      } else if (targetSheetName === 'Power BI') {
+        setupPowerBiHeaders(sheet);
       } else {
         setupGeneralHeaders(sheet);
       }
@@ -178,8 +180,28 @@ function doPost(e) {
         message: 'ลงทะเบียนสำเร็จ'
       })).setMimeType(ContentService.MimeType.JSON);
     }
+
+    // 5. POWER BI REGISTRATION
+    else if (targetSheetName === 'Power BI') {
+      sheet.appendRow([
+        data.timestamp || new Date().toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' }),
+        queueNumber,
+        data.fullName || '',
+        data.department || '',
+        data.employeeId || '',
+        data.email || '',
+        data.phone || '',
+        'Advanced Analyzing Data With Power BI'
+      ]);
+      
+      return ContentService.createTextOutput(JSON.stringify({
+        success: true,
+        queueNumber: queueNumber,
+        message: 'ลงทะเบียนสำเร็จ'
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
     
-    // 5. GENERAL / LEGACY REGISTRATION (Fallback)
+    // 6. GENERAL / LEGACY REGISTRATION (Fallback)
     else {
       const courses = Array.isArray(data.courses) ? data.courses.join(', ') : (data.course || '');
       const sessions = Array.isArray(data.sessions) ? data.sessions.join(', ') : (data.session || '');
@@ -201,13 +223,6 @@ function doPost(e) {
         data.district || '',
         courses,
         sessions
-      ]);
-      
-      return ContentService.createTextOutput(JSON.stringify({
-        success: true,
-        queueNumber: queueNumber,
-        message: 'ลงทะเบียนสำเร็จ'
-      })).setMimeType(ContentService.MimeType.JSON);
       ]);
 
       // --- GOOGLE CALENDAR INTEGRATION ---
@@ -299,6 +314,11 @@ function jsonResponse(data) {
 function setupOnlineBookingHeaders(sheet) {
   const headers = ['Timestamp', 'Queue Number', 'ชื่อ-นามสกุล', 'อีเมล', 'มือถือ', 'Line ID', 'อาชีพ', 'หลักสูตรที่จอง', 'ความสนใจเพิ่มเติม'];
   appendHeaders(sheet, headers, '#4f46e5'); // Indigo color for Online Booking
+}
+
+function setupPowerBiHeaders(sheet) {
+  const headers = ['Timestamp', 'Queue Number', 'ชื่อ-นามสกุล', 'แผนก/ฝ่าย', 'รหัสพนักงาน', 'อีเมลบริษัท', 'เบอร์โทร', 'หลักสูตร'];
+  appendHeaders(sheet, headers, '#f2c811'); // Yellow color for Power BI
 }
 
 function createCalendarEvent(data) {
