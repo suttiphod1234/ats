@@ -4,248 +4,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="แบบฟอร์มสำรวจความต้องการสำหรับผู้เรียน - LogiSkill">
-    <title>แบบสำรวจความต้องการเรียน - LogiSkill</title>
+    <meta name="description" content="แบบสำรวจความสนใจหลักสูตรโลจิสติกส์ - LogiSkill">
+    <title>แบบสำรวจความสนใจ - LogiSkill</title>
     <link rel="icon" type="image/png" href="imag/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="ai-logistics-form.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="online-courses-form.css">
     <style>
-        /* Custom styles for survey specifically */
-        .checkbox-group {
+        .survey-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .survey-option-card {
+            cursor: pointer;
+            position: relative;
+        }
+
+        .survey-option-card input {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .option-inner {
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 1rem;
+            text-align: center;
+            transition: all 0.2s ease;
+            height: 100%;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
-        }
-
-        .checkbox-option {
-            display: flex;
             align-items: center;
-            gap: 0.75rem;
-            cursor: pointer;
-            padding: 0.75rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: var(--radius-sm);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.2s;
+            justify-content: center;
+            gap: 0.5rem;
         }
 
-        .checkbox-option:hover {
+        .survey-option-card input:checked+.option-inner {
             border-color: var(--accent-teal);
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(20, 184, 166, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(20, 184, 166, 0.2);
         }
 
-        .checkbox-option input[type="checkbox"],
-        .checkbox-option input[type="radio"] {
-            width: 20px;
-            height: 20px;
-            accent-color: var(--accent-emerald);
+        .option-icon {
+            font-size: 2rem;
+            margin-bottom: 0.25rem;
         }
 
-        .text-other {
-            width: 100%;
-            margin-top: 0.5rem;
-            padding: 0.75rem;
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--radius-sm);
+        .option-label {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-gray);
+        }
+
+        .survey-option-card input:checked+.option-inner .option-label {
             color: var(--text-white);
+        }
+
+        .other-input {
+            margin-top: 0.5rem;
+            width: 100%;
             display: none;
+        }
+
+        .survey-option-card input[value="other"]:checked~.other-input {
+            display: block;
         }
     </style>
 </head>
 
 <body>
-    <header class="header">
+    <!-- Navigation -->
+    <nav class="navbar">
         <div class="container">
-            <a href="index.html" class="logo">
-                <img src="logo_Logiskill_01.png" alt="LogiSkill" class="logo-image">
-            </a>
-        </div>
-    </header>
-
-    <main class="main-content">
-        <div class="container">
-            <div class="form-header">
-                <h1>แบบสำรวจความต้องการสำหรับผู้เรียน</h1>
-                <h3 class="institution">เพื่อพัฒนาหลักสูตรให้ตรงใจคุณที่สุด</h3>
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <img src="logo_Logiskill_01.png" alt="LogiSkill" class="logo-image">
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="index.html">หน้าแรก</a></li>
+                    <li><a href="index.html#tracks">หลักสูตร</a></li>
+                    <li><a href="ebook.html">E-Book</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="https://lin.ee/ws5lf1M" target="_blank" class="btn-secondary">ติดต่อเรา</a>
+                </div>
             </div>
+        </div>
+    </nav>
+
+    <main class="form-page">
+        <div class="container-sm">
+            <header class="form-header">
+                <div class="header-decorator"></div>
+                <a href="index.html" class="btn-back">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    กลับไปที่หน้าหลัก
+                </a>
+                <h1 class="gradient-text">แบบสำรวจความสนใจ</h1>
+                <p>ช่วยเราพัฒนาหลักสูตรให้ตรงใจคุณ เพื่อสิทธิประโยชน์สูงสุดของผู้เรียน</p>
+            </header>
 
             <form id="surveyForm" class="registration-form">
-
-                <!-- Question 1 -->
+                <!-- Media Source -->
                 <section class="form-section">
-                    <div class="section-header">
-                        <span class="section-icon">📢</span>
-                        <h2>1. คุณได้รับสื่อสำหรับคอร์สนี้จากช่องทางใด?</h2>
+                    <div class="section-title">
+                        <span class="step-num">1</span>
+                        <h2>คุณรู้จัก LogiSkill จากช่องทางใด? <span class="required">*</span></h2>
                     </div>
-                    <div class="checkbox-group">
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="media" value="Facebook / Social Media">
-                            <span>Facebook / Social Media</span>
+                    <div class="survey-options">
+                        <label class="survey-option-card">
+                            <input type="checkbox" name="media" value="Facebook">
+                            <div class="option-inner">
+                                <div class="option-icon">📘</div>
+                                <span class="option-label">Facebook</span>
+                            </div>
                         </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="media" value="การค้นหาผ่าน Google">
-                            <span>การค้นหาผ่าน Google (Search Engine)</span>
+                        <label class="survey-option-card">
+                            <input type="checkbox" name="media" value="TikTok">
+                            <div class="option-inner">
+                                <div class="option-icon">🎵</div>
+                                <span class="option-label">TikTok</span>
+                            </div>
                         </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="media" value="เพื่อนแนะนำ">
-                            <span>เพื่อนแนะนำ / บอกต่อ</span>
+                        <label class="survey-option-card">
+                            <input type="checkbox" name="media" value="Line">
+                            <div class="option-inner">
+                                <div class="option-icon">💬</div>
+                                <span class="option-label">Line / เพื่อน</span>
+                            </div>
                         </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="media" value="ได้รับลิงก์โดยตรง">
-                            <span>ได้รับลิงก์โดยตรง</span>
+                        <label class="survey-option-card">
+                            <input type="checkbox" name="media" value="Google">
+                            <div class="option-inner">
+                                <div class="option-icon">🔍</div>
+                                <span class="option-label">Google Search</span>
+                            </div>
+                        </label>
+                        <label class="survey-option-card">
+                            <input type="checkbox" name="media" value="Other">
+                            <div class="option-inner">
+                                <div class="option-icon">✨</div>
+                                <span class="option-label">อื่นๆ</span>
+                            </div>
                         </label>
                     </div>
                 </section>
 
-                <!-- Question 2 -->
+                <!-- Career Interest -->
                 <section class="form-section">
-                    <div class="section-header">
-                        <span class="section-icon">💼</span>
-                        <h2>2. เลือกตามสายอาชีพ ที่ต้องการเรียนเพิ่มเติม</h2>
+                    <div class="section-title">
+                        <span class="step-num">2</span>
+                        <h2>สายอาชีพที่คุณสนใจ <span class="required">*</span></h2>
                     </div>
-                    <div class="checkbox-group">
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="career" value="การจัดการคลังและสินค้าคงคลัง">
-                            <span>การจัดการคลังและสินค้าคงคลัง</span>
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="career" value="การขนส่งและกระจายสินค้า">
-                            <span>การขนส่งและกระจายสินค้า</span>
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="career" value="กลยุทธ์ซัพพลายเชนและจัดซื้อ">
-                            <span>กลยุทธ์ซัพพลายเชนและจัดซื้อ</span>
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="career" value="เทคโนโลยีและนวัตกรรมโลจิสติกส์">
-                            <span>เทคโนโลยีและนวัตกรรมโลจิสติกส์</span>
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="career" value="การบริหารคนในงานโลจิสติกส์">
-                            <span>การบริหารคนในงานโลจิสติกส์</span>
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="career" value="อื่นๆ"
-                                onchange="toggleOther(this, 'careerOther')">
-                            <span>อื่นๆ (โปรดระบุ)</span>
-                        </label>
-                        <input type="text" id="careerOther" class="text-other" placeholder="ระบุสายอาชีพอื่นๆ...">
+                    <div class="form-grid">
+                        <div class="input-group full-width">
+                            <select id="career" name="career" required>
+                                <option value="">--- เลือกสายอาชีพ ---</option>
+                                <option value="Warehouse">Warehouse & Inventory (คลังสินค้า)</option>
+                                <option value="Transport">Transportation (การขนส่ง)</option>
+                                <option value="SupplyChain">Supply Chain & Purchasing (จัดซื้อ/ซัพพลานเชน)</option>
+                                <option value="ImportExport">Import / Export (นำเข้า-ส่งออก)</option>
+                                <option value="Technology">Logistics Technology (เทคโนโลยีโลจิสติกส์)</option>
+                                <option value="Management">Management (การบริหารจัดการ)</option>
+                                <option value="Other">อื่นๆ (โปรดระบุ)</option>
+                            </select>
+                        </div>
+                        <div class="input-group full-width" id="careerOtherGroup" style="display: none;">
+                            <input type="text" id="careerOther" name="careerOther" placeholder="ระบุสายอาชีพอื่นๆ">
+                        </div>
                     </div>
                 </section>
 
-                <!-- Question 3 -->
+                <!-- Training Format & Time -->
                 <section class="form-section">
-                    <div class="section-header">
-                        <span class="section-icon">🎓</span>
-                        <h2>3. รูปแบบการอบรมที่คุณต้องการ</h2>
+                    <div class="section-title">
+                        <span class="step-num">3</span>
+                        <h2>รูปแบบและเวลาที่สะดวก</h2>
                     </div>
-                    <div class="checkbox-group">
-                        <label class="checkbox-option">
-                            <input type="radio" name="format" value="ออฟไลน์ (Offline)">
-                            <span>ออฟไลน์ (Offline): เรียนแบบเจอตัว (On-site)</span>
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="radio" name="format" value="ออนไลน์ (Online)">
-                            <span>ออนไลน์ (Online): เรียนสดผ่าน Zoom/Meet</span>
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="radio" name="format" value="ออนไลน์ (VDO)">
-                            <span>ออนไลน์ (VDO): เรียนผ่านคลิปวิดีโอ ดูย้อนหลังได้</span>
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="radio" name="format" value="อื่นๆ" onchange="toggleOther(this, 'formatOther')">
-                            <span>อื่นๆ (โปรดระบุ)</span>
-                        </label>
-                        <input type="text" id="formatOther" class="text-other" placeholder="ระบุรูปแบบอื่นๆ...">
+
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label>รูปแบบการเรียนที่ชอบ <span class="required">*</span></label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="format" value="Online" checked>
+                                    <span class="radio-label">Online (เรียนสด/คลิป)</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="format" value="Onsite">
+                                    <span class="radio-label">On-site (เจอตัวจริง)</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="format" value="Hybrid">
+                                    <span class="radio-label">Hybrid (ผสมผสาน)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="convenientTime">วัน/เวลา ที่สะดวกที่สุด</label>
+                            <input type="text" id="convenientTime" name="convenientTime"
+                                placeholder="เช่น เสาร์-อาทิตย์, จันทร์-ศุกร์ หลังเลิกงาน">
+                        </div>
                     </div>
                 </section>
 
-                <!-- Question 4 -->
+                <!-- Suggestions -->
                 <section class="form-section">
-                    <div class="section-header">
-                        <span class="section-icon">📅</span>
-                        <h2>4. วันเวลาเดือนที่สะดวก</h2>
+                    <div class="section-title">
+                        <span class="step-num">4</span>
+                        <h2>ข้อเสนอแนะเพิ่มเติม</h2>
                     </div>
-                    <div class="form-group full-width">
-                        <input type="text" name="convenientTime"
-                            placeholder="เช่น วันเสาร์-อาทิตย์, เดือนมีนาคม, ช่วง 18.00 น." required>
+                    <div class="input-group full-width">
+                        <textarea id="suggestions" name="suggestions" rows="4"
+                            placeholder="มีหลักสูตรไหนที่อยากเรียนเป็นพิเศษ? หรือข้อติชมอื่นๆ"></textarea>
                     </div>
                 </section>
 
-                <!-- Question 5 -->
-                <section class="form-section">
-                    <div class="section-header">
-                        <span class="section-icon">💡</span>
-                        <h2>5. เรื่องที่คุณต้องการให้สอนหรือเน้นมากที่สุดคืออะไร?</h2>
-                    </div>
-                    <div class="form-group full-width">
-                        <textarea name="suggestions" rows="4" placeholder="ข้อเสนอแนะเพิ่มเติม..."
-                            style="padding:1rem; width:100%; display:block; background:rgba(255,255,255,0.05); color:white; border:1px solid rgba(255,255,255,0.1); border-radius:var(--radius-sm);"
-                            required></textarea>
-                    </div>
-                </section>
-
+                <!-- Submit Button -->
                 <div class="form-actions">
                     <button type="submit" class="btn-submit" id="submitBtn">
-                        <span class="btn-text">ส่งแบบสอบถาม</span>
+                        <span class="btn-text">ส่งแบบสำรวจ</span>
                         <span class="btn-loader" style="display: none;">กำลังส่ง...</span>
                     </button>
-                    <div id="submitError" style="color:var(--error-red); margin-top:1rem; display:none;"></div>
+                    <p class="form-note">ขอบคุณสำหรับความคิดเห็นของท่าน ทางเราจะนำไปปรับปรุงให้ดียิ่งขึ้น</p>
                 </div>
             </form>
         </div>
     </main>
 
     <!-- Success Modal -->
-    <div id="successModal" class="modal">
+    <div id="successModal" class="modal" role="dialog" aria-modal="true">
         <div class="modal-overlay"></div>
         <div class="modal-content success-modal">
-            <div class="success-icon">🎉</div>
-            <h2>ขอบคุณสำหรับข้อมูล</h2>
-            <p class="success-message">ความคิดเห็นของคุณสำคัญมาก<br>ทางเราจะนำไปพัฒนาหลักสูตรต่อไป</p>
-            <a href="index.html" class="btn-primary" style="width:100%">กลับสู่หน้าหลัก</a>
+            <div class="success-icon">✨</div>
+            <h2>ขอบคุณสำหรับข้อมูล!</h2>
+            <p class="success-message">
+                ความคิดเห็นของคุณมีค่าสำหรับเรามา<br>เราจะนำไปพัฒนาหลักสูตรให้ดียิ่งขึ้น</p>
+
+            <div class="modal-actions">
+                <a href="https://lin.ee/ws5lf1M" target="_blank" class="btn-line">
+                    <span class="line-icon">🎁</span> แอด LINE รับสิทธิพิเศษ
+                </a>
+                <button class="btn-primary" onclick="window.location.href='index.html'">กลับหน้าหลัก</button>
+            </div>
         </div>
     </div>
 
-    <script src="config.js"></script>
-    <script src="survey.js"></script>
-    <script>
-        function toggleOther(checkbox, inputId) {
-            const input = document.getElementById(inputId);
-            // If it's a radio, we need to hide other inputs if this one isn't "other"
-            if (checkbox.type === 'radio') {
-                const name = checkbox.name;
-                const set = document.querySelectorAll(`input[name="${name}"]`);
-                set.forEach(el => {
-                    // Logic handled in JS listener usually better, but inline for simple toggle
-                });
-                // For radio 'Other' specifically check if checked
-                input.style.display = checkbox.checked ? 'block' : 'none';
-                if (!checkbox.checked) input.value = '';
-            } else {
-                // Checkbox
-                input.style.display = checkbox.checked ? 'block' : 'none';
-                if (!checkbox.checked) input.value = '';
-            }
-        }
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <img src="logo_Logiskill_01.png" alt="LogiSkill" class="logo-image">
+                    </div>
+                    <p class="footer-description">
+                        แพลตฟอร์มเรียนรู้โลจิสติกส์ออนไลน์<br>
+                        ครบครันที่สุดในประเทศไทย
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>เกี่ยวกับเรา</h4>
+                    <ul>
+                        <li><a href="about.html">เกี่ยวกับ LogiSkill</a></li>
+                        <li><a href="team.html">ทีมงาน</a></li>
+                        <li><a href="https://lin.ee/ws5lf1M" target="_blank">ติดต่อเรา</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 LogiSkill. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-        // Better logic for radio buttons "Other" toggle
-        document.querySelectorAll('input[name="format"]').forEach(radio => {
-            radio.addEventListener('change', () => {
-                const formatOther = document.getElementById('formatOther');
-                if (radio.value === 'อื่นๆ') {
-                    formatOther.style.display = 'block';
-                    formatOther.required = true;
-                } else {
-                    formatOther.style.display = 'none';
-                    formatOther.required = false;
-                    formatOther.value = ''; // clear if switched away
-                }
-            });
-        });
-    </script>
+    <script src="config.js"></script>
+    <script src="form-utils.js"></script>
+    <script src="survey.js"></script>
 </body>
 
 </html>

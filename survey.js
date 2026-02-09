@@ -1,92 +1,83 @@
-/**
- * Survey Form Handler
- */
-
-// Get configuration
-if (typeof CONFIG === 'undefined') {
-    console.error('Configuration file (config.js) not loaded!');
-}
-
-const SURVEY_CONFIG = CONFIG?.sheets?.survey;
-
-if (!SURVEY_CONFIG) {
-    console.error('Survey Sheet configuration not found!');
-}
-
-document.getElementById('surveyForm').addEventListener('submit', async function (e) {
-    e.preventDefault();
-
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('surveyForm');
     const submitBtn = document.getElementById('submitBtn');
     const btnText = submitBtn.querySelector('.btn-text');
     const btnLoader = submitBtn.querySelector('.btn-loader');
-    const submitError = document.getElementById('submitError');
+    const careerSelect = document.getElementById('career');
+    const careerOtherGroup = document.getElementById('careerOtherGroup');
+    const careerOtherInput = document.getElementById('careerOther');
 
-    // Reset error
-    submitError.style.display = 'none';
-    submitError.textContent = '';
-
-    // Collect Data
-    const formData = new FormData(this);
-    const data = {
-        sheetName: 'survey', // Tells backend to use survey sheet
-        media: formData.getAll('media'),
-        career: formData.getAll('career').filter(v => v !== 'อื่นๆ').join(', '), // Join careers
-        careerOther: document.getElementById('careerOther').value,
-        format: formData.get('format'),
-        formatOther: document.getElementById('formatOther').value,
-        convenientTime: formData.get('convenientTime'),
-        suggestions: formData.get('suggestions')
-    };
-
-    // Validation (Simple)
-    if (data.media.length === 0) {
-        alert('กรุณาเลือกช่องทางที่ได้รับสื่ออย่างน้อย 1 ช่องทาง');
-        return;
-    }
-    if (!data.career && !data.careerOther) {
-        alert('กรุณาเลือกสายอาชีพที่สนใจ');
-        return;
-    }
-    if (!data.format && !data.formatOther) {
-        alert('กรุณาเลือกรูปแบบการอบรม');
-        return;
-    }
-
-    // Loading State
-    submitBtn.disabled = true;
-    btnText.style.display = 'none';
-    btnLoader.style.display = 'inline-block';
-
-    try {
-        const response = await fetch(SURVEY_CONFIG.scriptUrl, {
-            method: 'POST',
-            body: JSON.stringify(data),
-            mode: 'cors',
-            headers: {
-                // Use text/plain to avoid CORS preflight complexity
-                'Content-Type': 'text/plain;charset=utf-8'
-            }
-        });
-
-        if (!response.ok) throw new Error('Network response was not ok');
-
-        const result = await response.json();
-
-        if (result.success) {
-            // Show Success Modal
-            document.getElementById('successModal').classList.add('active');
-            this.reset();
+    // Show/Hide "Other" career input
+    careerSelect.addEventListener('change', () => {
+        if (careerSelect.value === 'Other') {
+            careerOtherGroup.style.display = 'block';
+            careerOtherInput.required = true;
         } else {
-            throw new Error(result.message || 'Unknown error');
+            careerOtherGroup.style.display = 'none';
+            careerOtherInput.required = false;
+        }
+    });
+
+    // Form Submission
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Basic Validation
+        const mediaChecked = form.querySelectorAll('input[name="media"]:checked').length > 0;
+        if (!mediaChecked) {
+            alert('กรุณาเลือกช่องทางที่รู้จักเราอย่างน้อย 1 ช่องทาง');
+            return;
         }
 
-    } catch (error) {
-        console.error('Error:', error);
-        submitError.textContent = 'เกิดข้อผิดพลาดในการส่งข้อมูล: ' + error.message;
-        submitError.style.display = 'block';
-    } finally {
-        submitBtn.disabled = false;
-        btnText.style.display = 'inline-block';
-        btnLoader.style.display = 'none';
-    }
+        // Set Loading State
+        submitBtn.disabled = true;
+        btnText.style.display = 'none';
+        btnLoader.style.display = 'inline-block';
+
+        try {
+            const formData = new FormData(form);
+
+            // Get Checkbox Values
+            const media = Array.from(form.querySelectorAll('input[name="media"]:checked'))
+                .map(cb => cb.value)
+                .join(', ');
+
+            const payload = {
+                sheetName: CONFIG.sheets["survey"].sheetName,
+                media: media,
+                career: formData.get('career'),
+                careerOther: formData.get('careerOther'),
+                format: formData.get('format'),
+                convenientTime: formData.get('convenientTime'),
+                suggestions: formData.get('suggestions'),
+                timestamp: new Date().toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' })
+            };
+
+            const response = await fetch(CONFIG.sheets["survey"].scriptUrl, {
+                method: 'POST',
+                mode: 'no-cors', // standard for Apps Script
+                cache: 'no-cache',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            // Show Success Modal
+            document.getElementById('successModal').classList.add('active');
+            form.reset();
+            careerOtherGroup.style.display = 'none';
+
+        } catch (error) {
+            console.error('Error:', error);
+            alert('เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองใหม่อีกครั้ง');
+        } finally {
+            submitBtn.disabled = false;
+            btnText.style.display = 'inline-block';
+            btnLoader.style.display = 'none';
+        }
+    });
+
+    // Close modal on outside click (optional, basic modal behavior)
+    document.querySelector('.modal-overlay').addEventListener('click', () => {
+        document.getElementById('successModal').classList.remove('active');
+    });
 });
