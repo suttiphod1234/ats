@@ -138,7 +138,7 @@ body {
 .nav-item-dropdown:hover .dropdown-menu {
     opacity: 1;
     visibility: visible;
-    top: 120%;
+    top: 100%;
     /* Slight offset animation */
 }
 
@@ -198,10 +198,65 @@ a.btn-secondary {
     transition: all var(--transition-normal);
     border: none;
     font-size: 1rem;
-    text-decoration: none;
-    display: inline-block;
 }
 
+/* New Nav Buttons */
+.btn-subscribe {
+    padding: 0.5rem 1.25rem;
+    border-radius: 2rem;
+    /* Rounded pill shape */
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.95rem;
+    background: transparent;
+    color: var(--text-white);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-subscribe:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--text-white);
+}
+
+.btn-register-nav {
+    padding: 0.5rem 1.25rem;
+    border-radius: 2rem;
+    /* Rounded pill shape */
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    border: none;
+    font-size: 0.95rem;
+    background: var(--primary-blue);
+    /* Fallback */
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    color: var(--text-white);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+}
+
+.btn-register-nav:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(124, 58, 237, 0.4);
+    filter: brightness(1.1);
+}
+
+/* Nav Actions Container */
+.nav-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+}
+
+/* Nav Buttons */
 .btn-primary,
 a.btn-primary {
     background: var(--gradient-primary);

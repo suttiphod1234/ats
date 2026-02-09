@@ -12,18 +12,39 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="cfo-form.css">
 </head>
 
 <body>
-    <!-- Header -->
-    <header class="header">
+    <!-- Navigation -->
+    <nav class="navbar">
         <div class="container">
-            <a href="index.html" class="logo">
-                <img src="logo_Logiskill_01.png" alt="LogiSkill" class="logo-image">
-            </a>
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <img src="logo_Logiskill_01.png" alt="LogiSkill" class="logo-image">
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="index.html">หน้าแรก</a></li>
+                    <li><a href="index.html#tracks">หลักสูตร</a></li>
+                    <li><a href="index.html#booking-calendar">ปฏิทินการอบรม</a></li>
+                    <li><a href="index.html#features">ฟีเจอร์</a></li>
+                    <li class="nav-item-dropdown">
+                        <a href="#certification">ใบรับรอง ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://e-report.dsd.go.th/certificateservice" target="_blank">ค้นหาวุฒิบัตร
+                                    (DSD)</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="index.html#corporate">องค์กร</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="#subscribe" class="btn-subscribe">รับข่าวสาร</a>
+                    <a href="index.html#tracks" class="btn-register-nav">ลงทะเบียน</a>
+                </div>
+            </div>
         </div>
-    </header>
+    </nav>
 
     <!-- Main Form -->
     <main class="main-content">
