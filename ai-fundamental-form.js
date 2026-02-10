@@ -56,7 +56,14 @@ form.addEventListener('submit', async function (e) {
 
         const result = await response.json();
 
-        if (result.success || result.status === 'success') {
+        // Very robust success detection
+        const isSuccess =
+            result.success === true ||
+            result.status === 'success' ||
+            result.message === 'ลงทะเบียนสำเร็จ' ||
+            (result.queueNumber !== undefined && result.queueNumber !== null);
+
+        if (isSuccess) {
             showSuccess(formData.fullName, result.queueNumber || '--');
             form.reset();
         } else {
