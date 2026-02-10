@@ -50,6 +50,8 @@ function doPost(e) {
         setupOnlineBookingHeaders(sheet);
       } else if (targetSheetName === 'Power BI') {
         setupPowerBiHeaders(sheet);
+      } else if (targetSheetName === 'ai fundamental') {
+        setupAiFundamentalHeaders(sheet);
       } else {
         setupGeneralHeaders(sheet);
       }
@@ -200,8 +202,33 @@ function doPost(e) {
         message: 'ลงทะเบียนสำเร็จ'
       })).setMimeType(ContentService.MimeType.JSON);
     }
+
+    // 6. AI FUNDAMENTAL REGISTRATION
+    else if (targetSheetName === 'ai fundamental') {
+      sheet.appendRow([
+        data.timestamp || new Date().toLocaleString('th-TH', { timeZone: 'Asia/Bangkok' }),
+        queueNumber,
+        data.fullName || '',
+        data.email || '',
+        data.phone || '',
+        data.lineId || '',
+        data.age || '',
+        data.occupation || '',
+        data.education || '',
+        data.company || '',
+        data.province || '',
+        data.district || '',
+        data.course || 'AI Fundamentals'
+      ]);
+      
+      return ContentService.createTextOutput(JSON.stringify({
+        success: true,
+        queueNumber: queueNumber,
+        message: 'ลงทะเบียนสำเร็จ'
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
     
-    // 6. GENERAL / LEGACY REGISTRATION (Fallback)
+    // 7. GENERAL / LEGACY REGISTRATION (Fallback)
     else {
       const courses = Array.isArray(data.courses) ? data.courses.join(', ') : (data.course || '');
       const sessions = Array.isArray(data.sessions) ? data.sessions.join(', ') : (data.session || '');
@@ -319,6 +346,11 @@ function setupOnlineBookingHeaders(sheet) {
 function setupPowerBiHeaders(sheet) {
   const headers = ['Timestamp', 'Queue Number', 'ชื่อ-นามสกุล', 'แผนก/ฝ่าย', 'รหัสพนักงาน', 'อีเมลบริษัท', 'เบอร์โทร', 'หลักสูตร'];
   appendHeaders(sheet, headers, '#f2c811'); // Yellow color for Power BI
+}
+
+function setupAiFundamentalHeaders(sheet) {
+  const headers = ['Timestamp', 'Queue Number', 'ชื่อ-นามสกุล', 'อีเมล', 'มือถือ', 'Line ID', 'อายุ', 'อาชีพ', 'ระดับการศึกษา', 'หน่วยงาน', 'จังหวัด', 'อำเภอ/เขต', 'หลักสูตร'];
+  appendHeaders(sheet, headers, '#4a148c'); // Deep Purple for AI Fundamental
 }
 
 function createCalendarEvent(data) {
