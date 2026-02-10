@@ -21,6 +21,12 @@ const CONFIG = {
             scriptUrl: 'https://script.google.com/macros/s/AKfycbxZ5_Q5v78VJyFNdHqCkziUViT9reSZp0058iAPFBCcjNbgb4S-b04qNR5FU5nXik7e/exec',
             sheetName: 'ai logistics'
         },
+        // AI Fundamentals registration form (New)
+        aiFundamental: {
+            id: '1i_Ve9Rg3dbyoxbbhwV_qjAStw58F-dpkiC95SVgEv9I',
+            scriptUrl: 'https://script.google.com/macros/s/AKfycbxZ5_Q5v78VJyFNdHqCkziUViT9reSZp0058iAPFBCcjNbgb4S-b04qNR5FU5nXik7e/exec',
+            sheetName: 'ai fundamental'
+        },
         // Learner Survey Form
         survey: {
             id: '1i_Ve9Rg3dbyoxbbhwV_qjAStw58F-dpkiC95SVgEv9I',

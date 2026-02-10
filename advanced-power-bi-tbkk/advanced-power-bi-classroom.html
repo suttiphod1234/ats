@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Classroom - Advanced Analyzing Data With Power BI">
+    <title>Classroom - Advanced Power BI | LogiSkill</title>
+    <link rel="icon" type="image/png" href="../imag/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sarabun:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="advanced-power-bi-classroom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="classroom-header">
+        <div class="header-left">
+            <button class="mobile-nav-toggle" id="mobileNavToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a href="#" class="logo" id="classroomHome">
+                <img src="../logo_Logiskill_01.png" alt="LogiSkill" class="logo-image">
+            </a>
+            <div class="course-title-badge">
+                <i class="fas fa-chart-bar"></i> Advanced Power BI (TBKK)
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="user-profile">
+                <span>สวัสดี, คุณสมชาย (TBKK)</span>
+                <div class="user-avatar">S</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="classroom-container">
+        <!-- Sidebar -->
+        <aside class="course-sidebar" id="courseSidebar">
+            <!-- Day 1 -->
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">Day 1: 17 ก.พ. 2569</div>
+                <ul class="module-list">
+                    <li class="module-item"><a href="#" class="module-link active" data-target="module-1-1"><i
+                                class="far fa-circle"></i> 1.1 Data Model Review</a></li>
+                    <li class="module-item"><a href="#" class="module-link" data-target="module-1-2"><i
+                                class="far fa-circle"></i> 1.2 Advanced DAX I</a></li>
+                    <li class="module-item"><a href="#" class="module-link" data-target="module-1-3"><i
+                                class="far fa-circle"></i> 1.3 Advanced DAX II</a></li>
+                    <li class="module-item"><a href="#" class="module-link" data-target="module-1-4"><i
+                                class="far fa-circle"></i> 1.4 Time Intelligence</a></li>
+                </ul>
+            </div>
+            <!-- Day 2 -->
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">Day 2: 18 ก.พ. 2569</div>
+                <ul class="module-list">
+                    <li class="module-item"><a href="#" class="module-link" data-target="module-2-1"><i
+                                class="far fa-circle"></i> 2.1 Pro Data Model</a></li>
+                    <li class="module-item"><a href="#" class="module-link" data-target="module-2-2"><i
+                                class="far fa-circle"></i> 2.2 Interactive Dashboard I</a></li>
+                    <li class="module-item"><a href="#" class="module-link" data-target="module-2-3"><i
+                                class="far fa-circle"></i> 2.3 Interactive Dashboard II</a></li>
+                    <li class="module-item"><a href="#" class="module-link" data-target="module-2-4"><i
+                                class="far fa-circle"></i> 2.4 Interactive Visuals</a></li>
+                </ul>
+            </div>
+            <!-- Day 3 -->
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">Day 3: 19 ก.พ. 2569</div>
+                <ul class="module-list">
+                    <li class="module-item"><a href="#" class="module-link" data-target="module-3-1"><i
+                                class="far fa-circle"></i> 3.1 Recap Dynamic Visuals</a></li>
+                    <li class="module-item"><a href="#" class="module-link" data-target="module-3-2"><i
+                                class="far fa-circle"></i> 3.2 Advanced Connectivity</a></li>
+                    <li class="module-item"><a href="#" class="module-link" data-target="module-3-3"><i
+                                class="far fa-circle"></i> 3.3 Auto Refresh Setup</a></li>
+                    <li class="module-item"><a href="#" class="module-link" data-target="module-3-4"><i
+                                class="far fa-circle"></i> 3.4 Power BI Service</a></li>
+                    <li class="module-item"><a href="#" class="module-link" data-target="module-3-5"><i
+                                class="far fa-circle"></i> 3.5 TBKK Workshop</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="course-content-area">
+            <div class="content-wrapper">
+
+                <!-- Course Index (Table of Contents) -->
+                <div id="module-index" class="course-module active">
+                    <div class="index-container">
+                        <div class="index-title-group">
+                            <h1>สารบัญหลักสูตร</h1>
+                            <p>Advanced Power BI สำหรับอุตสาหกรรมชิ้นส่วนยานยนต์ (TBKK)</p>
+                        </div>
+
+                        <div class="index-grid">
+                            <!-- Day 1 -->
+                            <div class="day-column">
+                                <div class="day-header">
+                                    <h2>Day 1</h2>
+                                    <div class="day-date">อังคารที่ 17 ก.พ. 2569</div>
+                                </div>
+                                <a href="#" class="topic-card" data-target="module-1-1">
+                                    <div class="topic-time"><i class="far fa-clock"></i> 09:00 - 10:30</div>
+                                    <div class="topic-title">ทบทวนพื้นฐานและการวางโครงสร้างข้อมูล</div>
+                                    <div class="topic-desc">Star Schema Architecture
+                                        และการเตรียมข้อมูลให้พร้อมสำหรับระดับสูง</div>
+                                    <i class="fas fa-database topic-icon"></i>
+                                </a>
+                                <a href="#" class="topic-card" data-target="module-1-2">
+                                    <div class="topic-time"><i class="far fa-clock"></i> 10:45 - 12:15</div>
+                                    <div class="topic-title">เทคนิคการเขียนสูตร DAX ขั้นสูง - ส่วนที่ 1</div>
+                                    <div class="topic-desc">เรียนรู้อาการ CALCULATE และการเปลี่ยน Filter Context
+                                        ที่ซับซ้อน</div>
+                                    <i class="fas fa-calculator topic-icon"></i>
+                                </a>
+                                <a href="#" class="topic-card" data-target="module-1-3">
+                                    <div class="topic-time"><i class="far fa-clock"></i> 13:15 - 14:45</div>
+                                    <div class="topic-title">เทคนิคการเขียนสูตร DAX ขั้นสูง - ส่วนที่ 2</div>
+                                    <div class="topic-desc">การใช้ Variables และ Iterators (SUMX, AVERAGEX)
+                                        เพื่อความแม่นยำ</div>
+                                    <i class="fas fa-microchip topic-icon"></i>
+                                </a>
+                                <a href="#" class="topic-card" data-target="module-1-4">
+                                    <div class="topic-time"><i class="far fa-clock"></i> 15:00 - 16:30</div>
+                                    <div class="topic-title">การวิเคราะห์ข้อมูลตามช่วงเวลา (Time Intelligence)</div>
+                                    <div class="topic-desc">วิเคราะห์ YoY, MTD, YTD สำหรับยอดผลิตและประสิทธิภาพ</div>
+                                    <i class="fas fa-history topic-icon"></i>
+                                </a>
+                            </div>
+
+                            <!-- Day 2 -->
+                            <div class="day-column">
+                                <div class="day-header">
+                                    <h2>Day 2</h2>
+                                    <div class="day-date">พุธที่ 18 ก.พ. 2569</div>
+                                </div>
+                                <a href="#" class="topic-card" data-target="module-2-1">
+                                    <div class="topic-time"><i class="far fa-clock"></i> 09:00 - 11:00</div>
+                                    <div class="topic-title">การออกแบบ Data Model ระดับมืออาชีพ</div>
+                                    <div class="topic-desc">Best Practices สำหรับโมเดลขนาดใหญ่และความเร็วในการประมวลผล
+                                    </div>
+                                    <i class="fas fa-project-diagram topic-icon"></i>
+                                </a>
+                                <a href="#" class="topic-card" data-target="module-2-2">
+                                    <div class="topic-time"><i class="far fa-clock"></i> 11:15 - 12:15</div>
+                                    <div class="topic-title">การสร้าง Dashboard แบบ Interactive และมืออาชีพ</div>
+                                    <div class="topic-desc">เทคนิคการวาง Layout และการเลือกกราฟที่ตอบโจทย์ผู้บริหาร
+                                    </div>
+                                    <i class="fas fa-layout topic-icon"></i>
+                                </a>
+                                <a href="#" class="topic-card" data-target="module-2-3">
+                                    <div class="topic-time"><i class="far fa-clock"></i> 13:15 - 15:15</div>
+                                    <div class="topic-title">เจาะลึกการสร้าง Dashboard</div>
+                                    <div class="topic-desc">Workshop สร้างรายงาน OEE และ Real-time Production Dashboard
+                                    </div>
+                                    <i class="fas fa-chart-pie topic-icon"></i>
+                                </a>
+                                <a href="#" class="topic-card" data-target="module-2-4">
+                                    <div class="topic-time"><i class="far fa-clock"></i> 15:30 - 17:00</div>
+                                    <div class="topic-title">เทคนิค Interactive Visuals</div>
+                                    <div class="topic-desc">การใช้ Bookmark, Drillthrough, และ Tooltip ขั้นสูง</div>
+                                    <i class="fas fa-mouse-pointer topic-icon"></i>
+                                </a>
+                            </div>
+
+                            <!-- Day 3 -->
+                            <div class="day-column">
+                                <div class="day-header">
+                                    <h2>Day 3</h2>
+                                    <div class="day-date">พฤหัสบดีที่ 19 ก.พ. 2569</div>
+                                </div>
+                                <a href="#" class="topic-card" data-target="module-3-1">
+                                    <div class="topic-time"><i class="far fa-clock"></i> 09:00 - 09:30</div>
+                                    <div class="topic-title">สรุปเทคนิค Dynamic Visuals</div>
+                                    <div class="topic-desc">ทบทวนการสร้างรายงานที่ปรับเปลี่ยนตามการเลือกของผู้ใช้</div>
+                                    <i class="fas fa-sync topic-icon"></i>
+                                </a>
+                                <a href="#" class="topic-card" data-target="module-3-2">
+                                    <div class="topic-time"><i class="far fa-clock"></i> 09:30 - 11:00</div>
+                                    <div class="topic-title">การเชื่อมต่อข้อมูลขั้นสูง</div>
+                                    <div class="topic-desc">เทคนิคการเชื่อมต่อ Web, API และการใช้ Dataflow
+                                        เพื่อรวมศูนย์ข้อมูล</div>
+                                    <i class="fas fa-cloud-download-alt topic-icon"></i>
+                                </a>
+                                <a href="#" class="topic-card" data-target="module-3-3">
+                                    <div class="topic-time"><i class="far fa-clock"></i> 11:15 - 12:15</div>
+                                    <div class="topic-title">การตั้งค่า Refresh ข้อมูลอัตโนมัติ</div>
+                                    <div class="topic-desc">การใช้ Gateway และ Incremental Refresh สำหรับข้อมูลขนาดใหญ่
+                                    </div>
+                                    <i class="fas fa-bolt topic-icon"></i>
+                                </a>
+                                <a href="#" class="topic-card" data-target="module-3-4">
+                                    <div class="topic-time"><i class="far fa-clock"></i> 13:15 - 14:45</div>
+                                    <div class="topic-title">Power BI Service และการแชร์ข้อมูล</div>
+                                    <div class="topic-desc">จัดการ Workspace, App และการเผยแพร่รายงานสู่องค์กร</div>
+                                    <i class="fas fa-share-alt topic-icon"></i>
+                                </a>
+                                <a href="#" class="topic-card" data-target="module-3-5">
+                                    <div class="topic-time"><i class="far fa-clock"></i> 15:00 - 16:30</div>
+                                    <div class="topic-title">Workshop กรณีศึกษา (Automotive)</div>
+                                    <div class="topic-desc">
+                                        ลงมือปฏิบัติจริงผ่านแบบฝึกหัดรวมเพื่อประเมินผลการวิเคราะห์ข้อมูล</div>
+                                    <i class="fas fa-tools topic-icon"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Day 1 Modules -->
+                <!-- 1.1 -->
+                <div id="module-1-1" class="course-module">
+                    <div class="module-header">
+                        <div class="module-breadcrumb">Day 1: 09:00 - 10:30 (1.5 ชม.)</div>
+                        <h1 class="module-title">ทบทวนพื้นฐานและการวางโครงสร้างข้อมูล</h1>
+                    </div>
+                    <div class="content-tabs">
+                        <button class="tab-btn active" onclick="switchTab(event, '1-1-p')"><i
+                                class="fas fa-desktop"></i> เนื้อหา</button>
+                        <button class="tab-btn" onclick="switchTab(event, '1-1-e')"><i class="fas fa-code"></i>
+                            ตัวอย่าง</button>
+                        <button class="tab-btn" onclick="switchTab(event, '1-1-q')"><i
+                                class="fas fa-question-circle"></i> แบบทดสอบ</button>
+                    </div>
+                    <div id="1-1-p" class="tab-content active">
+                        <div class="slide-viewer" id="slideViewer11">
+                            <div class="slides-container">
+                                <!-- Slide 1 -->
+                                <div class="slide active">
+                                    <h2 class="slide-title">ทบทวนการสร้าง Data Model และ DAX พื้นฐาน</h2>
+                                    <p class="slide-subtitle">รากฐานสำคัญสำหรับการวิเคราะห์ระดับสูง</p>
+                                    <div class="slide-content">
+                                        <p>ชื่อผู้สอน / หน่วยงาน</p>
+                                        <p>วันที่อบรม</p>
+                                    </div>
+                                </div>
+                                <!-- Slide 2 -->
+                                <div class="slide">
+                                    <h2 class="slide-title">วัตถุประสงค์การเรียนรู้</h2>
+                                    <div class="slide-content">
+                                        <ul class="slide-list">
+                                            <li>ออกแบบ Data Model ให้มีประสิทธิภาพสูงสุด (Star Schema)</li>
+                                            <li>เข้าใจหลักการทำงานของ DAX Engine และ Context</li>
+                                            <li>สร้าง Measure พื้นฐานที่ถูกต้องและรวดเร็ว</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Slide 3 -->
+                                <div class="slide">
+                                    <h2 class="slide-title">Data Model Design: Star Schema</h2>
+                                    <div class="slide-content">
+                                        <p>แยกข้อมูลตามหน้าที่เพื่อลดความซ้ำซ้อน</p>
+                                        <ul class="slide-list">
+                                            <li><strong>Fact Table:</strong> เก็บตัวเลข (ยอดผลิต, ยอดขาย)</li>
+                                            <li><strong>Dimension Table:</strong> เก็บคำอธิบาย (สินค้า, วันที่, พนักงาน)
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Slide 4 -->
+                                <div class="slide">
+                                    <h2 class="slide-title">ทำไมต้อง Star Schema?</h2>
+                                    <div class="slide-content">
+                                        <ul class="slide-list">
+                                            <li><strong>Performance:</strong> ประมวลผลข้อมูลนับล้านแถวได้ในเสี้ยววินาที
+                                            </li>
+                                            <li><strong>Simplicity:</strong> ช่วยให้การเขียน DAX ง่ายขึ้นและไม่ซับซ้อน
+                                            </li>
+                                            <li><strong>Scalability:</strong> รองรับการเพิ่มเงื่อนไขการวิเคราะห์ในอนาคต
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Slide 5 -->
+                                <div class="slide">
+                                    <h2 class="slide-title">Relationships & Filtering</h2>
+                                    <div class="slide-content">
+                                        <p>กฎเหล็กของการเชื่อมต่อตาราง</p>
+                                        <ul class="slide-list">
+                                            <li>ใช้ <strong>One-to-Many (1:*)</strong> เป็นหลักเสมอ</li>
+                                            <li><strong>Single Direction Filtering</strong> ดีกว่า Both Direction</li>
+                                            <li>ห้ามเชื่อม Many-to-Many โดยไม่จำเป็น</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Slide 6 -->
+                                <div class="slide">
+                                    <h2 class="slide-title">DAX Context: หัวใจของการคำนวณ</h2>
+                                    <div class="slide-content">
+                                        <table class="slide-table">
+                                            <tr>
+                                                <th>Context</th>
+                                                <th>ลักษณะการทำงาน</th>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Filter Context</strong></td>
+                                                <td>คำนวณตามการกรองของ Slicer หรือ Visual</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Row Context</strong></td>
+                                                <td>คำนวณทีละแถว (เช่น ใน Calculated Column)</td>
+                                            </tr>
+                                        </table>
+                                        <div class="highlight-box">การเข้าใจ Context ช่วยให้ตัวเลขในรายงานแม่นยำ 100%
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Slide 7 -->
+                                <div class="slide">
+                                    <h2 class="slide-title">Measure vs Calculated Column</h2>
+                                    <div class="slide-content">
+                                        <p>เลือกเครื่องมือให้เหมาะกับงาน</p>
+                                        <ul class="slide-list">
+                                            <li><strong>Measure:</strong> คำนวณเบื้องหลัง (แนะนำ) ไม่กินเนื้อที่ไฟล์
+                                            </li>
+                                            <li><strong>Calculated Column:</strong> สร้างแถวใหม่ในตาราง
+                                                ใช้ได้น้อยลงในระดับสูง</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Slide 8 -->
+                                <div class="slide">
+                                    <h2 class="slide-title">Essential DAX Functions</h2>
+                                    <div class="slide-content">
+                                        <p>ฟังก์ชันที่ต้องมีติดตัว</p>
+                                        <ul class="slide-list">
+                                            <li><strong>SUM / AVERAGE / COUNT:</strong> พื้นฐานการรวมกลุ่มข้อมูล</li>
+                                            <li><strong>CALCULATE:</strong> ราชาของ DAX ใช้เปลี่ยนมุมมองการคำนวณ</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Slide 9 -->
+                                <div class="slide">
+                                    <h2 class="slide-title">ข้อควรระวัง (Common Mistakes)</h2>
+                                    <div class="slide-content">
+                                        <ul class="slide-list">
+                                            <li>การใช้ Flat Table ตารางเดียวที่ใหญ่เกินไป</li>
+                                            <li>ใช้ Calculated Column ทุกอย่าง (ทำให้ไฟล์อืด)</li>
+                                            <li>ไม่สร้าง Date Table แยกต่างหาก</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Slide 10 -->
+                                <div class="slide">
+                                    <h2 class="slide-title">บทสรุปและเตรียมความพร้อม</h2>
+                                    <div class="slide-content">
+                                        <p>พื้นฐาน Data Model ที่ดี คือจุดเริ่มต้นของ Dashboard ที่ทรงพลัง</p>
+                                        <div class="highlight-box">สไลด์ถัดไป: เจาะลึก CALCULATE ขั้นสูง</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide-controls">
+                                <button class="slide-btn" id="prevSlide"><i class="fas fa-chevron-left"></i>
+                                    ย้อนกลับ</button>
+                                <span class="slide-num" id="slideNum">Slide 1 / 10</span>
+                                <button class="slide-btn" id="nextSlide">ถัดไป <i
+                                        class="fas fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="1-1-e" class="tab-content">
+                        <div class="example-block">
+                            <p>สรุป: การใช้ Integer Key (0, 1, 2) เชื่อมตารางเร็วกว่า String (Text) 30-50%</p>
+                            <div class="code-content">Fact_Production[MachineID] <i class="fas fa-link"></i>
+                                Dim_Machine[MachineID]</div>
+                        </div>
+                    </div>
+                    <div id="1-1-q" class="tab-content">
+                        <div class="quiz-card">
+                            <div class="quiz-question">1. โครงสร้างตารางที่ดีที่สุดใน Power BI คือ?</div><label
+                                class="quiz-option"><input type="radio" name="q111"> Star Schema</label><label
+                                class="quiz-option"><input type="radio" name="q111"> Flat Table</label>
+                        </div>
+                        <div class="quiz-card">
+                            <div class="quiz-question">2. Fact Table ควรเก็บอะไร?</div><label class="quiz-option"><input
+                                    type="radio" name="q112"> ยอดการผลิต</label><label class="quiz-option"><input
+                                    type="radio" name="q112"> ชื่อแผนก</label>
+                        </div>
+                        <div class="quiz-card">
+                            <div class="quiz-question">3. ความสัมพันธ์ที่แนะนำ?</div><label class="quiz-option"><input
+                                    type="radio" name="q113"> One-to-Many</label><label class="quiz-option"><input
+                                    type="radio" name="q113"> Many-to-Many</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1.2 -->
+                <div id="module-1-2" class="course-module">
+                    <div class="module-header">
+                        <div class="module-breadcrumb">Day 1: 10:45 - 12:15</div>
+                        <h1 class="module-title">Advanced DAX I</h1>
+                    </div>
+                    <div class="content-tabs">
+                        <button class="tab-btn active" onclick="switchTab(event, '1-2-p')">เนื้อหา</button>
+                        <button class="tab-btn" onclick="switchTab(event, '1-2-e')">ตัวอย่าง</button>
+                        <button class="tab-btn" onclick="switchTab(event, '1-2-q')">แบบทดสอบ</button>
+                    </div>
+                    <div id="1-2-p" class="tab-content active">
+                        <div class="slide-card">
+                            <h3>CALCULATE Function</h3>
+                            <p>ใช้ในการเปลี่ยน Filter Context เช่น การหาผลรวมเฉพาะเครื่องจักร CNC</p>
+                        </div>
+                    </div>
+                    <div id="1-2-e" class="tab-content">
+                        <div class="example-block">
+                            <div class="code-content">CNC_Production = CALCULATE([Total], 'Machine'[Type] = "CNC")</div>
+                        </div>
+                    </div>
+                    <div id="1-2-q" class="tab-content">
+                        <div class="quiz-card">
+                            <div class="quiz-question">1. CALCULATE ใช้ทำอะไร?</div><label class="quiz-option"><input
+                                    type="radio" name="q121"> เปลี่ยน Filter Context</label>
+                        </div>
+                        <div class="quiz-card">
+                            <div class="quiz-question">2. ALL() ใช้ทำอะไร?</div><label class="quiz-option"><input
+                                    type="radio" name="q122"> ล้าง Filter</label>
+                        </div>
+                        <div class="quiz-card">
+                            <div class="quiz-question">3. ข้อดีของ DAX Measure?</div><label class="quiz-option"><input
+                                    type="radio" name="q123"> คำนวณตามการเลือกของผู้ใช้</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1.3 -->
+                <div id="module-1-3" class="course-module">
+                    <div class="module-header">
+                        <div class="module-breadcrumb">Day 1: 13:15 - 14:45</div>
+                        <h1 class="module-title">Advanced DAX II</h1>
+                    </div>
+                    <div class="content-tabs">
+                        <button class="tab-btn active" onclick="switchTab(event, '1-3-p')">เนื้อหา</button>
+                        <button class="tab-btn" onclick="switchTab(event, '1-3-e')">ตัวอย่าง</button>
+                        <button class="tab-btn" onclick="switchTab(event, '1-3-q')">แบบทดสอบ</button>
+                    </div>
+                    <div id="1-3-p" class="tab-content active">
+                        <div class="slide-card">
+                            <h3>Variables & Iterators</h3>
+                            <p>ใช้ VAR เพื่อเก็บค่าเเละ SUMX เพื่อคำนวณระดับแถว</p>
+                        </div>
+                    </div>
+                    <div id="1-3-e" class="tab-content">
+                        <div class="example-block">
+                            <div class="code-content">Profit = VAR Cost = [TotalCost] RETURN [Revenue] - Cost</div>
+                        </div>
+                    </div>
+                    <div id="1-3-q" class="tab-content">
+                        <div class="quiz-card">
+                            <div class="quiz-question">1. VAR ใช้ทำอะไร?</div><label class="quiz-option"><input
+                                    type="radio" name="q131"> ประสิทธิภาพดีขึ้น</label>
+                        </div>
+                        <div class="quiz-card">
+                            <div class="quiz-question">2. SUMX คือ?</div><label class="quiz-option"><input type="radio"
+                                    name="q132"> Iterator Function</label>
+                        </div>
+                        <div class="quiz-card">
+                            <div class="quiz-question">3. RETURN คือ?</div><label class="quiz-option"><input
+                                    type="radio" name="q133"> คืนค่าจากตัวแปร</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1.4 -->
+                <div id="module-1-4" class="course-module">
+                    <div class="module-header">
+                        <div class="module-breadcrumb">Day 1: 15:00 - 16:30</div>
+                        <h1 class="module-title">Time Intelligence</h1>
+                    </div>
+                    <div class="content-tabs">
+                        <button class="tab-btn active" onclick="switchTab(event, '1-4-p')">เนื้อหา</button>
+                        <button class="tab-btn" onclick="switchTab(event, '1-4-e')">ตัวอย่าง</button>
+                        <button class="tab-btn" onclick="switchTab(event, '1-4-q')">แบบทดสอบ</button>
+                    </div>
+                    <div id="1-4-p" class="tab-content active">
+                        <div class="slide-card">
+                            <h3>Year over Year (YoY)</h3>
+                            <p>การเปรียบเทียบยอดผลิตปีนี้กับปีที่เเล้ว</p>
+                        </div>
+                    </div>
+                    <div id="1-4-e" class="tab-content">
+                        <div class="example-block">
+                            <div class="code-content">LastYear = CALCULATE([Total], SAMEPERIODLASTYEAR('Date'[Date]))
+                            </div>
+                        </div>
+                    </div>
+                    <div id="1-4-q" class="tab-content">
+                        <div class="quiz-card">
+                            <div class="quiz-question">1. SAMEPERIODLASTYEAR คือ?</div><label class="quiz-option"><input
+                                    type="radio" name="q141"> เทียบปีที่แล้ว</label>
+                        </div>
+                        <div class="quiz-card">
+                            <div class="quiz-question">2. ต้องมีตารางอะไร?</div><label class="quiz-option"><input
+                                    type="radio" name="q142"> Date Table</label>
+                        </div>
+                        <div class="quiz-card">
+                            <div class="quiz-question">3. TOTALYTD คือ?</div><label class="quiz-option"><input
+                                    type="radio" name="q143"> ยอดสะสมต้นปี</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Day 2 Modules -->
+                <!-- 2.1 -->
+                <div id="module-2-1" class="course-module">
+                    <div class="module-header">
+                        <div class="module-breadcrumb">Day 2: 09:00 - 11:00</div>
+                        <h1 class="module-title">Pro Data Model Design</h1>
+                    </div>
+                    <div class="content-tabs">
+                        <button class="tab-btn active" onclick="switchTab(event, '2-1-p')">เนื้อหา</button>
+                        <button class="tab-btn" onclick="switchTab(event, '2-1-e')">ตัวอย่าง</button>
+                        <button class="tab-btn" onclick="switchTab(event, '2-1-q')">แบบทดสอบ</button>
+                    </div>
+                    <div id="2-1-p" class="tab-content active">
+                        <div class="slide-card">
+                            <h3>Relationship Optimization</h3>
+                            <p>การวาง Cardinality (1:*, *:*) ให้ถูกต้อง</p>
+                        </div>
+                    </div>
+                    <div id="2-1-e" class="tab-content">
+                        <div class="example-block">
+                            <p>ใช้ 1:Many เสมอเพื่อลดความซับซ้อน</p>
+                        </div>
+                    </div>
+                    <div id="2-1-q" class="tab-content">
+                        <div class="quiz-card">
+                            <div class="quiz-question">1. Cardinality ที่ดีที่สุด?</div><label
+                                class="quiz-option"><input type="radio" name="q211"> 1:Many</label>
+                        </div>
+                        <div class="quiz-card">
+                            <div class="quiz-question">2. Bi-directional ดีไหม?</div><label class="quiz-option"><input
+                                    type="radio" name="q212"> ไม่แนะนำ</label>
+                        </div>
+                        <div class="quiz-card">
+                            <div class="quiz-question">3. ห้ามมีอะไรในตาราง Date?</div><label class="quiz-option"><input
+                                    type="radio" name="q213"> ช่องว่าง (Gaps)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2.2 -->
+                <div id="module-2-2" class="course-module">
+                    <div class="module-header">
+                        <div class="module-breadcrumb">Day 2: 11:15 - 12:15</div>
+                        <h1 class="module-title">Interactive Dashboard I</h1>
+                    </div>
+                    <div class="content-tabs">
+                        <button class="tab-btn active" onclick="switchTab(event, '2-2-p')">เนื้อหา</button>
+                        <button class="tab-btn" onclick="switchTab(event, '2-2-e')">ตัวอย่าง</button>
+                        <button class="tab-btn" onclick="switchTab(event, '2-2-q')"> แบบทดสอบ</button>
+                    </div>
+                    <div id="2-2-p" class="tab-content active">
+                        <div class="slide-card">
+                            <h3>Slicers & Filters</h3>
+                            <p>การใช้ Slicer เเละ Filter Pane เพื่อควบคุมการแสดงผล</p>
+                        </div>
+                    </div>
+                    <div id="2-2-e" class="tab-content">
+                        <div class="example-block">
+                            <p>ใช้ Sync Slicer เพื่อกรองข้อมูลข้ามหน้า</p>
+                        </div>
+                    </div>
+                    <div id="2-2-q" class="tab-content">
+                        <div class="quiz-card">
+                            <div class="quiz-question">1. Slicer คือ?</div><label class="quiz-option"><input
+                                    type="radio" name="q221"> ตัวกรองบนหน้าจอ</label>
+                        </div>
+                        <div class="quiz-card">
+                            <div class="quiz-question">2. Sync Slicer คือ?</div><label class="quiz-option"><input
+                                    type="radio" name="q222"> กรองข้ามหน้า</label>
+                        </div>
+                        <div class="quiz-card">
+                            <div class="quiz-question">3. Visualization คือ?</div><label class="quiz-option"><input
+                                    type="radio" name="q223"> กราฟ</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2.3 -->
+                <div id="module-2-3" class="course-module">
+                    <div class="module-header">
+                        <div class="module-breadcrumb">Day 2: 13:15 - 15:15</div>
+                        <h1 class="module-title">Interactive Dashboard II</h1>
+                    </div>
+                    <div class="content-tabs">
+                        <button class="tab-btn active" onclick="switchTab(event, '2-3-p')">เนื้อหา</button>
+                        <button class="tab-btn" onclick="switchTab(event, '2-3-e')">ตัวอย่าง</button>
+                        <button class="tab-btn" onclick="switchTab(event, '2-3-q')"> แบบทดสอบ</button>
+                    </div>
+                    <div id="2-3-p" class="tab-content active">
+                        <div class="slide-card">
+                            <h3>Deep Dive Visuals</h3>
+                            <p>การสร้างกราฟที่ตอบโจทย์ธุรกิจ automotive (OEE, Scrap)</p>
+                        </div>
+                    </div>
+                    <div id="2-3-e" class="tab-content">
+                        <div class="example-block">
+                            <p>ตัวอย่าง: Pareto Chart สำหรับวิเคราะห์สาเหตุของ Scrap</p>
+                        </div>
+                    </div>
+                    <div id="2-3-q" class="tab-content">
+                        <div class="quiz-card">
+                            <div class="quiz-question">1. OEE ย่อมาจาก?</div><label class="quiz-option"><input
+                                    type="radio" name="q231"> Overall Equipment Effectiveness</label>
+                        </div>
+                        <div class="quiz-card">
+                            <div class="quiz-question">2. Pareto ใช้วิเคราะห์?</div><label class="quiz-option"><input
+                                    type="radio" name="q232"> สาเหตุหลัก</label>
+                        </div>
+                        <div class="quiz-card">
+                            <div class="quiz-question">3. Gauge Chart ใช้?</div><label class="quiz-option"><input
+                                    type="radio" name="q233"> วัดเป้าหมาย</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2.4 -->
+                <div id="module-2-4" class="course-module">
+                    <div class="module-header">
+                        <div class="module-breadcrumb">Day 2: 15:30 - 17:00</div>
+                        <h1 class="module-title">Interactive Visuals</h1>
+                    </div>
+                    <div class="content-tabs">
+                        <button class="tab-btn active" onclick="switchTab(event, '2-4-p')">เนื้อหา</button>
+                        <button class="tab-btn" onclick="switchTab(event, '2-4-e')">ตัวอย่าง</button>
+                        <button class="tab-btn" onclick="switchTab(event, '2-4-q')"> แบบทดสอบ</button>
+                    </div>
+                    <div id="2-4-p" class="tab-content active">
+                        <div class="slide-card">
+                            <h3>Bookmarks & Drillthrough</h3>
+                            <p>การทำปุ่มเปลี่ยนมุมมองเเละการเจาะลึกข้อมูล</p>
+                        </div>
+                    </div>
+                    <div id="2-4-e" class="tab-content">
+                        <div class="example-block">
+                            <p>สร้างปุ่ม Toggle ระหว่าง Table เเละ Chart</p>
+                        </div>
+                    </div>
+                    <div id="2-4-q" class="tab-content">
+                        <div class="quiz-card">
+                            <div class="quiz-question">1. Bookmark คือ?</div><label class="quiz-option"><input
+                                    type="radio" name="q241"> บันทึกสถานะหน้า</label>
+                        </div>
+                        <div class="quiz-card">
+                            <div class="quiz-question">2. Drillthrough คือ?</div><label class="quiz-option"><input
+                                    type="radio" name="q242"> เจาะลึกรายเครื่อง</label>
+                        </div>
+                        <div class="quiz-card">
+                            <div class="quiz-question">3. Selection Pane ใช้ทำอะไร?</div><label
+                                class="quiz-option"><input type="radio" name="q243"> ซ่อน/แสดงวัตถุ</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Day 3 Modules -->
+                <!-- 3.1 -->
+                <div id="module-3-1" class="course-module">
+                    <div class="module-header">
+                        <div class="module-breadcrumb">Day 3: 09:00 - 09:30</div>
+                        <h1 class="module-title">Recap Dynamic Visuals</h1>
+                    </div>
+                    <div class="content-tabs">
+                        <button class="tab-btn active" onclick="switchTab(event, '3-1-p')">เนื้อหา</button>
+                        <button class="tab-btn" onclick="switchTab(event, '3-1-e')">ตัวอย่าง</button>
+                        <button class="tab-btn" onclick="switchTab(event, '3-1-q')"> แบบทดสอบ</button>
+                    </div>
+                    <div id="3-1-p" class="tab-content active">
+                        <div class="slide-card">
+                            <h3>Dynamic Titles & Colors</h3>
+                            <p>การใช้ DAX เปลี่ยนชื่อหัวข้อเเละสีตามเงื่อนไข (Conditional Formatting)</p>
+                        </div>
+                    </div>
+                    <div id="3-1-e" class="tab-content">
+                        <div class="example-block">
+                            <div class="code-content">Color = IF([OEE] < 0.85, "Red" , "Green" )</div>
+                            </div>
+                        </div>
+                        <div id="3-1-q" class="tab-content">
+                            <div class="quiz-card">
+                                <div class="quiz-question">1. Dynamic Title ใช้?</div><label class="quiz-option"><input
+                                        type="radio" name="q311"> FX Button</label>
+                            </div>
+                            <div class="quiz-card">
+                                <div class="quiz-question">2. Conditional Formatting คือ?</div><label
+                                    class="quiz-option"><input type="radio" name="q312"> เปลี่ยนสีตามค่า</label>
+                            </div>
+                            <div class="quiz-card">
+                                <div class="quiz-question">3. หน้าตา Dashboard เปลี่ยนได้ไหม?</div><label
+                                    class="quiz-option"><input type="radio" name="q313"> ได้</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3.2 -->
+                    <div id="module-3-2" class="course-module">
+                        <div class="module-header">
+                            <div class="module-breadcrumb">Day 3: 09:30 - 11:00</div>
+                            <h1 class="module-title">Advanced Connectivity</h1>
+                        </div>
+                        <div class="content-tabs">
+                            <button class="tab-btn active" onclick="switchTab(event, '3-2-p')">เนื้อหา</button>
+                            <button class="tab-btn" onclick="switchTab(event, '3-2-e')">ตัวอย่าง</button>
+                            <button class="tab-btn" onclick="switchTab(event, '3-2-q')"> แบบทดสอบ</button>
+                        </div>
+                        <div id="3-2-p" class="tab-content active">
+                            <div class="slide-card">
+                                <h3>Web, API & Dataflows</h3>
+                                <p>การดึงข้อมูลจาก Cloud เเละการทำ Data Prep online</p>
+                            </div>
+                        </div>
+                        <div id="3-2-e" class="tab-content">
+                            <div class="example-block">
+                                <p>การเชื่อมต่อ SharePoint Folder เพื่อรวมไฟล์ Excel</p>
+                            </div>
+                        </div>
+                        <div id="3-2-q" class="tab-content">
+                            <div class="quiz-card">
+                                <div class="quiz-question">1. Dataflow คือ?</div><label class="quiz-option"><input
+                                        type="radio" name="q321"> ETL บน Cloud</label>
+                            </div>
+                            <div class="quiz-card">
+                                <div class="quiz-question">2. เชื่อม API ได้ไหม?</div><label class="quiz-option"><input
+                                        type="radio" name="q322"> ได้</label>
+                            </div>
+                            <div class="quiz-card">
+                                <div class="quiz-question">3. ข้อดีของ Dataflow?</div><label class="quiz-option"><input
+                                        type="radio" name="q323"> ใช้ข้อมูลซ้ำได้</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3.3 -->
+                    <div id="module-3-3" class="course-module">
+                        <div class="module-header">
+                            <div class="module-breadcrumb">Day 3: 11:15 - 12:15</div>
+                            <h1 class="module-title">Auto Refresh Setup</h1>
+                        </div>
+                        <div class="content-tabs"><button class="tab-btn active"
+                                onclick="switchTab(event, '3-3-p')">เนื้อหา</button><button class="tab-btn"
+                                onclick="switchTab(event, '3-3-q')">สอบ</button></div>
+                        <div id="3-3-p" class="tab-content active">
+                            <div class="slide-card">
+                                <h3>Scheduled Refresh</h3>
+                                <p>การตั้งเวลาอัปเดตข้อมูลอัตโนมัติ 8 ครั้งต่อวัน (Pro)</p>
+                            </div>
+                        </div>
+                        <div id="3-3-q" class="tab-content">
+                            <div class="quiz-card">
+                                <div class="quiz-question">1. Gateway ใช้สำหรับ?</div><label class="quiz-option"><input
+                                        type="radio" name="q331"> เชื่อมต่อ PC กับ Cloud</label>
+                            </div>
+                            <div class="quiz-card">
+                                <div class="quiz-question">2. Pro license refresh ได้กี่ครั้ง?</div><label
+                                    class="quiz-option"><input type="radio" name="q332"> 8 ครั้ง</label>
+                            </div>
+                            <div class="quiz-card">
+                                <div class="quiz-question">3. Incremental Refresh คือ?</div><label
+                                    class="quiz-option"><input type="radio" name="q333"> อัปเดตเฉพาะงานใหม่</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3.4 -->
+                    <div id="module-3-4" class="course-module">
+                        <div class="module-header">
+                            <div class="module-breadcrumb">Day 3: 13:15 - 14:45</div>
+                            <h1 class="module-title">Power BI Service</h1>
+                        </div>
+                        <div class="content-tabs"><button class="tab-btn active"
+                                onclick="switchTab(event, '3-4-p')">เนื้อหา</button><button class="tab-btn"
+                                onclick="switchTab(event, '3-4-q')">สอบ</button></div>
+                        <div id="3-4-p" class="tab-content active">
+                            <div class="slide-card">
+                                <h3>Workspaces & Apps</h3>
+                                <p>การแชร์รายงานให้ผู้บริหารฝ่ายผลิตดูผ่านมือถือ</p>
+                            </div>
+                        </div>
+                        <div id="3-4-q" class="tab-content">
+                            <div class="quiz-card">
+                                <div class="quiz-question">1. Workspace คือ?</div><label class="quiz-option"><input
+                                        type="radio" name="q341"> ห้องทำงานร่วมกัน</label>
+                            </div>
+                            <div class="quiz-card">
+                                <div class="quiz-question">2. App (Power BI) คือ?</div><label class="quiz-option"><input
+                                        type="radio" name="q342"> ชุดรายงานสำเร็จรูป</label>
+                            </div>
+                            <div class="quiz-card">
+                                <div class="quiz-question">3. แชร์ให้คนอื่นต้องมี?</div><label
+                                    class="quiz-option"><input type="radio" name="q343"> License Pro/Premium</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3.5 -->
+                    <div id="module-3-5" class="course-module">
+                        <div class="module-header">
+                            <div class="module-breadcrumb">Day 3: 15:00 - 16:30</div>
+                            <h1 class="module-title">TBKK Workshop</h1>
+                        </div>
+                        <div class="content-tabs"><button class="tab-btn active"
+                                onclick="switchTab(event, '3-5-p')">เนื้อหา</button></div>
+                        <div id="3-5-p" class="tab-content active">
+                            <div class="slide-card">
+                                <h3>Case Study Evaluation</h3>
+                                <p>ลงมือทำ Dashboard จากข้อมูลจริงในโรงงาน เพื่อประมวลผลลัพธ์</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+        </main>
+    </div>
+
+    <!-- Inline JS -->
+    <script>
+        function switchTab(event, tabId) {
+            const btn = event.currentTarget;
+            const container = btn.closest('.course-module');
+            container.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            container.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            btn.classList.add('active');
+        }
+
+        const mobileToggle = document.getElementById('mobileNavToggle');
+        const sidebar = document.getElementById('courseSidebar');
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('active');
+                const icon = mobileToggle.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+        }
+
+        const moduleLinks = document.querySelectorAll('.module-link, .topic-card');
+        moduleLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                // Remove active from sidebar links
+                document.querySelectorAll('.module-link').forEach(l => l.classList.remove('active'));
+
+                const targetId = link.getAttribute('data-target');
+                const sidebarLink = document.querySelector(`.module-link[data-target="${targetId}"]`);
+                if (sidebarLink) sidebarLink.classList.add('active');
+
+                // Switch visible module
+                document.querySelectorAll('.course-module').forEach(m => m.classList.remove('active'));
+                const targetModule = document.getElementById(targetId);
+                if (targetModule) targetModule.classList.add('active');
+
+                // Update breadcrumb and title for modules (but not for index)
+                if (targetId !== 'module-index') {
+                    const moduleName = link.querySelector('.topic-title')?.textContent || link.textContent.trim();
+                    const section = link.closest('.sidebar-section');
+                    const sectionTitle = section ? section.querySelector('.sidebar-section-title').textContent : 'Course Content';
+
+                    const titleEl = targetModule.querySelector('.module-title');
+                    const breadcrumbEl = targetModule.querySelector('.module-breadcrumb');
+
+                    if (titleEl && !titleEl.textContent.includes(moduleName)) titleEl.textContent = moduleName;
+                    if (breadcrumbEl && !breadcrumbEl.textContent.includes(sectionTitle)) breadcrumbEl.textContent = sectionTitle;
+                }
+
+                if (window.innerWidth < 1024) sidebar.classList.remove('active');
+                document.querySelector('.course-content-area').scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        // Classroom Logo / Home Logic
+        const classroomHome = document.getElementById('classroomHome');
+        if (classroomHome) {
+            classroomHome.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelectorAll('.module-link').forEach(l => l.classList.remove('active'));
+                document.querySelectorAll('.course-module').forEach(m => m.classList.remove('active'));
+                document.getElementById('module-index').classList.add('active');
+            });
+        }
+
+        // Slide Navigation Logic
+        function initSlideViewer(viewerId) {
+            const viewer = document.getElementById(viewerId);
+            if (!viewer) return;
+
+            const slides = viewer.querySelectorAll('.slide');
+            const prevBtn = viewer.querySelector('#prevSlide');
+            const nextBtn = viewer.querySelector('#nextSlide');
+            const numDisplay = viewer.querySelector('#slideNum');
+            let currentSlide = 0;
+
+            function updateSlides() {
+                slides.forEach((s, i) => {
+                    s.classList.toggle('active', i === currentSlide);
+                });
+                numDisplay.textContent = `Slide ${currentSlide + 1} / ${slides.length}`;
+                prevBtn.disabled = currentSlide === 0;
+                nextBtn.disabled = currentSlide === slides.length - 1;
+            }
+
+            prevBtn.addEventListener('click', () => {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updateSlides();
+                }
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (currentSlide < slides.length - 1) {
+                    currentSlide++;
+                    updateSlides();
+                }
+            });
+
+            updateSlides();
+        }
+
+        initSlideViewer('slideViewer11');
+    </script>
+</body>
+
+</html>
