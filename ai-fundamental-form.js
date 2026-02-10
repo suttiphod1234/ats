@@ -15,6 +15,7 @@ const btnText = submitBtn.querySelector('.btn-text');
 const btnLoader = submitBtn.querySelector('.btn-loader');
 const successModal = document.getElementById('successModal');
 const successNameSpan = document.getElementById('successName');
+const queueNumberSpan = document.getElementById('queueNumber');
 
 // Form Submission
 form.addEventListener('submit', async function (e) {
@@ -55,8 +56,8 @@ form.addEventListener('submit', async function (e) {
 
         const result = await response.json();
 
-        if (result.status === 'success') {
-            showSuccess(formData.fullName);
+        if (result.success || result.status === 'success') {
+            showSuccess(formData.fullName, result.queueNumber || '--');
             form.reset();
         } else {
             throw new Error(result.message || 'Submission failed');
@@ -76,8 +77,9 @@ function setLoading(isLoading) {
     btnLoader.style.display = isLoading ? 'inline' : 'none';
 }
 
-function showSuccess(name) {
+function showSuccess(name, queueNumber) {
     successNameSpan.textContent = name;
+    queueNumberSpan.textContent = queueNumber;
     successModal.classList.add('active');
     document.body.style.overflow = 'hidden';
 }
