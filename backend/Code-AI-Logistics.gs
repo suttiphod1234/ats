@@ -11,13 +11,18 @@
  * 3. Deploy as Web App -> Access: Everyone -> Update config.js with the ONE resulting URL.
  */
 
-const SPREADSHEET_ID = '1i_Ve9Rg3dbyoxbbhwV_qjAStw58F-dpkiC95SVgEv9I';
+const SPREADSHEET_ID = '1w5TafBBNM0bw_IbZtyYtiDSgmft1AxkJTNsLZ-EM9jg';
 
 function doPost(e) {
   try {
     // Check if event object and postData exist (avoids error when run manually from editor)
     if (!e || !e.postData || !e.postData.contents) {
-      Logger.log('Error: doPost called without valid event data.');
+      Logger.log('----------------------------------------------------');
+      Logger.log('⚠️ ข้อความนี้เป็นปกติ: คุณไม่ได้เลือก "Run" ผิดฟังก์ชัน');
+      Logger.log('ฟังก์ชัน doPost ต้องถูกเรียกใช้ผ่านหน้าเว็บ (Web App URL) เท่านั้น');
+      Logger.log('หากต้องการทดสอบจากหน้าแก้ไขโค้ด ให้เลือกฟังก์ชัน "testPost" แทน');
+      Logger.log('----------------------------------------------------');
+      
       return ContentService.createTextOutput(JSON.stringify({
         success: false,
         message: 'No data received. (หมายเหตุ: หากคุณกด Run จาก Editor จะขึ้นข้อความนี้เป็นปกติ กรุณาทดสอบผ่านหน้าเว็บครับ)'
@@ -374,4 +379,29 @@ function createCalendarEvent(data) {
     description: description,
     location: 'Online / LogiSkill Platform'
   });
+}
+
+/**
+ * ฟังก์ชันสำหรับทดสอบการทำงานจากภายใน Apps Script Editor
+ * ช่วยให้คุณทดสอบได้โดยไม่ต้องกดจากหน้าเว็บจริงๆ
+ */
+function testPost() {
+  const testData = {
+    fullName: "ทดสอบ ระบบ",
+    email: "test@example.com",
+    phone: "0812345678",
+    sheetName: "ai logistics", // ระบุชื่อซีตที่ต้องการทดสอบ
+    course: "AI FOR LOGISTICS (TEST)"
+  };
+  
+  const dummyEvent = {
+    postData: {
+      contents: JSON.stringify(testData)
+    }
+  };
+  
+  const result = doPost(dummyEvent);
+  Logger.log('--- ผลการทดสอบ ---');
+  Logger.log(result.getContent());
+  Logger.log('------------------');
 }

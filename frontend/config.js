@@ -11,38 +11,38 @@ const CONFIG = {
     sheets: {
         // General registration form (Air Freight, CFO, etc.)
         general: {
-            id: '1i_Ve9Rg3dbyoxbbhwV_qjAStw58F-dpkiC95SVgEv9I',
-            scriptUrl: 'https://script.google.com/macros/s/AKfycbzQNRa4fYum5_Y6UBipUIomOtD5vSDrtVc-1c6hcB8fKyr3-NJE224OU9fJMOitJ4S5/exec',
+            id: '1w5TafBBNM0bw_IbZtyYtiDSgmft1AxkJTNsLZ-EM9jg',
+            scriptUrl: 'https://script.google.com/macros/s/AKfycbxbb-Q3b8yqZFWt_Tc9fpPiVZKGhwiP2MBeWQPLI68ZHX0X_NQcCBcnKqUf1_zmceA4rg/exec',
             sheetName: 'ซีต1'
         },
         // AI FOR LOGISTICS registration form
         aiLogistics: {
-            id: '1i_Ve9Rg3dbyoxbbhwV_qjAStw58F-dpkiC95SVgEv9I',
-            scriptUrl: 'https://script.google.com/macros/s/AKfycbzQNRa4fYum5_Y6UBipUIomOtD5vSDrtVc-1c6hcB8fKyr3-NJE224OU9fJMOitJ4S5/exec',
+            id: '1w5TafBBNM0bw_IbZtyYtiDSgmft1AxkJTNsLZ-EM9jg',
+            scriptUrl: 'https://script.google.com/macros/s/AKfycbxbb-Q3b8yqZFWt_Tc9fpPiVZKGhwiP2MBeWQPLI68ZHX0X_NQcCBcnKqUf1_zmceA4rg/exec',
             sheetName: 'ai logistics'
         },
         // AI Fundamentals registration form (New)
         aiFundamental: {
-            id: '1i_Ve9Rg3dbyoxbbhwV_qjAStw58F-dpkiC95SVgEv9I',
-            scriptUrl: 'https://script.google.com/macros/s/AKfycbzQNRa4fYum5_Y6UBipUIomOtD5vSDrtVc-1c6hcB8fKyr3-NJE224OU9fJMOitJ4S5/exec',
+            id: '1w5TafBBNM0bw_IbZtyYtiDSgmft1AxkJTNsLZ-EM9jg',
+            scriptUrl: 'https://script.google.com/macros/s/AKfycbxbb-Q3b8yqZFWt_Tc9fpPiVZKGhwiP2MBeWQPLI68ZHX0X_NQcCBcnKqUf1_zmceA4rg/exec',
             sheetName: 'ai fundamental'
         },
         // Learner Survey Form
         survey: {
-            id: '1i_Ve9Rg3dbyoxbbhwV_qjAStw58F-dpkiC95SVgEv9I',
-            scriptUrl: 'https://script.google.com/macros/s/AKfycbzQNRa4fYum5_Y6UBipUIomOtD5vSDrtVc-1c6hcB8fKyr3-NJE224OU9fJMOitJ4S5/exec',
+            id: '1w5TafBBNM0bw_IbZtyYtiDSgmft1AxkJTNsLZ-EM9jg',
+            scriptUrl: 'https://script.google.com/macros/s/AKfycbxbb-Q3b8yqZFWt_Tc9fpPiVZKGhwiP2MBeWQPLI68ZHX0X_NQcCBcnKqUf1_zmceA4rg/exec',
             sheetName: 'survey'
         },
         // Airfreight registration form
         airfreight: {
-            id: '1i_Ve9Rg3dbyoxbbhwV_qjAStw58F-dpkiC95SVgEv9I',
-            scriptUrl: 'https://script.google.com/macros/s/AKfycbzQNRa4fYum5_Y6UBipUIomOtD5vSDrtVc-1c6hcB8fKyr3-NJE224OU9fJMOitJ4S5/exec',
+            id: '1w5TafBBNM0bw_IbZtyYtiDSgmft1AxkJTNsLZ-EM9jg',
+            scriptUrl: 'https://script.google.com/macros/s/AKfycbxbb-Q3b8yqZFWt_Tc9fpPiVZKGhwiP2MBeWQPLI68ZHX0X_NQcCBcnKqUf1_zmceA4rg/exec',
             sheetName: 'Airfreight'
         },
         // CFO registration form
         cfo: {
-            id: '1i_Ve9Rg3dbyoxbbhwV_qjAStw58F-dpkiC95SVgEv9I',
-            scriptUrl: 'https://script.google.com/macros/s/AKfycbzQNRa4fYum5_Y6UBipUIomOtD5vSDrtVc-1c6hcB8fKyr3-NJE224OU9fJMOitJ4S5/exec',
+            id: '1w5TafBBNM0bw_IbZtyYtiDSgmft1AxkJTNsLZ-EM9jg',
+            scriptUrl: 'https://script.google.com/macros/s/AKfycbxbb-Q3b8yqZFWt_Tc9fpPiVZKGhwiP2MBeWQPLI68ZHX0X_NQcCBcnKqUf1_zmceA4rg/exec',
             sheetName: 'อบรม CFO'
         },
         // Carbon Footprint course
@@ -52,13 +52,13 @@ const CONFIG = {
         },
         // Online Courses booking
         "online-courses": {
-            id: '1i_Ve9Rg3dbyoxbbhwV_qjAStw58F-dpkiC95SVgEv9I',
-            scriptUrl: 'https://script.google.com/macros/s/AKfycbzQNRa4fYum5_Y6UBipUIomOtD5vSDrtVc-1c6hcB8fKyr3-NJE224OU9fJMOitJ4S5/exec',
+            id: '1w5TafBBNM0bw_IbZtyYtiDSgmft1AxkJTNsLZ-EM9jg',
+            scriptUrl: 'https://script.google.com/macros/s/AKfycbxbb-Q3b8yqZFWt_Tc9fpPiVZKGhwiP2MBeWQPLI68ZHX0X_NQcCBcnKqUf1_zmceA4rg/exec',
             sheetName: 'Online Booking'
         },
         // Power BI Course
         powerBi: {
-            id: '1i_Ve9Rg3dbyoxbbhwV_qjAStw58F-dpkiC95SVgEv9I',
+            id: '1w5TafBBNM0bw_IbZtyYtiDSgmft1AxkJTNsLZ-EM9jg',
             scriptUrl: 'https://script.google.com/macros/s/AKfycbxZ5_Q5v78VJyFNdHqCkziUViT9reSZp0058iAPFBCcjNbgb4S-b04qNR5FU5nXik7e/exec',
             sheetName: 'Power BI'
         }
