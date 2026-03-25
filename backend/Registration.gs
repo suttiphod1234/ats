@@ -29,21 +29,68 @@ function processRegistration(data) {
     data.province || "",
     data.source || "",
     data.expectations || "",
-    data.referralText || ""
+    data.referralText || "",
+    "NO" // Default Verified status
   ]);
+
+  // --- Invite Customer to Google Calendar ---
+  inviteCustomerToCalendar(data.course, data.email);
+  
+  // --- Send Verification Email ---
+  sendVerificationEmail(data, id);
 
   return { 
     success: true, 
     id: id,
-    message: 'Data saved successfully'
+    message: 'ลงทะเบียนสำเร็จ! กรุณาตรวจสอบอีเมลเพื่อกดลิงก์ยืนยัน'
   };
+}
+
+/**
+ * ค้นหา Event ID ของหลักสูตรและเชิญลูกค้าเข้า Event
+ */
+function inviteCustomerToCalendar(courseTitle, customerEmail) {
+  if (!courseTitle || !customerEmail) return;
+  
+  try {
+    const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+    const courseSheet = ss.getSheetByName('courses');
+    if (!courseSheet) return;
+    
+    const courses = courseSheet.getDataRange().getValues();
+    const headers = courses[0];
+    const eventIdIdx = headers.indexOf('CalendarEventID');
+    const titleIdx = headers.indexOf('Title');
+    
+    if (eventIdIdx === -1) return;
+    
+    // Find matching course
+    for (let i = 1; i < courses.length; i++) {
+       // Check if Title matches (fuzzy match or exact)
+       if (courses[i][titleIdx] === courseTitle || courseTitle.includes(courses[i][titleIdx])) {
+         const eventId = courses[i][eventIdIdx];
+         if (eventId) {
+           const calendar = CalendarApp.getCalendarById(ADMIN_CALENDAR_ID) || CalendarApp.getDefaultCalendar();
+           const event = calendar.getEventById(eventId);
+           if (event) {
+             event.addGuest(customerEmail);
+             Logger.log(`Invited ${customerEmail} to event ${eventId}`);
+           }
+         }
+         break;
+       }
+    }
+  } catch (e) {
+    Logger.log('Invitation Error: ' + e.toString());
+  }
 }
 
 function setupHeaders(sheet) {
   const headers = [
     "Timestamp", "ID", "Full Name", "Email", "Phone", 
     "Course", "Position", "Company", "Industry", 
-    "Province", "Source", "Expectations", "Referral Info"
+    "Province", "Source", "Expectations", "Referral Info",
+    "Verified"
   ];
   sheet.appendRow(headers);
   sheet.getRange(1, 1, 1, headers.length).setFontWeight("bold").setBackground("#f3f3f3");

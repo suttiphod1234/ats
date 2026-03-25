@@ -23,6 +23,37 @@ function doGet(e) {
     }
   }
 
+  // --- Verification doesn't need to open spreadsheet first (it opens it inside) ---
+  if (action === 'verify') {
+    const id = e.parameter.id;
+    const sName = e.parameter.sheetName || 'ซีต1';
+    const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+    const sheet = ss.getSheetByName(sName);
+    if (!sheet) return HtmlService.createHtmlOutput('<h3>Error: Sheet not found</h3>');
+    
+    const data = sheet.getDataRange().getValues();
+    const headers = data[0];
+    const idIdx = headers.indexOf('ID');
+    const verifiedIdx = headers.indexOf('Verified');
+    
+    if (idIdx === -1 || verifiedIdx === -1) return HtmlService.createHtmlOutput('<h3>Error: System columns not found</h3>');
+    
+    for (let i = 1; i < data.length; i++) {
+      if (data[i][idIdx] === id) {
+        sheet.getRange(i + 1, verifiedIdx + 1).setValue('YES');
+        return HtmlService.createHtmlOutput(`
+          <div style="font-family: 'Prompt', sans-serif; text-align: center; padding: 50px;">
+            <h2 style="color: #10b981;">✅ ยืนยันอีเมลสำเร็จ!</h2>
+            <p>ขอบคุณที่ยืนยันตัวตนกับ LogiSkill ระบบได้บันทึกข้อมูลของคุณเรียบร้อยแล้ว</p>
+            <br>
+            <a href="https://suttiphod1234.github.io/ats/" style="padding: 10px 20px; background: #3b82f6; color: white; text-decoration: none; border-radius: 5px;">กลับสู่หน้าเว็บไซต์</a>
+          </div>
+        `);
+      }
+    }
+    return HtmlService.createHtmlOutput('<h3>Error: Registration ID not found</h3>');
+  }
+
   const sheetName = e.parameter.sheetName || 'ซีต1';
   
   try {
