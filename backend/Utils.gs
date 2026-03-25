@@ -58,7 +58,7 @@ function syncCourseToCalendar(data, existingEventId) {
  */
 function sendVerificationEmail(data, regId) {
   const targetSheetName = data.sheetName || 'ซีต1';
-  const scriptUrl = 'https://script.google.com/macros/s/AKfycbwXW0B9J2m4MHyvXl4PpfcIn9Hn0b_IpbQl3XBvYKqVr7cM1T1wZvo994kZayNXs172yA/exec';
+  const scriptUrl = 'https://script.google.com/macros/s/AKfycbx9SmX3XB7v3jXxYB5gt7X-zKgbCM5qEon8rKVU_yckFyYN7d6aWPG2QDwuycuMqcv5eQ/exec';
   const verifyLink = `${scriptUrl}?action=verify&id=${regId}&sheetName=${encodeURIComponent(targetSheetName)}`;
   
   let subject = `[LogiSkill] กรุณายืนยันการลงทะเบียน: ${data.course || 'หลักสูตรของเรา'}`;
@@ -98,9 +98,6 @@ function sendVerificationEmail(data, regId) {
         <div style="text-align: center; margin: 40px 0;">
           <a href="${verifyLink}" style="background: #10b981; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block;">ยืนยันอีเมลของฉัน</a>
         </div>
-        
-        <p style="color: #64748b; font-size: 0.9rem;">หากคุณไม่สามารถกดปุ่มด้านบนได้ สามารถคัดลอกลิงก์ด้านล่างไปวางใน Browser ได้ครับ:</p>
-        <p style="word-break: break-all; font-size: 0.8rem; color: #3b82f6;">${verifyLink}</p>
         
         <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 30px 0;">
         <p style="font-size: 0.8rem; color: #94a3b8; text-align: center;">นี่คืออีเมลอัตโนมัติ กรุณาอย่าตอบกลับอีเมลนี้<br>LogiSkill - Leading the future of Logistics with AI</p>

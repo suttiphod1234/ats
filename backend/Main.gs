@@ -45,8 +45,12 @@ function doGet(e) {
           <div style="font-family: 'Prompt', sans-serif; text-align: center; padding: 50px;">
             <h2 style="color: #10b981;">✅ ยืนยันอีเมลสำเร็จ!</h2>
             <p>ขอบคุณที่ยืนยันตัวตนกับ LogiSkill ระบบได้บันทึกข้อมูลของคุณเรียบร้อยแล้ว</p>
+            <p>กำลังพาคุณไปที่ปฏิทินใน 3 วินาที...</p>
             <br>
-            <a href="https://suttiphod1234.github.io/ats/" style="padding: 10px 20px; background: #3b82f6; color: white; text-decoration: none; border-radius: 5px;">กลับสู่หน้าเว็บไซต์</a>
+            <a href="https://calendar.google.com/" style="padding: 10px 20px; background: #3b82f6; color: white; text-decoration: none; border-radius: 5px;">ไปยังปฏิทิน (Calendar)</a>
+            <script>
+              setTimeout(function(){ window.location.href = "https://calendar.google.com/"; }, 3000);
+            </script>
           </div>
         `);
       }
