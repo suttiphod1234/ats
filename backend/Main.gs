@@ -11,6 +11,18 @@ function doGet(e) {
   }
   
   const action = e.parameter.action;
+  
+  // --- Login doesn't need Spreadsheet access ---
+  if (action === 'login') {
+    const username = e.parameter.username;
+    const password = e.parameter.password;
+    if (username === ADMIN_USER && password === ADMIN_PASSWORD) {
+      return jsonResponse({ success: true, token: 'logiskill-' + new Date().getTime() });
+    } else {
+      return jsonResponse({ success: false, error: 'Username หรือ Password ไม่ถูกต้อง' });
+    }
+  }
+
   const sheetName = e.parameter.sheetName || 'ซีต1';
   
   try {
@@ -25,16 +37,6 @@ function doGet(e) {
       const emailExists = data.some((row, index) => index > 0 && row[3] && row[3].toString().toLowerCase() === email.toLowerCase());
       
       return jsonResponse({ exists: emailExists });
-    }
-
-    if (action === 'login') {
-      const username = e.parameter.username;
-      const password = e.parameter.password;
-      if (username === ADMIN_USER && password === ADMIN_PASSWORD) {
-        return jsonResponse({ success: true, token: 'logiskill-' + new Date().getTime() });
-      } else {
-        return jsonResponse({ success: false, error: 'Username หรือ Password ไม่ถูกต้อง' });
-      }
     }
 
     if (action === 'listCourses') {
