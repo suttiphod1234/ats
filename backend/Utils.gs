@@ -58,7 +58,7 @@ function syncCourseToCalendar(data, existingEventId) {
  */
 function sendVerificationEmail(data, regId) {
   const targetSheetName = data.sheetName || 'ซีต1';
-  const scriptUrl = 'https://script.google.com/macros/s/AKfycbyZR8F1NmYHKLbezJ6-hPBSc4vLGsII5kJYelNb3Jh2W0e-kzVE1LueAVyGw4f79vyvLA/exec';
+  const scriptUrl = 'https://script.google.com/macros/s/AKfycbzJ_kBiGaiG3oXo5o6lbO2I-yHWIEP8QllMbybGim9vwi3cxowlHuT065Wkx3bYSGS_Bw/exec';
   const verifyLink = `${scriptUrl}?action=verify&id=${regId}&sheetName=${encodeURIComponent(targetSheetName)}`;
   
   let subject = `[LogiSkill] กรุณายืนยันการลงทะเบียน: ${data.course || 'หลักสูตรของเรา'}`;
@@ -139,4 +139,48 @@ function testPost() {
   Logger.log('--- ผลการทดสอบ ---');
   Logger.log(result.getContent());
   Logger.log('------------------');
+}
+
+/**
+ * Send survey summary email to customer
+ */
+function sendSurveyEmail(data, sequence) {
+  let subject = `[LogiSkill] สรุปข้อมูลความสนใจหลักสูตร: ${data.course}`;
+  
+  let htmlBody = `
+    <div style="font-family: 'Prompt', sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px;">
+      <div style="text-align: center; margin-bottom: 30px;">
+        <h2 style="color: #7c3aed;">ขอบคุณสำหรับข้อมูลความสนใจ</h2>
+        <p style="color: #64748b;">เราได้รับข้อมูลของคุณลำดับที่ #${sequence} เรียบร้อยแล้ว</p>
+      </div>
+      
+      <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin-bottom: 25px;">
+        <h3 style="margin-top: 0; color: #1e293b; border-bottom: 2px solid #ddd; padding-bottom: 10px;">ข้อมูลผู้ร่วมการสำรวจ</h3>
+        <p><strong>ชื่อ-นามสกุล:</strong> ${data.fullName}</p>
+        <p><strong>เบอร์โทรศัพท์:</strong> ${data.phone}</p>
+        <p><strong>อีเมล:</strong> ${data.email}</p>
+      </div>
+      
+      <div style="background: #f1f5f9; padding: 20px; border-radius: 8px; margin-bottom: 25px;">
+        <h3 style="margin-top: 0; color: #1e293b; border-bottom: 2px solid #ddd; padding-bottom: 10px;">หลักสูตรที่สนใจ</h3>
+        <p><strong>หมวดหมู่:</strong> ${data.category}</p>
+        <p><strong>วิชา:</strong> ${data.course}</p>
+        <p><strong>สิ่งที่คุณอยากเรียนรู้:</strong> ${data.interest || '-'}</p>
+      </div>
+
+      <div style="text-align: center; margin-top: 30px; padding: 20px; background: #fffbeb; border-radius: 8px; border: 1px solid #fde68a;">
+        <p style="color: #92400e; font-weight: bold; margin: 0;">กรุณารอหลักสูตรอนุมัติและเปิดรอบใหม่</p>
+        <p style="color: #b45309; font-size: 0.9rem; margin-top: 5px;">เราจะติดต่อกลับหาคุณผ่านอีเมลหรือเบอร์โทรศัพท์เพื่อแจ้งข่าวสารทันทีที่มีการเปิดสอน</p>
+      </div>
+      
+      <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 30px 0;">
+      <p style="font-size: 0.8rem; color: #94a3b8; text-align: center;">LogiSkill - Leading the future of Logistics with AI</p>
+    </div>
+  `;
+  
+  MailApp.sendEmail({
+    to: data.email,
+    subject: subject,
+    htmlBody: htmlBody
+  });
 }

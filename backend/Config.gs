@@ -7,3 +7,4 @@ const ADMIN_PASSWORD = 'admin@logiskill01';
 
 // --- CALENDAR CONFIG ---
 const ADMIN_CALENDAR_ID = 'jsdevelop.th@gmail.com';
+const SURVEY_SHEET_NAME = 'course-survey';

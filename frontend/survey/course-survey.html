@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="แบบสำรวจความสนใจหลักสูตรโลจิสติกส์ - LogiSkill">
+    <title>แบบสำรวจหลักสูตร - LogiSkill</title>
+    <link rel="icon" type="image/png" href="../../imag/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="course-survey.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="../index.html" class="logo">
+                    <img src="../../imag/logo_Logiskill_01.png" alt="LogiSkill" class="logo-image">
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="../index.html">หน้าแรก</a></li>
+                    <li><a href="../index.html#tracks">หลักสูตร</a></li>
+                    <li><a href="../index.html#booking-calendar">ปฏิทินการอบรม</a></li>
+                    <li><a href="../index.html#features">ฟีเจอร์</a></li>
+                    <li><a href="../index.html#corporate">องค์กร</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="https://lin.ee/ws5lf1M" target="_blank" class="btn-subscribe">ติดต่อสอบถาม</a>
+                    <a href="../index.html" class="btn-register-nav">กลับหน้าหลัก</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="survey-page">
+        <div class="container-sm">
+            <header class="survey-header">
+                <div class="header-decorator"></div>
+                <a href="../index.html" class="btn-back">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    กลับไปที่หน้าหลัก
+                </a>
+                <h1 class="gradient-text">แบบสำรวจความสนใจหลักสูตร</h1>
+                <p>เลือกหลักสูตรที่ช่วยยกระดับทักษะของคุณ เพื่อแจ้งความต้องการเปิดรอบการสอนใหม่</p>
+            </header>
+
+            <form id="courseSurveyForm" class="registration-form">
+                <!-- Step 1: Personal Info -->
+                <section class="form-section">
+                    <div class="section-title">
+                        <span class="step-num">1</span>
+                        <h2>ข้อมูลส่วนตัวผู้ร่วมการสำรวจ</h2>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="fullName">ชื่อ-นามสกุล <span class="required">*</span></label>
+                            <input type="text" id="fullName" name="fullName" placeholder="ชื่อภาษาไทย" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="phone">เบอร์โทรศัพท์มือถือ <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" placeholder="0XXXXXXXXX" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="email">อีเมล <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="ageRange">ช่วงอายุ <span class="required">*</span></label>
+                            <select id="ageRange" name="ageRange" required>
+                                <option value="">--- เลือกช่วงอายุ ---</option>
+                                <option value="20-25">20 - 25 ปี</option>
+                                <option value="26-30">26 - 30 ปี</option>
+                                <option value="31-40">31 - 40 ปี</option>
+                                <option value="41-50">41 - 50 ปี</option>
+                                <option value="51 ขึ้นไป">51 ปีขึ้นไป</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group full-width">
+                            <label for="education">ระดับการศึกษาสูงสุด</label>
+                            <select id="education" name="education">
+                                <option value="">--- เลือกระดับการศึกษา ---</option>
+                                <option value="มัธยมปลาย/ปวช.">มัธยมปลาย / ปวช.</option>
+                                <option value="ปวส./อนุปริญญา">ปวส. / อนุปริญญา</option>
+                                <option value="ปริญญาตรี">ปริญญาตรี</option>
+                                <option value="ปริญญาโท">ปริญญาโท</option>
+                                <option value="ปริญญาเอก">ปริญญาเอก</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Step 2: Course Selection -->
+                <section class="form-section">
+                    <div class="section-title">
+                        <span class="step-num">2</span>
+                        <h2>หลักสูตรที่คุณสนใจ</h2>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="input-group full-width">
+                            <label for="category">หมวดหมู่หลักสูตร <span class="required">*</span></label>
+                            <select id="category" name="category" required>
+                                <option value="">--- เลือกหมวดหมู่ที่สนใจ ---</option>
+                                <option value="Warehouse & Inventory Master">Warehouse & Inventory Master (การจัดการคลัง)</option>
+                                <option value="Transportation & Distribution Pro">Transportation & Distribution Pro (การขนส่ง)</option>
+                                <option value="Supply Chain & Purchasing Strategy">Supply Chain & Purchasing Strategy (จัดซื้อ/ซัพพลายเชน)</option>
+                                <option value="Future Logistics Technology">Future Logistics Technology (เทคโนโลยี/AI)</option>
+                                <option value="People Management in Logistics">People Management in Logistics (การบริหารคน)</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group full-width">
+                            <label for="course">รายวิชาที่คุณสนใจเป็นพิเศษ <span class="required">*</span></label>
+                            <select id="course" name="course" required disabled>
+                                <option value="">--- กรุณาเลือกหมวดหมู่ก่อน ---</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group full-width">
+                            <label for="interest">สิ่งที่คุณอยากเรียนรู้เพิ่มเติมจากหลักสูตรนี้</label>
+                            <textarea id="interest" name="interest" rows="3"
+                                placeholder="ระบุทักษะหรือเนื้อหาที่คุณต้องการเน้นเป็นพิเศษ"></textarea>
+                        </div>
+
+                        <div class="input-group full-width">
+                            <label for="comments">ความคิดเห็นหรือข้อเสนอแนะอื่นๆ</label>
+                            <textarea id="comments" name="comments" rows="2"
+                                placeholder="ระบุข้อความถึงเจ้าหน้าที่"></textarea>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Submit Button -->
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit" id="submitBtn">
+                        <span class="btn-text">ส่งข้อมูลความสนใจ</span>
+                        <span class="btn-loader" style="display: none;">กำลังส่งข้อมูล...</span>
+                    </button>
+                    <p class="form-note">เราจะนำข้อมูลไปพิจารณาเปิดรอบการสอนและแจ้งคุณทันทีที่ได้รับการอนุมัติ</p>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal" role="dialog" aria-modal="true">
+        <div class="modal-overlay"></div>
+        <div class="modal-content success-modal">
+            <div class="success-icon">📝</div>
+            <h2>ส่งแบบสำรวจสำเร็จ!</h2>
+            <p class="success-message">ขอบคุณสำหรับข้อมูลความสนใจของคุณ<br>เราได้รับข้อมูลของคุณเรียบร้อยแล้ว</p>
+
+            <div class="booking-summary">
+                <p>ลำดับที่สำรวจ: <span id="summarySeq">#--</span></p>
+                <p>ชื่อผู้สำรวจ: <span id="summaryName">--</span></p>
+                <p>หลักสูตรที่เลือก: <span id="summaryCourse">--</span></p>
+            </div>
+
+            <div class="survey-status-box">
+                <p>⏳ <strong>สถานะ: รอหลักสูตรอนุมัติ</strong></p>
+                <p style="font-size: 0.9rem; margin-top: 5px; opacity: 0.8;">เจ้าหน้าที่จะติดต่อกลับเมื่อมีการเปิดรอบการสอนใหม่</p>
+            </div>
+
+            <div class="modal-actions">
+                <a href="https://lin.ee/ws5lf1M" target="_blank" class="btn-line">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" width="22" alt="LINE">
+                    ติดต่อเจ้าหน้าที่ผ่าน LINE
+                </a>
+                <button class="btn-primary" onclick="window.location.href='../index.html'">กลับสู่หน้าหลัก</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 LogiSkill. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../config.js"></script>
+    <script src="course-survey.js"></script>
+</body>
+
+</html>

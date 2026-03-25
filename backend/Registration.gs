@@ -108,3 +108,54 @@ function setupHeaders(sheet, sheetName) {
 function generateUniqueId() {
   return 'REG-' + Math.random().toString(36).substr(2, 9).toUpperCase();
 }
+
+/**
+ * Process course survey submission
+ */
+function processSurvey(data) {
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  let sheet = ss.getSheetByName(SURVEY_SHEET_NAME);
+  
+  if (!sheet) {
+    sheet = ss.insertSheet(SURVEY_SHEET_NAME);
+    const headers = [
+      'Timestamp', 'Full Name', 'Phone', 'Email', 'Age Range', 
+      'Education', 'Category', 'Course', 'Interest', 'Comments', 'Sequence'
+    ];
+    sheet.appendRow(headers);
+    sheet.getRange(1, 1, 1, headers.length).setFontWeight("bold").setBackground("#f3f3f3");
+  }
+  
+  const lastRow = sheet.getLastRow();
+  const sequence = lastRow; // Header row 1, so lastRow is count of existing surveys
+  
+  const rowData = [
+    new Date(),
+    data.fullName,
+    data.phone,
+    data.email,
+    data.ageRange,
+    data.education,
+    data.category,
+    data.course,
+    data.interest || "",
+    data.comments || "",
+    sequence // This will be #1 for the first real data, etc.
+  ];
+  
+  sheet.appendRow(rowData);
+  
+  // Send confirmation email
+  try {
+    sendSurveyEmail(data, sequence);
+  } catch (err) {
+    Logger.log('Survey Email error: ' + err.toString());
+  }
+  
+  return {
+    success: true,
+    sequence: sequence,
+    name: data.fullName,
+    course: data.course
+  };
+}

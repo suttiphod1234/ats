@@ -118,6 +118,8 @@ function doPost(e) {
       return jsonResponse(updateCourse(data));
     } else if (action === 'deleteCourse') {
       return jsonResponse(deleteCourse(data.id));
+    } else if (action === 'courseSurvey') {
+      return jsonResponse(processSurvey(data));
     }
     
     // --- REGISTRATION ACTIONS ---
