@@ -9,29 +9,30 @@ function processRegistration(data) {
 
   if (!sheet) {
     sheet = ss.insertSheet(targetSheetName);
-    setupHeaders(sheet);
+    setupHeaders(sheet, targetSheetName);
   }
 
   const timestamp = new Date();
   const id = generateUniqueId();
 
-  // Append data row
-  sheet.appendRow([
-    timestamp,
-    id,
-    data.fullName,
-    data.email,
-    "'" + data.phone, // Force as string
-    data.course || "",
-    data.position || "",
-    data.company || "",
-    data.industry || "",
-    data.province || "",
-    data.source || "",
-    data.expectations || "",
-    data.referralText || "",
-    "NO" // Default Verified status
-  ]);
+  // Determine Row Data based on sheet type
+  let rowData = [];
+  if (targetSheetName === 'ai-logistics-v3') {
+     rowData = [
+      timestamp, id, data.fullName, data.email, "'" + data.phone,
+      data.age || "", data.education || "", data.position || "", 
+      data.score || 0, data.maxScore || 10, "NO"
+     ];
+  } else {
+     rowData = [
+      timestamp, id, data.fullName, data.email, "'" + data.phone,
+      data.course || "", data.position || "", data.company || "", 
+      data.industry || "", data.province || "", data.source || "", 
+      data.expectations || "", data.referralText || "", "NO"
+     ];
+  }
+
+  sheet.appendRow(rowData);
 
   // --- Invite Customer to Google Calendar ---
   inviteCustomerToCalendar(data.course, data.email);
@@ -85,13 +86,21 @@ function inviteCustomerToCalendar(courseTitle, customerEmail) {
   }
 }
 
-function setupHeaders(sheet) {
-  const headers = [
-    "Timestamp", "ID", "Full Name", "Email", "Phone", 
-    "Course", "Position", "Company", "Industry", 
-    "Province", "Source", "Expectations", "Referral Info",
-    "Verified"
-  ];
+function setupHeaders(sheet, sheetName) {
+  let headers = [];
+  if (sheetName === 'ai-logistics-v3') {
+    headers = [
+      "Timestamp", "ID", "Full Name", "Email", "Phone",
+      "Age", "Education", "Position", "Score", "Max Score", "Verified"
+    ];
+  } else {
+    headers = [
+      "Timestamp", "ID", "Full Name", "Email", "Phone", 
+      "Course", "Position", "Company", "Industry", 
+      "Province", "Source", "Expectations", "Referral Info",
+      "Verified"
+    ];
+  }
   sheet.appendRow(headers);
   sheet.getRange(1, 1, 1, headers.length).setFontWeight("bold").setBackground("#f3f3f3");
 }

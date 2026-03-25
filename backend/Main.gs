@@ -70,6 +70,13 @@ function doGet(e) {
       return jsonResponse({ exists: emailExists });
     }
 
+    if (action === 'getRegistrationCount') {
+      const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+      const sheet = ss.getSheetByName(sheetName);
+      if (!sheet) return jsonResponse({ count: 1 });
+      return jsonResponse({ count: sheet.getLastRow() }); // Return current row count as the sequence
+    }
+
     if (action === 'listCourses') {
       return jsonResponse({ success: true, data: listCourses() });
     }

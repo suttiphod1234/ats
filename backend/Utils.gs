@@ -57,11 +57,30 @@ function syncCourseToCalendar(data, existingEventId) {
  * ส่งอีเมลยืนยันตัวตนให้ลูกค้า
  */
 function sendVerificationEmail(data, regId) {
-  const sheetName = data.sheetName || 'ซีต1';
-  const scriptUrl = 'https://script.google.com/macros/s/AKfycbyt5ixNoX9jl6lYZrytzqPXRD1ZFqfJGnuMPmm4sbifa67neVYz7E43ba0KAm_EPCeKeA/exec';
-  const verifyLink = `${scriptUrl}?action=verify&id=${regId}&sheetName=${encodeURIComponent(sheetName)}`;
+  const targetSheetName = data.sheetName || 'ซีต1';
+  const scriptUrl = 'https://script.google.com/macros/s/AKfycbwXW0B9J2m4MHyvXl4PpfcIn9Hn0b_IpbQl3XBvYKqVr7cM1T1wZvo994kZayNXs172yA/exec';
+  const verifyLink = `${scriptUrl}?action=verify&id=${regId}&sheetName=${encodeURIComponent(targetSheetName)}`;
   
-  const subject = `[LogiSkill] กรุณายืนยันการลงทะเบียน: ${data.course || 'หลักสูตรของเรา'}`;
+  let subject = `[LogiSkill] กรุณายืนยันการลงทะเบียน: ${data.course || 'หลักสูตรของเรา'}`;
+  let scoreInfo = "";
+  
+  if (targetSheetName === 'ai-logistics-v3' && data.score !== undefined) {
+    subject = `[คะแนน: ${data.score}/10] ยืนยันการลงทะเบียน: ${data.course}`;
+    
+    let levelText = "";
+    if (data.score >= 10) levelText = "ดีมาก มีความรู้พื้นฐานดี สามารถเรียนเนื้อหาเชิงลึกได้";
+    else if (data.score >= 9) levelText = "มีความเข้าใจค่อนข้างดี พร้อมต่อยอด";
+    else if (data.score >= 7) levelText = "มีความเข้าใจเบื้องต้น แต่ยังต้องพัฒนา";
+    else levelText = "ควรทบทวนเนื้อหาพื้นฐานและสอบใหม่ (สอบใหม่)";
+
+    scoreInfo = `
+      <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 15px; border-radius: 8px; margin: 20px 0;">
+        <p style="margin: 0; font-weight: bold; color: #3b82f6;">ผลการทดสอบก่อนเรียน (Pre-test):</p>
+        <p style="font-size: 1.5rem; margin: 10px 0;">คะแนนของคุณคือ <strong>${data.score} / ${data.maxScore || 10}</strong></p>
+        <p style="margin: 0; color: #64748b; font-size: 0.9rem;">${levelText}</p>
+      </div>
+    `;
+  }
   
   const htmlBody = `
     <div style="font-family: 'Prompt', sans-serif; max-width: 600px; margin: auto; border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden;">
@@ -71,6 +90,9 @@ function sendVerificationEmail(data, regId) {
       <div style="padding: 30px; color: #1e293b; line-height: 1.6;">
         <p>สวัสดีคุณ <strong>${data.fullName}</strong>,</p>
         <p>ขอบคุณที่สนใจลงทะเบียนในหลักสูตร <strong>${data.course || 'ของเรา'}</strong></p>
+        
+        ${scoreInfo}
+
         <p>เพื่อความถูกต้องของข้อมูลและยืนยันการสำรองที่นั่ง กรุณาคลิกปุ่มด้านล่างเพื่อยืนยันอีเมลของคุณครับ:</p>
         
         <div style="text-align: center; margin: 40px 0;">
