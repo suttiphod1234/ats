@@ -58,7 +58,7 @@ function syncCourseToCalendar(data, existingEventId) {
  */
 function sendVerificationEmail(data, regId) {
   const targetSheetName = data.sheetName || 'ซีต1';
-  const scriptUrl = 'https://script.google.com/macros/s/AKfycbx9SmX3XB7v3jXxYB5gt7X-zKgbCM5qEon8rKVU_yckFyYN7d6aWPG2QDwuycuMqcv5eQ/exec';
+  const scriptUrl = 'https://script.google.com/macros/s/AKfycbyZR8F1NmYHKLbezJ6-hPBSc4vLGsII5kJYelNb3Jh2W0e-kzVE1LueAVyGw4f79vyvLA/exec';
   const verifyLink = `${scriptUrl}?action=verify&id=${regId}&sheetName=${encodeURIComponent(targetSheetName)}`;
   
   let subject = `[LogiSkill] กรุณายืนยันการลงทะเบียน: ${data.course || 'หลักสูตรของเรา'}`;
