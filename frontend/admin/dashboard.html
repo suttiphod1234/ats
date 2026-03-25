@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - LogiSkill Management</title>
+    <link rel="icon" type="image/png" href="../../imag/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body class="admin-body">
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../../imag/logo_Logiskill_01.png" alt="LogiSkill" class="sidebar-logo">
+                <span class="admin-label">Admin Panel</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-link active">
+                    <span class="icon">📚</span> คลังหลักสูตร
+                </a>
+                <a href="../index.html" class="nav-link">
+                    <span class="icon">🏠</span> กลับหน้าเว็บ
+                </a>
+                <a href="https://calendar.google.com/calendar" target="_blank" class="nav-link">
+                    <span class="icon">📅</span> Google Calendar
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <p>© 2026 LogiSkill Management</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <div class="header-title">
+                    <h1>จัดการหลักสูตร (Courses Management)</h1>
+                    <p>เพิ่ม แก้ไข หรือลบหลักสูตรที่แสดงบนหน้าเว็บหลัก</p>
+                </div>
+                <button class="btn-primary" id="addCourseBtn">
+                    <span class="icon">➕</span> เพิ่มหลักสูตรใหม่
+                </button>
+            </header>
+
+            <section class="dashboard-stats">
+                <div class="stat-card">
+                    <span class="stat-icon">📖</span>
+                    <div class="stat-info">
+                        <h3 id="totalCourses">0</h3>
+                        <p>หลักสูตรทั้งหมด</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">🟢</span>
+                    <div class="stat-info">
+                        <h3 id="activeCourses">0</h3>
+                        <p>กำลังเปิดรับสมัคร</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Course Table -->
+            <div class="table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ไอคอน</th>
+                            <th>ชื่อหลักสูตร</th>
+                            <th>หมวดหมู่</th>
+                            <th>สถานะ</th>
+                            <th>การจัดการ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="courseTableBody">
+                        <!-- Rows will be populated by JS -->
+                        <tr>
+                            <td colspan="5" class="loading-text">กำลังโหลดข้อมูล...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Course Modal (Add/Edit) -->
+    <div id="courseModal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <header class="modal-header">
+                <h2 id="modalTitle">เพิ่มหลักสูตรใหม่</h2>
+                <button class="btn-close" id="closeModal">&times;</button>
+            </header>
+            <form id="courseForm">
+                <input type="hidden" id="courseId">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="title">ชื่อหลักสูตร (Title) <span class="required">*</span></label>
+                        <input type="text" id="title" required placeholder="เช่น อบรม Airfreight ฟรี!">
+                    </div>
+                    <div class="form-group">
+                        <label for="category">หมวดหมู่ <span class="required">*</span></label>
+                        <select id="category" required>
+                            <option value="AI">AI Technology</option>
+                            <option value="Logistics">Logistics & Supply Chain</option>
+                            <option value="Environmental">Environmental / CFO</option>
+                            <option value="Tools">Data Analysis / Tools</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="subtitle">คำอธิบายสั้นๆ (Subtitle)</label>
+                    <input type="text" id="subtitle" placeholder="เช่น International Air Freight Management">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="status">สถานะป้ายกำกับ (Status Badge)</label>
+                        <input type="text" id="status" placeholder="เช่น เปิดรับสมัคร">
+                    </div>
+                    <div class="form-group">
+                        <label for="icon">ไอคอน (Emoji)</label>
+                        <input type="text" id="icon" placeholder="เช่น ✈️, 🤖, 🌱">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="dates">วันเวลาที่อบรม (Text Display)</label>
+                        <input type="text" id="dates" placeholder="เช่น 12-13 และ 19-20 มีนาคม 2569">
+                    </div>
+                    <div class="form-group">
+                        <label for="styleClass">สไตล์สีพื้นหลัง (CSS Class)</label>
+                        <select id="styleClass">
+                            <option value="ai-bg">AI (Purple/Dark)</option>
+                            <option value="airfreight-bg">Airfreight (Blue)</option>
+                            <option value="carbon-bg">Environmental (Green)</option>
+                            <option value="online-bg">General (Indigo)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="formLink">ลิ้งค์แบบฟอร์มลงทะเบียน <span class="required">*</span></label>
+                    <input type="text" id="formLink" required placeholder="เช่น ai-logistics/ai-logistics-form.html">
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancelBtn">ยกเลิก</button>
+                    <button type="submit" class="btn-primary" id="saveBtn">บันทึกข้อมูล</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../config.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+
+</html>

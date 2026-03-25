@@ -31,6 +31,16 @@ function doPost(e) {
 
     // Parse incoming data
     const data = JSON.parse(e.postData.contents);
+    const action = data.action;
+
+    // --- ADMIN COURSE MANAGEMENT ACTIONS ---
+    if (action === 'addCourse') {
+      return jsonResponse(addCourse(data));
+    } else if (action === 'updateCourse') {
+      return jsonResponse(updateCourse(data));
+    } else if (action === 'deleteCourse') {
+      return jsonResponse(deleteCourse(data.id));
+    }
     
     // Determine target sheet (Default to 'ซีต1' if not specified)
     const targetSheetName = data.sheetName || 'ซีต1';
@@ -331,6 +341,10 @@ function doGet(e) {
       
       return jsonResponse({ exists: emailExists });
     }
+
+    if (action === 'listCourses') {
+      return jsonResponse({ success: true, data: listCourses() });
+    }
     
     return jsonResponse({ error: 'Invalid action or sheet not found' });
     
@@ -381,27 +395,134 @@ function createCalendarEvent(data) {
   });
 }
 
-/**
- * ฟังก์ชันสำหรับทดสอบการทำงานจากภายใน Apps Script Editor
- * ช่วยให้คุณทดสอบได้โดยไม่ต้องกดจากหน้าเว็บจริงๆ
- */
-function testPost() {
-  const testData = {
-    fullName: "ทดสอบ ระบบ",
-    email: "test@example.com",
-    phone: "0812345678",
-    sheetName: "ai logistics", // ระบุชื่อซีตที่ต้องการทดสอบ
-    course: "AI FOR LOGISTICS (TEST)"
-  };
+// --- COURSE MANAGEMENT FUNCTIONS ---
+
+function listCourses() {
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  let sheet = ss.getSheetByName('courses');
+  if (!sheet) return [];
   
-  const dummyEvent = {
-    postData: {
-      contents: JSON.stringify(testData)
+  const data = sheet.getDataRange().getValues();
+  if (data.length <= 1) return [];
+  
+  const headers = data[0];
+  return data.slice(1).map(row => {
+    let obj = {};
+    headers.forEach((h, i) => obj[h] = row[i]);
+    return obj;
+  });
+}
+
+function addCourse(data) {
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  let sheet = ss.getSheetByName('courses');
+  if (!sheet) {
+    sheet = ss.insertSheet('courses');
+    sheet.appendRow(['ID', 'Title', 'Subtitle', 'Category', 'Status', 'Icon', 'Dates', 'FormLink', 'StyleClass', 'CalendarEventID']);
+  }
+  
+  const id = 'C' + new Date().getTime();
+  const calendarEventId = syncCourseToCalendar(data);
+  
+  sheet.appendRow([
+    id,
+    data.title,
+    data.subtitle,
+    data.category,
+    data.status,
+    data.icon,
+    data.dates,
+    data.formLink,
+    data.styleClass,
+    calendarEventId
+  ]);
+  
+  return { success: true, id: id };
+}
+
+function updateCourse(data) {
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const sheet = ss.getSheetByName('courses');
+  const rows = sheet.getDataRange().getValues();
+  const headers = rows[0];
+  
+  for (let i = 1; i < rows.length; i++) {
+    if (rows[i][0] === data.id) {
+      const calendarEventId = syncCourseToCalendar(data, rows[i][9]); // rows[i][9] is CalendarEventID
+      
+      const newRow = [
+        data.id,
+        data.title,
+        data.subtitle,
+        data.category,
+        data.status,
+        data.icon,
+        data.dates,
+        data.formLink,
+        data.styleClass,
+        calendarEventId
+      ];
+      
+      sheet.getRange(i + 1, 1, 1, newRow.length).setValues([newRow]);
+      return { success: true };
     }
-  };
+  }
+  return { success: false, error: 'Course not found' };
+}
+
+function deleteCourse(id) {
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const sheet = ss.getSheetByName('courses');
+  const rows = sheet.getDataRange().getValues();
   
-  const result = doPost(dummyEvent);
-  Logger.log('--- ผลการทดสอบ ---');
-  Logger.log(result.getContent());
-  Logger.log('------------------');
+  for (let i = 1; i < rows.length; i++) {
+    if (rows[i][0] === id) {
+      // Delete calendar event if exists
+      const eventId = rows[i][9];
+      if (eventId) {
+        try {
+          const calendar = CalendarApp.getDefaultCalendar();
+          const event = calendar.getEventById(eventId);
+          if (event) event.deleteEvent();
+        } catch (e) {
+          Logger.log('Error deleting calendar event: ' + e.toString());
+        }
+      }
+      
+      sheet.deleteRow(i + 1);
+      return { success: true };
+    }
+  }
+  return { success: false, error: 'Course not found' };
+}
+
+function syncCourseToCalendar(data, existingEventId) {
+  try {
+    const calendar = CalendarApp.getDefaultCalendar();
+    const title = `[Course] ${data.title}`;
+    const description = `${data.subtitle}\nLink: ${data.formLink}`;
+    
+    // Default to today if no date provided (for simplicity in this v1)
+    // In a real app, 'data.dates' should be parsed into actual Date objects
+    const startDate = new Date();
+    const endDate = new Date(startDate.getTime() + (2 * 60 * 60 * 1000)); // +2 hours
+    
+    if (existingEventId) {
+      const event = calendar.getEventById(existingEventId);
+      if (event) {
+        event.setTitle(title);
+        event.setDescription(description);
+        // event.setTime(startDate, endDate); // Only update time if we have proper dates
+        return existingEventId;
+      }
+    }
+    
+    const newEvent = calendar.createEvent(title, startDate, endDate, {
+      description: description
+    });
+    return newEvent.getId();
+  } catch (e) {
+    Logger.log('Calendar Sync Error: ' + e.toString());
+    return existingEventId || '';
+  }
 }
