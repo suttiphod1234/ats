@@ -174,7 +174,7 @@
             box-shadow: 0 20px 45px rgba(20, 184, 166, 0.4);
         }
 
-        /* Modal Styles */
+        /* Success Modal Redesign */
         .modal {
             display: none;
             position: fixed;
@@ -195,113 +195,147 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(15px);
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
         }
 
         .success-modal {
             position: relative;
-            max-width: 550px;
+            max-width: 500px;
             width: 90%;
-            background: #1e293b !important;
+            background: rgba(30, 41, 59, 0.7) !important;
+            backdrop-filter: blur(30px) !important;
+            -webkit-backdrop-filter: blur(30px) !important;
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 3rem;
-            padding: 4.5rem 3.5rem !important;
+            padding: 4rem 3rem !important;
             text-align: center;
-            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.5), 0 0 50px rgba(20, 184, 166, 0.2);
-            animation: modalPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6), 0 0 60px rgba(124, 58, 237, 0.15);
+            animation: modalEntrance 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        @keyframes modalPop {
-            from { transform: scale(0.8) translateY(40px); opacity: 0; }
+        @keyframes modalEntrance {
+            from { transform: scale(0.9) translateY(60px); opacity: 0; }
             to { transform: scale(1) translateY(0); opacity: 1; }
         }
 
-        .success-icon {
-            font-size: 5rem;
-            margin-bottom: 2.5rem;
-            display: block;
+        .success-icon-wrapper {
+            width: 100px;
+            height: 100px;
+            background: rgba(124, 58, 237, 0.1);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2.5rem;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            font-size: 3.5rem;
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.2);
         }
 
         .success-modal h2 {
-            font-size: 2.5rem;
+            font-size: 2.4rem;
             font-weight: 800;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #fff 0%, #14b8a6 100%);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .booking-summary {
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .summary-box {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 2rem;
             padding: 2rem;
             margin: 2.5rem 0;
             text-align: left;
         }
 
-        .booking-summary p {
+        .summary-item {
             display: flex;
             justify-content: space-between;
             margin-bottom: 1rem;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-gray);
+            gap: 1rem;
         }
 
-        .booking-summary span {
-            font-weight: 700;
+        .summary-item span:last-child {
             color: white;
+            font-weight: 700;
             text-align: right;
+            flex: 1;
         }
 
-        .survey-status-box {
-            background: rgba(245, 158, 11, 0.15);
+        .course-highlight {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--accent-teal) !important;
+            font-size: 1.1rem !important;
+            font-weight: 700 !important;
+            display: block;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(245, 158, 11, 0.1);
             border: 1px solid rgba(245, 158, 11, 0.3);
-            border-radius: 1.5rem;
-            padding: 1.5rem;
-            margin-bottom: 3rem;
+            padding: 1rem 2rem;
+            border-radius: 100px;
             color: #f59e0b;
+            font-weight: 700;
+            margin-bottom: 3rem;
         }
 
-        .modal-actions {
+        .modal-actions-grid {
             display: flex;
             flex-direction: column;
             gap: 1.25rem;
         }
 
-        .btn-line-modal {
-            background: #00b900 !important;
-            color: white !important;
-            padding: 1.3rem;
-            border-radius: 1.25rem;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
+        .btn-modal {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 1rem;
-            transition: all 0.3s ease;
+            padding: 1.4rem;
+            border-radius: 1.5rem;
+            font-weight: 800;
+            font-size: 1.15rem;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: none;
+            width: 100%;
+            cursor: pointer;
         }
 
-        .btn-primary-modal {
-            background: var(--gradient-primary) !important;
-            color: white !important;
-            padding: 1.3rem;
-            border-radius: 1.25rem;
-            border: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .btn-line-premium {
+            background: #00b900;
+            color: white;
+            box-shadow: 0 10px 25px rgba(0, 185, 0, 0.3);
+        }
+
+        .btn-home-premium {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-modal:hover {
+            transform: translateY(-4px);
+            filter: brightness(1.1);
         }
 
         @media (max-width: 640px) {
             .form-grid { grid-template-columns: 1fr; }
-            .form-section { padding: 3rem 1.5rem !important; }
-            .survey-header h1 { font-size: 2.2rem; }
+            .form-section { padding: 2.5rem 1.5rem !important; }
+            .survey-header h1 { font-size: 2.22rem; }
             .success-modal { padding: 3rem 1.5rem !important; }
+            .summary-box { padding: 1.5rem; }
         }
     </style>
 </head>
@@ -443,36 +477,42 @@
         </div>
     </main>
 
-    <!-- Success Modal -->
+    <!-- Success Modal Redesigned -->
     <div id="successModal" class="modal">
         <div class="modal-overlay"></div>
         <div class="modal-content success-modal">
-            <div class="success-icon">📝</div>
+            <div class="success-icon-wrapper">📝</div>
             <h2>ส่งแบบสำรวจสำเร็จ!</h2>
-            <p style="color:#cbd5e1; font-size:1.2rem; margin-bottom:2rem;">ขอบคุณสำหรับข้อมูลความสนใจของคุณ<br>เราได้รับข้อมูลเรียบร้อยแล้ว</p>
+            <p style="color:var(--text-gray); font-size:1.15rem; line-height:1.6;">เราได้รับข้อมูลความสนใจของคุณแล้ว<br>ขอบคุณที่เป็นส่วนหนึ่งของ LogiSkill</p>
 
-            <div class="booking-summary">
-                <p>ลำดับที่สำรวจ: <span id="summarySeq">#--</span></p>
-                <p>ชื่อผู้สำรวจ: <span id="summaryName">--</span></p>
-                <div style="border-top: 1px solid rgba(255,255,255,0.1); margin: 0.8rem 0; padding-top: 0.8rem;">
-                    <p style="flex-direction:column; align-items:flex-start; gap:0.5rem;">
-                        <span>หลักสูตรที่เลือก:</span>
-                        <span id="summaryCourse" style="text-align:left; color:#14b8a6; font-size:1rem;">--</span>
-                    </p>
+            <div class="summary-box">
+                <div class="summary-item">
+                    <span>ลำดับที่สำรวจ:</span>
+                    <span id="summarySeq">#--</span>
+                </div>
+                <div class="summary-item">
+                    <span>ชื่อผู้สมัคร:</span>
+                    <span id="summaryName">--</span>
+                </div>
+                <div class="summary-item" style="flex-direction:column; align-items:flex-start;">
+                    <span>หลักสูตรที่สนใจ:</span>
+                    <span id="summaryCourse" class="course-highlight">--</span>
                 </div>
             </div>
 
-            <div class="survey-status-box">
-                <p style="font-weight:700; margin-bottom:0.5rem;">⏳ สถานะ: รอหลักสูตรอนุมัติ</p>
-                <p style="font-size: 0.95rem; opacity: 0.8;">เจ้าหน้าที่จะติดต่อกลับเมื่อมีการเปิดรอบการสอนใหม่</p>
+            <div class="status-badge">
+                <span>⏳</span>
+                <span>สถานะ: รอหลักสูตรอนุมัติ</span>
             </div>
 
-            <div class="modal-actions">
-                <a href="https://lin.ee/ws5lf1M" target="_blank" class="btn-line-modal">
+            <div class="modal-actions-grid">
+                <a href="https://lin.ee/ws5lf1M" target="_blank" class="btn-modal btn-line-premium">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" width="24" alt="LINE">
                     ติดต่อเจ้าหน้าที่ผ่าน LINE
                 </a>
-                <button class="btn-primary-modal" onclick="window.location.href='../index.html'">กลับสู่หน้าหลัก</button>
+                <button class="btn-modal btn-home-premium" onclick="window.location.href='../index.html'">
+                    กลับสู่หน้าหลัก
+                </button>
             </div>
         </div>
     </div>
