@@ -526,3 +526,28 @@ function syncCourseToCalendar(data, existingEventId) {
     return existingEventId || '';
   }
 }
+
+/**
+ * ฟังก์ชันสำหรับทดสอบการทำงานจากภายใน Apps Script Editor
+ * ช่วยให้คุณทดสอบได้โดยไม่ต้องกดจากหน้าเว็บจริงๆ
+ */
+function testPost() {
+  const testData = {
+    fullName: "ทดสอบ ระบบ (Admin)",
+    email: "test-admin@example.com",
+    phone: "0812345678",
+    sheetName: "ซีต1", 
+    course: "TEST COURSE"
+  };
+  
+  const dummyEvent = {
+    postData: {
+      contents: JSON.stringify(testData)
+    }
+  };
+  
+  const result = doPost(dummyEvent);
+  Logger.log('--- ผลการทดสอบ ---');
+  Logger.log(result.getContent());
+  Logger.log('------------------');
+}
