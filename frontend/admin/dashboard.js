@@ -8,6 +8,7 @@ const SCRIPT_URL = CONFIG.sheets.general.scriptUrl;
 // State
 let courses = [];
 let isEditing = false;
+let datePicker;
 
 // DOM Elements
 const courseTableBody = document.getElementById('courseTableBody');
@@ -34,6 +35,14 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchCourses();
     fetchSummary();
     setupMobileMenu();
+    
+    // Initialize Flatpickr for multi-date selection
+    datePicker = flatpickr("#dates", {
+        mode: "multiple",
+        dateFormat: "d M Y",
+        conjunction: ", ",
+        locale: "th"
+    });
 });
 
 function setupMobileMenu() {
@@ -111,6 +120,7 @@ addCourseBtn.addEventListener('click', () => {
     isEditing = false;
     modalTitle.textContent = 'เพิ่มหลักสูตรใหม่';
     courseForm.reset();
+    if (datePicker) datePicker.clear();
     document.getElementById('courseId').value = '';
     courseModal.classList.add('active');
 });
@@ -180,6 +190,7 @@ window.editCourse = (id) => {
     document.getElementById('status').value = course.Status;
     document.getElementById('icon').value = course.Icon;
     document.getElementById('dates').value = course.Dates;
+    if (datePicker) datePicker.setDate(course.Dates.split(', '));
     document.getElementById('styleClass').value = course.StyleClass;
     document.getElementById('formLink').value = course.FormLink;
     
