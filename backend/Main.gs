@@ -84,6 +84,10 @@ function doGet(e) {
     if (action === 'listCourses') {
       return jsonResponse({ success: true, data: listCourses() });
     }
+
+    if (action === 'getAdminSummary') {
+      return jsonResponse(getAdminSummary());
+    }
     
     return jsonResponse({ error: 'Invalid action or sheet not found' });
     

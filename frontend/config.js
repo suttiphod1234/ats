@@ -12,37 +12,37 @@ const CONFIG = {
         // General registration form (Air Freight, CFO, etc.)
         general: {
             id: '1w5TafBBNM0bw_IbZtyYtiDSgmft1AxkJTNsLZ-EM9jg',
-            scriptUrl: 'https://script.google.com/macros/s/AKfycbzJ_kBiGaiG3oXo5o6lbO2I-yHWIEP8QllMbybGim9vwi3cxowlHuT065Wkx3bYSGS_Bw/exec',
+            scriptUrl: 'https://script.google.com/macros/s/AKfycbwrI7LxkOyR658PbvQ24tIlyFXvGstKiuEk1WTzsGGWmGpqpD_TDT2Hvx84nJ8pPLubiw/exec',
             sheetName: 'ซีต1'
         },
         // AI FOR LOGISTICS registration form
         aiLogistics: {
             id: '1w5TafBBNM0bw_IbZtyYtiDSgmft1AxkJTNsLZ-EM9jg',
-            scriptUrl: 'https://script.google.com/macros/s/AKfycbzJ_kBiGaiG3oXo5o6lbO2I-yHWIEP8QllMbybGim9vwi3cxowlHuT065Wkx3bYSGS_Bw/exec',
+            scriptUrl: 'https://script.google.com/macros/s/AKfycbwrI7LxkOyR658PbvQ24tIlyFXvGstKiuEk1WTzsGGWmGpqpD_TDT2Hvx84nJ8pPLubiw/exec',
             sheetName: 'ai logistics'
         },
         // AI Fundamentals registration form (New)
         aiFundamental: {
             id: '1w5TafBBNM0bw_IbZtyYtiDSgmft1AxkJTNsLZ-EM9jg',
-            scriptUrl: 'https://script.google.com/macros/s/AKfycbzJ_kBiGaiG3oXo5o6lbO2I-yHWIEP8QllMbybGim9vwi3cxowlHuT065Wkx3bYSGS_Bw/exec',
+            scriptUrl: 'https://script.google.com/macros/s/AKfycbwrI7LxkOyR658PbvQ24tIlyFXvGstKiuEk1WTzsGGWmGpqpD_TDT2Hvx84nJ8pPLubiw/exec',
             sheetName: 'ai fundamental'
         },
         // Learner Survey Form
         survey: {
             id: '1w5TafBBNM0bw_IbZtyYtiDSgmft1AxkJTNsLZ-EM9jg',
-            scriptUrl: 'https://script.google.com/macros/s/AKfycbzJ_kBiGaiG3oXo5o6lbO2I-yHWIEP8QllMbybGim9vwi3cxowlHuT065Wkx3bYSGS_Bw/exec',
+            scriptUrl: 'https://script.google.com/macros/s/AKfycbwrI7LxkOyR658PbvQ24tIlyFXvGstKiuEk1WTzsGGWmGpqpD_TDT2Hvx84nJ8pPLubiw/exec',
             sheetName: 'survey'
         },
         // Airfreight registration form
         airfreight: {
             id: '1w5TafBBNM0bw_IbZtyYtiDSgmft1AxkJTNsLZ-EM9jg',
-            scriptUrl: 'https://script.google.com/macros/s/AKfycbzJ_kBiGaiG3oXo5o6lbO2I-yHWIEP8QllMbybGim9vwi3cxowlHuT065Wkx3bYSGS_Bw/exec',
+            scriptUrl: 'https://script.google.com/macros/s/AKfycbwrI7LxkOyR658PbvQ24tIlyFXvGstKiuEk1WTzsGGWmGpqpD_TDT2Hvx84nJ8pPLubiw/exec',
             sheetName: 'Airfreight'
         },
         // CFO registration form
         cfo: {
             id: '1w5TafBBNM0bw_IbZtyYtiDSgmft1AxkJTNsLZ-EM9jg',
-            scriptUrl: 'https://script.google.com/macros/s/AKfycbzJ_kBiGaiG3oXo5o6lbO2I-yHWIEP8QllMbybGim9vwi3cxowlHuT065Wkx3bYSGS_Bw/exec',
+            scriptUrl: 'https://script.google.com/macros/s/AKfycbwrI7LxkOyR658PbvQ24tIlyFXvGstKiuEk1WTzsGGWmGpqpD_TDT2Hvx84nJ8pPLubiw/exec',
             sheetName: 'อบรม CFO'
         },
         // Carbon Footprint course
@@ -53,12 +53,12 @@ const CONFIG = {
         // Online Courses booking
         "online-courses": {
             id: '1w5TafBBNM0bw_IbZtyYtiDSgmft1AxkJTNsLZ-EM9jg',
-            scriptUrl: 'https://script.google.com/macros/s/AKfycbzJ_kBiGaiG3oXo5o6lbO2I-yHWIEP8QllMbybGim9vwi3cxowlHuT065Wkx3bYSGS_Bw/exec',
+            scriptUrl: 'https://script.google.com/macros/s/AKfycbwrI7LxkOyR658PbvQ24tIlyFXvGstKiuEk1WTzsGGWmGpqpD_TDT2Hvx84nJ8pPLubiw/exec',
             sheetName: 'Online Booking'
         },
         "ai-logistics-v3": {
             id: '1w5TafBBNM0bw_IbZtyYtiDSgmft1AxkJTNsLZ-EM9jg',
-            scriptUrl: 'https://script.google.com/macros/s/AKfycbzJ_kBiGaiG3oXo5o6lbO2I-yHWIEP8QllMbybGim9vwi3cxowlHuT065Wkx3bYSGS_Bw/exec',
+            scriptUrl: 'https://script.google.com/macros/s/AKfycbwrI7LxkOyR658PbvQ24tIlyFXvGstKiuEk1WTzsGGWmGpqpD_TDT2Hvx84nJ8pPLubiw/exec',
             sheetName: 'ai-logistics-v3'
         },
         // Power BI Course

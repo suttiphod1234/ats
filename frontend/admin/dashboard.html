@@ -64,6 +64,20 @@
                     </div>
                 </div>
                 <div class="stat-card">
+                    <span class="stat-icon">👥</span>
+                    <div class="stat-info">
+                        <h3 id="totalRegistrations">0</h3>
+                        <p>ผู้ลงทะเบียนทั้งหมด</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">📝</span>
+                    <div class="stat-info">
+                        <h3 id="totalSurveys">0</h3>
+                        <p>แบบสำรวจหลักสูตร</p>
+                    </div>
+                </div>
+                <div class="stat-card">
                     <span class="stat-icon">🟢</span>
                     <div class="stat-info">
                         <h3 id="activeCourses">0</h3>
@@ -72,27 +86,52 @@
                 </div>
             </section>
 
+            <!-- Insights Section -->
+            <section class="dashboard-insights" style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-bottom: 3rem;">
+                <div class="insight-card recent-activity">
+                    <div class="card-header">
+                        <h2>กิจกรรมล่าสุด (Recent Activity)</h2>
+                    </div>
+                    <div class="activity-list" id="recentActivityList">
+                        <p class="loading-text">กำลังโหลดกิจกรรม...</p>
+                    </div>
+                </div>
+                <div class="insight-card popular-tracks">
+                    <div class="card-header">
+                        <h2>หมวดหมู่ยอดนิยม</h2>
+                    </div>
+                    <div class="track-chart" id="trackChart">
+                        <p class="loading-text">กำลังโหลดข้อมูล...</p>
+                    </div>
+                </div>
+            </section>
+
             <!-- Course Table -->
             <div class="table-container">
-                <table class="admin-table">
-                    <thead>
-                        <tr>
-                            <th>ไอคอน</th>
-                            <th>ชื่อหลักสูตร</th>
-                            <th>หมวดหมู่</th>
-                            <th>สถานะ</th>
-                            <th>การจัดการ</th>
-                        </tr>
-                    </thead>
-                    <tbody id="courseTableBody">
-                        <!-- Rows will be populated by JS -->
-                        <tr>
-                            <td colspan="5" class="loading-text">กำลังโหลดข้อมูล...</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ไอคอน</th>
+                                <th>ชื่อหลักสูตร</th>
+                                <th>หมวดหมู่</th>
+                                <th>สถานะ</th>
+                                <th>การจัดการ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="courseTableBody">
+                            <!-- Rows populated by JS -->
+                            <tr>
+                                <td colspan="5" class="loading-text">กำลังโหลดข้อมูล...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </main>
+
+        <!-- Sidebar Overlay to close on mobile click -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
     </div>
 
     <!-- Course Modal (Add/Edit) -->
