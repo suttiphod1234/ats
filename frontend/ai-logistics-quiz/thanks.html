@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI For Logistics Quiz - ขอบคุณ</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .contact-item {
+            text-decoration: none;
+            color: var(--primary);
+            padding: 20px;
+            border-radius: var(--radius-md);
+            background: #F1F5F9;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        .contact-item:hover {
+            background: var(--white);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-5px);
+            color: var(--secondary);
+        }
+        .contact-icon {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="logistics-bg"></div>
+
+    <div class="container" style="text-align: center; margin-top: 80px;">
+        <div class="card fade-in">
+            <div style="font-size: 4rem; margin-bottom: 20px;">🎉</div>
+            <h1 style="color: var(--secondary); font-size: 2.5rem; margin-bottom: 16px;">ขอบคุณที่ร่วมสนุก!</h1>
+            <p style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 30px;">
+                เราได้รับข้อมูลและคะแนนของคุณเรียบร้อยแล้ว <br>
+                ระบบจะส่งรายละเอียดไปยังอีเมลของคุณโดยอัตโนมัติ
+            </p>
+
+            <div style="height: 1px; background: #E2E8F0; width: 100%; margin: 30px 0;"></div>
+
+            <h3 style="margin-bottom: 20px;">ช่องทางการติดต่อเรา</h3>
+            <div class="contact-grid">
+                <a href="https://web.facebook.com/logiskill" class="contact-item" target="_blank">
+                    <span class="contact-icon">🔵</span>
+                    <span>Facebook</span>
+                </a>
+                <a href="https://lin.ee/rQhZnwh" class="contact-item" target="_blank">
+                    <span class="contact-icon">🟢</span>
+                    <span>Line Official</span>
+                </a>
+                <a href="https://suttiphod1234.github.io/ats/frontend/index.html" class="contact-item" target="_blank">
+                    <span class="contact-icon">🌐</span>
+                    <span>Website</span>
+                </a>
+            </div>
+
+            <div style="margin-top: 40px;">
+                <a href="index.html" class="btn btn-secondary">กลับหน้าแรก</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
